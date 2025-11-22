@@ -8,48 +8,52 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            height: 100vh;
+            min-height: 100vh;
             background: #000 url('https://wallpapers.com/images/featured/nebula-lt47o5qub95qmqkx.jpg') center/cover no-repeat fixed;
             color: white;
             font-family: 'Roboto', sans-serif;
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 2rem 1rem;
         }
         .container {
-            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
             z-index: 2;
-            padding: 20px;
         }
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 5.5rem;
+            font-size: clamp(3.5rem, 10vw, 7rem);
             margin-bottom: 1rem;
             text-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff;
             animation: glow 2s ease-in-out infinite alternate;
         }
         h2 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 6vw, 3.5rem);
             margin: 1.5rem 0;
             text-shadow: 0 0 20px #fff;
         }
         p {
-            font-size: 1.8rem;
-            max-width: 900px;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            max-width: 90%;
             margin: 1.5rem auto;
-            line-height: 1.5;
+            line-height: 1.6;
             text-shadow: 0 0 10px #000;
         }
         .glove {
+            max-width: 80vw;
             width: 400px;
+            height: auto;
             margin: 3rem auto;
-            animation: float 12s ease-in-out infinite, rotate 25s linear infinite;
+            animation: float 10s ease-in-out infinite;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
         }
         .rocket {
             position: absolute;
-            font-size: 6rem;
+            font-size: clamp(4rem, 10vw, 6rem);
             bottom: -200px;
             left: 50%;
             transform: translateX(-50%);
@@ -67,11 +71,7 @@
         }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-40px); }
-        }
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            50% { transform: translateY(-30px); }
         }
         @keyframes launch {
             0% { bottom: -200px; }
@@ -84,9 +84,8 @@
             100% { opacity: 0; transform: translateY(100vh) rotate(360deg); }
         }
         .stars {
-            position: absolute;
+            position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: transparent;
             pointer-events: none;
         }
         .star {
@@ -96,14 +95,22 @@
             animation: twinkle 4s infinite;
         }
         @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
+            0%, 100% { opacity: 0.3; }
             50% { opacity: 1; }
         }
         footer {
-            position: absolute;
-            bottom: 30px;
-            font-size: 1.2rem;
+            margin-top: 3rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
             opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+            .glove {
+                max-width: 90vw;
+                width: 300px;
+            }
+            body {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
@@ -122,26 +129,25 @@
            <strong>Phase 2:</strong> Naar de maan 🌙<br>
            <strong>Phase 3:</strong> Jouw bankrekening laten exploderen 💥💰💰💰</p>
         
-        <p style="font-size:2.5rem;margin-top:3rem;">Uncle & Nando to the moon!!!</p>
+        <p style="font-size: clamp(2rem, 7vw, 3rem);margin-top:3rem;">Uncle & Nando to the moon!!!</p>
+        
+        <footer>Made with ❤️ & veel te veel koffie – temporary launch page (verdwijnt over 3 dagen... of niet 😏)</footer>
     </div>
 
     <div class="rocket">🚀</div>
 
-    <footer>Made with ❤️ & veel te veel koffie – temporare launch page (verdwijn over 3 dagen... of niet 😏)</footer>
-
     <script>
-        // Twinkling stars + money rain
+        // Stars + money rain
         const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < 150; i++) {
             const star = document.createElement('div');
             star.className = 'star';
-            star.style.width = star.style.height = Math.random() * 3 + 'px';
+            star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
             star.style.top = Math.random() * 100 + '%';
             star.style.left = Math.random() * 100 + '%';
             star.style.animationDelay = Math.random() * 4 + 's';
             starsContainer.appendChild(star);
         }
-        // Euro rain after rocket launch
         setTimeout(() => {
             for (let i = 0; i < 40; i++) {
                 const euro = document.createElement('div');
