@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEY NANDO! Safe-Grip.eu has landed!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            height: 100vh;
+            background: #000 url('https://wallpapers.com/images/featured/nebula-lt47o5qub95qmqkx.jpg') center/cover no-repeat fixed;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .container {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        h2 {
+            font-size: 3rem;
+            margin: 1.5rem 0;
+            text-shadow: 0 0 20px #fff;
+        }
+        p {
+            font-size: 1.8rem;
+            max-width: 900px;
+            margin: 1.5rem auto;
+            line-height: 1.5;
+            text-shadow: 0 0 10px #000;
+        }
+        .glove {
+            width: 400px;
+            margin: 3rem auto;
+            animation: float 12s ease-in-out infinite, rotate 25s linear infinite;
+        }
+        .rocket {
+            position: absolute;
+            font-size: 6rem;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: launch 8s ease-in-out forwards;
+        }
+        .euros {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0;
+            animation: moneyRain 6s linear forwards;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff; }
+            to { text-shadow: 0 0 40px #00ffff, 0 0 80px #00ffff; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-40px); }
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes launch {
+            0% { bottom: -200px; }
+            60% { bottom: 120vh; }
+            100% { bottom: 120vh; }
+        }
+        @keyframes moneyRain {
+            0% { opacity: 0; transform: translateY(-100vh) rotate(0); }
+            20% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(100vh) rotate(360deg); }
+        }
+        .stars {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: transparent;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        footer {
+            position: absolute;
+            bottom: 30px;
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <h1>HEY NANDO!</h1>
+        <h2>Safe-Grip.eu has landed! 🚀🌙</h2>
+        
+        <img src="https://thumbs.dreamstime.com/b/space-suit-helmet-gloves-floating-space-reflection-moon-ai-generated-astronaut-floating-space-351352146.jpg" alt="Granberg glove in space" class="glove">
+        
+        <p>We hebben Granberg binnengehaald – de taaiste Noorse werkhandschoenen sinds 1961.</p>
+        <p>Nu gaan we Benelux veroveren.</p>
+        <p><strong>Phase 1:</strong> Website live ✓<br>
+           <strong>Phase 2:</strong> Naar de maan 🌙<br>
+           <strong>Phase 3:</strong> Jouw bankrekening laten exploderen 💥💰💰💰</p>
+        
+        <p style="font-size:2.5rem;margin-top:3rem;">Uncle & Nando to the moon!!!</p>
+    </div>
 
+    <div class="rocket">🚀</div>
+
+    <footer>Made with ❤️ & veel te veel koffie – temporare launch page (verdwijn over 3 dagen... of niet 😏)</footer>
+
+    <script>
+        // Twinkling stars + money rain
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = star.style.height = Math.random() * 3 + 'px';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 4 + 's';
+            starsContainer.appendChild(star);
+        }
+        // Euro rain after rocket launch
+        setTimeout(() => {
+            for (let i = 0; i < 40; i++) {
+                const euro = document.createElement('div');
+                euro.className = 'euros';
+                euro.textContent = '€';
+                euro.style.left = Math.random() * 100 + '%';
+                euro.style.animationDelay = Math.random() * 3 + 's';
+                document.body.appendChild(euro);
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
