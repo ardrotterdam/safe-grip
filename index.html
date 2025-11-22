@@ -17,11 +17,13 @@
             justify-content: center;
             text-align: center;
             padding: 2rem 1rem;
+            overflow: hidden;
         }
         .container {
             max-width: 960px;
             margin: 0 auto;
             z-index: 2;
+            position: relative;
         }
         h1 {
             font-family: 'Orbitron', sans-serif;
@@ -43,7 +45,7 @@
             text-shadow: 0 0 15px #000;
         }
         .highlight {
-            font-size: clamp(2.5rem, 9vw, 4.5rem) !important;
+            font-size: clamp(2.8rem, 10vw, 5rem) !important;
             font-weight: 900;
             margin: 4rem auto !important;
             text-shadow: 0 0 40px #00ffff, 0 0 80px #00ffff;
@@ -65,6 +67,13 @@
             transform: translateX(-50%);
             animation: launch 8s ease-in-out forwards;
         }
+        .euros {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0;
+            pointer-events: none;
+            animation: moneyRain 6s linear forwards;
+        }
         @keyframes glow {
             from { text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff; }
             to { text-shadow: 0 0 40px #00ffff, 0 0 80px #00ffff; }
@@ -78,6 +87,11 @@
             60% { bottom: 120vh; }
             100% { bottom: 120vh; }
         }
+        @keyframes moneyRain {
+            0% { opacity: 0; transform: translateY(-100vh) rotate(0deg); }
+            15% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(120vh) rotate(720deg); }
+        }
         footer {
             margin-top: 5rem;
             font-size: clamp(1rem, 3vw, 1.3rem);
@@ -86,6 +100,7 @@
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>HEY NANDO!</h1>
         <h2>Safe-Grip.eu is LIVE!<br>En we gaan KEIHARD van start! 🚀</h2>
@@ -105,14 +120,28 @@
         
         <p><strong>Phase 1:</strong> Website live ✓<br>
            <strong>Phase 2:</strong> Benelux veroveren 💪<br>
-           <strong>Phase 3:</strong> Naar de maan & fucking rijk worden 🌙💰💰💰</p>
+           <strong>Phase 3:</strong> Naar de maan & rijk worden 🌙💰💰💰</p>
         
         <p style="font-size: clamp(2.8rem, 9vw, 4.5rem); margin-top:4rem; font-weight: 900; text-shadow: 0 0 40px #00ffff;">
-            UNCLE & NANDO<br>TO THE FUCKING MOON!!!</p>
+            UNCLE & NANDO<br>TO THE MOON!!!</p>
         
         <footer>Made with ❤️, ballen en heel veel koffie – nu gaan we écht knallen 😏</footer>
     </div>
 
     <div class="rocket">🚀</div>
+
+    <script>
+        // Euro geldregen na de raket
+        setTimeout(() => {
+            for (let i = 0; i < 50; i++) {
+                const euro = document.createElement('div');
+                euro.className = 'euros';
+                euro.textContent = '€';
+                euro.style.left = Math.random() * 100 + '%';
+                euro.style.animationDelay = Math.random() * 4 + 's';
+                euro.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                document.body.appendChild(euro);
+            }
+        }, 3000);
+    </script>
 </body>
-</html>
