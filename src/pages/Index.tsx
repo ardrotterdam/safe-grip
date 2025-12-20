@@ -1,13 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Helmet } from "react-helmet-async";
+import { Layout } from "@/components/layout/Layout";
+import { HeroSection } from "@/components/home/HeroSection";
+import { CollectionsSection } from "@/components/home/CollectionsSection";
+import { IndustriesSection } from "@/components/home/IndustriesSection";
+import { TestimonialsSection } from "@/components/home/TestimonialsSection";
+import { CTASection } from "@/components/home/CTASection";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <Layout>
+      <Helmet>
+        <title>SafeGrip — Professionele Werkhandschoenen Benelux</title>
+        <meta 
+          name="description" 
+          content="B2B groothandel in professionele werkhandschoenen. Officieel Granberg distributeur voor Nederland en België. Snijbestendige, winter, chemisch en impactbestendige handschoenen per bundel."
+        />
+        <meta property="og:title" content="SafeGrip — Professionele Werkhandschoenen Benelux" />
+        <meta property="og:description" content="B2B groothandel in professionele werkhandschoenen. Officieel Granberg distributeur voor Nederland en België." />
+      </Helmet>
+
+      <HeroSection />
+      <CollectionsSection />
+      <IndustriesSection />
+      <TestimonialsSection />
+      <CTASection />
+    </Layout>
   );
 };
 
