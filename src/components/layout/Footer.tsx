@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
+import safeGripLogo from "@/assets/safe-grip-logo.png";
 
 const collecties = [
   { naam: "Snijbestendige werkhandschoenen", url: "/collecties/snijbestendige-werkhandschoenen" },
@@ -15,12 +16,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary">
-                <span className="text-lg font-bold text-primary-foreground">SG</span>
-              </div>
-              <span className="text-xl font-bold text-foreground">SafeGrip</span>
-            </div>
+            <Link to="/" className="inline-block">
+              <img 
+                src={safeGripLogo} 
+                alt="Safe-Grip Logo" 
+                className="h-14 w-auto"
+              />
+            </Link>
             <p className="text-sm text-muted-foreground">
               Professionele B2B groothandel in werkhandschoenen. Officieel Granberg distributeur voor de Benelux.
             </p>
