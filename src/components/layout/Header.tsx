@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,27 +19,45 @@ const collecties = [
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+    <header 
+      className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
+        scrolled 
+          ? "bg-background/98 backdrop-blur-lg border-border shadow-lg shadow-primary/5" 
+          : "bg-transparent border-transparent"
+      }`}
+    >
+      <div className={`container flex items-center justify-between transition-all duration-300 ${
+        scrolled ? "h-14" : "h-20"
+      }`}>
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img 
             src={safeGripLogo} 
             alt="Safe-Grip Logo" 
-            className="h-12 w-auto"
+            className={`w-auto transition-all duration-300 ${scrolled ? "h-10" : "h-14"}`}
           />
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
             Home
           </Link>
           
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
               Collecties <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-card border-border">
@@ -53,18 +71,18 @@ export function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Link to="/over-ons" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link to="/over-ons" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
             Over Ons
           </Link>
           
-          <Link to="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link to="/contact" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
             Contact
           </Link>
         </nav>
 
         {/* CTA Button */}
         <div className="hidden md:flex">
-          <Button asChild>
+          <Button asChild className={`transition-all duration-300 ${scrolled ? "scale-95" : "scale-100"}`}>
             <Link to="/contact">Offerte Aanvragen</Link>
           </Button>
         </div>
@@ -81,7 +99,7 @@ export function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background">
+        <div className="md:hidden border-t border-border bg-background animate-fade-in">
           <nav className="container py-4 flex flex-col gap-4">
             <Link 
               to="/" 
@@ -97,7 +115,7 @@ export function Header() {
                 <Link
                   key={collectie.url}
                   to={collectie.url}
-                  className="text-sm text-muted-foreground pl-4"
+                  className="text-sm text-muted-foreground pl-4 hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {collectie.naam}
