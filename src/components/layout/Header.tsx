@@ -71,13 +71,9 @@ export function Header() {
       <div className={`container flex items-center justify-between transition-all duration-500 ${
         scrolled ? "h-16" : "h-20"
       }`}>
-        {/* Logo with custom SVG */}
-        <Link to="/" className="group">
-          <SafeGripLogo 
-            size={scrolled ? 36 : 44} 
-            showText={true}
-            className="transition-all duration-300 group-hover:scale-[1.02]"
-          />
+        {/* Logo wordmark */}
+        <Link to="/" className="group transition-all duration-300 hover:scale-[1.02]">
+          <SafeGripLogo variant="yellow" />
         </Link>
 
         {/* Desktop Navigation with Mega Menu */}
@@ -150,7 +146,7 @@ export function Header() {
               <SheetHeader className="p-4 border-b border-border">
                 <div className="flex items-center justify-between">
                   <SheetTitle className="text-left">
-                    <SafeGripLogo size={32} showText={true} />
+                    <SafeGripLogo variant="black" />
                   </SheetTitle>
                 </div>
               </SheetHeader>

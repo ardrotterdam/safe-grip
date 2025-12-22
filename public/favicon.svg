@@ -1,24 +1,15 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Shield background - Safety Yellow -->
-  <path d="M32 4L8 14V30C8 45.464 18.536 58.464 32 62C45.464 58.464 56 45.464 56 30V14L32 4Z" fill="#FACC15"/>
+  <!-- Background -->
+  <rect width="64" height="64" fill="#1a1a1a" rx="8" />
   
-  <!-- Glove palm -->
-  <path d="M32 18C28 18 25 21 25 25V38C25 40 26.5 42 29 42H35C37.5 42 39 40 39 38V25C39 21 36 18 32 18Z" fill="#0A0A0A"/>
+  <!-- S letter -->
+  <text x="8" y="46" fill="#FFE600" style="font-family: Impact, Arial Black, sans-serif; font-size: 38px; font-weight: 900;">S</text>
   
-  <!-- Glove fingers -->
-  <rect x="26" y="14" width="4" height="12" rx="2" fill="#0A0A0A"/>
-  <rect x="30" y="12" width="4" height="14" rx="2" fill="#0A0A0A"/>
-  <rect x="34" y="14" width="4" height="12" rx="2" fill="#0A0A0A"/>
+  <!-- Triple grip bars -->
+  <rect x="26" y="26" width="12" height="3" fill="#FFE600" />
+  <rect x="26" y="31" width="12" height="3" fill="#FFE600" />
+  <rect x="26" y="36" width="12" height="3" fill="#FFE600" />
   
-  <!-- Thumb -->
-  <ellipse cx="23" cy="28" rx="3" ry="5" fill="#0A0A0A" transform="rotate(-20 23 28)"/>
-  
-  <!-- Grip lines -->
-  <line x1="28" y1="32" x2="36" y2="32" stroke="#FACC15" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-  <line x1="28" y1="35" x2="36" y2="35" stroke="#FACC15" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-  <line x1="28" y1="38" x2="36" y2="38" stroke="#FACC15" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-  
-  <!-- Checkmark badge -->
-  <circle cx="44" cy="44" r="8" fill="#0EA5E9"/>
-  <path d="M40 44L43 47L48 41" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- G letter -->
+  <text x="40" y="46" fill="#FFE600" style="font-family: Impact, Arial Black, sans-serif; font-size: 38px; font-weight: 900;">G</text>
 </svg>
