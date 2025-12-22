@@ -78,13 +78,6 @@ export function Header() {
 
         {/* Desktop Navigation with Mega Menu */}
         <nav className="hidden md:flex items-center gap-1">
-          <Link 
-            to="/" 
-            className="px-4 py-2 text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-foreground/5 rounded-lg transition-all duration-200"
-          >
-            Home
-          </Link>
-          
           {/* Mega Menu for Collecties */}
           <MegaMenu />
 
@@ -209,15 +202,6 @@ export function Header() {
                 {/* Navigation */}
                 {!searchQuery && (
                   <nav className="p-4 space-y-1">
-                    {/* Home */}
-                    <Link 
-                      to="/" 
-                      onClick={handleLinkClick}
-                      className="flex items-center justify-between py-3 px-3 text-foreground font-medium hover:bg-muted rounded-lg transition-colors"
-                    >
-                      Home
-                    </Link>
-
                     {/* Collecties - Expandable */}
                     <div>
                       <button
