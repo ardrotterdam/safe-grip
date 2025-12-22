@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import Contact from "./pages/Contact";
 import OverOns from "./pages/OverOns";
 import Shop from "./pages/Shop";
+import Privacy from "./pages/Privacy";
 import SnijbestendigeWerkhandschoenen from "./pages/collecties/SnijbestendigeWerkhandschoenen";
 import WinterWerkhandschoenen from "./pages/collecties/WinterWerkhandschoenen";
 import ChemischBestendigeHandschoenen from "./pages/collecties/ChemischBestendigeHandschoenen";
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/over-ons" element={<OverOns />} />
+            <Route path="/privacy" element={<Privacy />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/collecties/snijbestendige-werkhandschoenen" element={<SnijbestendigeWerkhandschoenen />} />
             <Route path="/collecties/winter-werkhandschoenen" element={<WinterWerkhandschoenen />} />

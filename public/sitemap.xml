@@ -25,6 +25,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://safegrip.nl/privacy</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://safegrip.nl/collecties/snijbestendige-werkhandschoenen</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>weekly</changefreq>
