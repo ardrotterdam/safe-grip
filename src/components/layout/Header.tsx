@@ -89,6 +89,13 @@ export function Header() {
           </Link>
 
           <Link 
+            to="/granberg" 
+            className="px-4 py-2 text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-foreground/5 rounded-lg transition-all duration-200"
+          >
+            Granberg
+          </Link>
+
+          <Link 
             to="/blog" 
             className="px-4 py-2 text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-foreground/5 rounded-lg transition-all duration-200"
           >
@@ -282,6 +289,15 @@ export function Header() {
                       className="flex items-center justify-between py-3 px-3 text-foreground font-medium hover:bg-muted rounded-lg transition-colors"
                     >
                       Over Ons
+                    </Link>
+
+                    {/* Granberg */}
+                    <Link 
+                      to="/granberg" 
+                      onClick={handleLinkClick}
+                      className="flex items-center justify-between py-3 px-3 text-foreground font-medium hover:bg-muted rounded-lg transition-colors"
+                    >
+                      Granberg
                     </Link>
 
                     {/* Blog */}

@@ -20,6 +20,7 @@ import WinterWerkhandschoenen from "./pages/collecties/WinterWerkhandschoenen";
 import ChemischBestendigeHandschoenen from "./pages/collecties/ChemischBestendigeHandschoenen";
 import ImpactbestendigeWerkhandschoenen from "./pages/collecties/ImpactbestendigeWerkhandschoenen";
 import AdminInzendingen from "./pages/admin/Inzendingen";
+import Granberg from "./pages/Granberg";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -47,6 +48,7 @@ const App = () => (
               <Route path="/collecties/chemisch-bestendige-handschoenen" element={<ChemischBestendigeHandschoenen />} />
               <Route path="/collecties/impactbestendige-werkhandschoenen" element={<ImpactbestendigeWerkhandschoenen />} />
               <Route path="/admin/inzendingen" element={<AdminInzendingen />} />
+              <Route path="/granberg" element={<Granberg />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
