@@ -115,6 +115,10 @@ export default {
           "0%": { transform: "rotateY(0deg)" },
           "100%": { transform: "rotateY(180deg)" },
         },
+        kenburns: {
+          "0%": { transform: "scale(1.05) translate(0%, 0%)" },
+          "100%": { transform: "scale(1.15) translate(-2%, -1%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
