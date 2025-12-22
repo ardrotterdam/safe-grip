@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, HardHat, Anchor, Factory, Droplets, Flame, TreeDeciduous } from "lucide-react";
+import forestryChainsaw from "@/assets/industries/forestry-chainsaw.jpg";
 
 const industrieen = [
   {
@@ -12,6 +13,7 @@ const industrieen = [
     features: ["Snijbestendig", "Impactbescherming", "Grip op nat oppervlak"],
     cta: "Bekijk bouwhandschoenen",
     bgImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80",
+    altText: "Bouwvakker met beschermende werkhandschoenen op bouwplaats - SafeGrip Granberg",
   },
   {
     id: "offshore",
@@ -21,6 +23,7 @@ const industrieen = [
     features: ["Oliebestendig", "Chemische bescherming", "Antistatisch"],
     cta: "Bekijk offshore handschoenen",
     bgImage: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=1920&q=80",
+    altText: "Offshore platform medewerker met oliebestendige werkhandschoenen - SafeGrip Granberg",
   },
   {
     id: "voedsel",
@@ -30,6 +33,7 @@ const industrieen = [
     features: ["Voedselveilig", "Snijbestendig", "Wasbaar"],
     cta: "Bekijk voedselhandschoenen",
     bgImage: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=1920&q=80",
+    altText: "Voedselindustrie medewerker met voedselveilige handschoenen - SafeGrip Granberg",
   },
   {
     id: "bosbouw",
@@ -38,7 +42,8 @@ const industrieen = [
     icon: TreeDeciduous,
     features: ["Kettingzaagbestendig", "Waterafstotend", "Ademend"],
     cta: "Bekijk bosbouw handschoenen",
-    bgImage: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1920&q=80",
+    bgImage: forestryChainsaw,
+    altText: "Professionele bosbouwer met kettingzaagbestendige werkhandschoenen - SafeGrip Granberg",
   },
   {
     id: "lassen",
@@ -48,6 +53,7 @@ const industrieen = [
     features: ["Hittebestendig", "Spatbescherming", "Duurzaam leer"],
     cta: "Bekijk lashandschoenen",
     bgImage: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&q=80",
+    altText: "Lasser met hittebestendige lashandschoenen - SafeGrip Granberg",
   },
   {
     id: "maritiem",
@@ -57,6 +63,7 @@ const industrieen = [
     features: ["Waterbestendig", "Zoutbestendig", "Drijfvermogen"],
     cta: "Bekijk maritieme handschoenen",
     bgImage: "https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=1920&q=80",
+    altText: "Maritieme werker met waterbestendige handschoenen - SafeGrip Granberg",
   },
 ];
 
@@ -103,7 +110,7 @@ export function IndustriesSection() {
         </div>
 
         {/* Content Panel */}
-        <div className="relative rounded-2xl overflow-hidden min-h-[500px]">
+        <div className="relative rounded-2xl overflow-hidden min-h-[500px]" role="img" aria-label={activeIndustrie.altText}>
           {/* Background Image */}
           <div 
             className="absolute inset-0 bg-cover bg-center transition-all duration-700"
