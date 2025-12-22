@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ChevronDown, ShoppingBag, Hand } from "lucide-react";
+import { Menu, X, ChevronDown, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { SafeGripLogo } from "@/components/brand/SafeGripLogo";
 
 const collecties = [
   { naam: "Snijbestendige werkhandschoenen", url: "/collecties/snijbestendige-werkhandschoenen" },
@@ -40,30 +41,13 @@ export function Header() {
       <div className={`container flex items-center justify-between transition-all duration-500 ${
         scrolled ? "h-16" : "h-20"
       }`}>
-        {/* Logo - Horizontal with wordmark */}
-        <Link to="/" className="flex items-center gap-3 group">
-          {/* Logo Icon */}
-          <div className={`relative flex items-center justify-center rounded-lg bg-primary transition-all duration-300 group-hover:scale-105 ${
-            scrolled ? "w-9 h-9" : "w-11 h-11"
-          }`}>
-            <Hand className={`text-primary-foreground transition-all duration-300 ${scrolled ? "w-5 h-5" : "w-6 h-6"}`} />
-            {/* Subtle glow on hover */}
-            <div className="absolute inset-0 rounded-lg bg-primary/50 blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-          </div>
-          
-          {/* Wordmark */}
-          <div className="flex flex-col">
-            <span className={`font-extrabold tracking-tight text-foreground leading-none transition-all duration-300 ${
-              scrolled ? "text-lg" : "text-xl"
-            }`}>
-              SAFE-GRIP
-            </span>
-            <span className={`text-primary font-medium tracking-widest uppercase transition-all duration-300 ${
-              scrolled ? "text-[9px]" : "text-[10px]"
-            }`}>
-              Professional Gloves
-            </span>
-          </div>
+        {/* Logo with custom SVG */}
+        <Link to="/" className="group">
+          <SafeGripLogo 
+            size={scrolled ? 36 : 44} 
+            showText={true}
+            className="transition-all duration-300 group-hover:scale-[1.02]"
+          />
         </Link>
 
         {/* Desktop Navigation - Refined styling */}
