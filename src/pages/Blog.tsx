@@ -65,7 +65,18 @@ export default function Blog() {
                       {post.category}
                     </span>
                   </div>
+                  {/* Image Text Overlay (for standards like EN 388) */}
+                  {post.imageOverlayText && (
+                    <div className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+                      <div className="rounded-xl bg-background/85 backdrop-blur-sm border border-border px-5 py-3 shadow-lg">
+                        <span className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground">
+                          {post.imageOverlayText}
+                        </span>
+                      </div>
+                    </div>
+                  )}
                 </div>
+
 
                 <CardContent className="p-6">
                   {/* Meta */}
