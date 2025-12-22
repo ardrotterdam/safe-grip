@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Shield, Truck, Building2 } from "lucide-react";
+import { Shield, Truck, Building2, ShoppingBag } from "lucide-react";
 
 export function HeroSection() {
   return (
@@ -25,16 +25,19 @@ export function HeroSection() {
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             B2B groothandel in hoogwaardige beschermende werkhandschoenen. 
-            Levering per bundel met staffelprijzen op aanvraag.
+            Direct bestellen met vaste prijzen per bundel.
           </p>
           
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild className="glow-yellow">
-              <Link to="/contact">Offerte Aanvragen</Link>
+            <Button size="lg" variant="shop" asChild className="glow-yellow">
+              <Link to="/shop" className="flex items-center gap-2">
+                <ShoppingBag className="h-5 w-5" />
+                Naar de Shop
+              </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link to="/collecties/snijbestendige-werkhandschoenen">Bekijk Collecties</Link>
+              <Link to="/contact">Contact Opnemen</Link>
             </Button>
           </div>
           

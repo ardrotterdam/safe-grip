@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, ShoppingBag } from "lucide-react";
 
 export function CTASection() {
   return (
@@ -11,21 +11,24 @@ export function CTASection() {
       <div className="container relative">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Klaar om uw werkhandschoenen te upgraden?
+            Klaar om te bestellen?
           </h2>
           <p className="text-lg text-muted-foreground">
-            Vraag vandaag nog een offerte aan en ontvang binnen 24 uur een prijsvoorstel op maat. 
-            Staffelprijzen en bundelkortingen beschikbaar.
+            Bekijk ons complete assortiment werkhandschoenen met vaste prijzen. 
+            Direct bestellen, snelle levering door de hele Benelux.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild className="glow-yellow">
-              <Link to="/contact">Offerte Aanvragen</Link>
+            <Button size="lg" variant="shop" asChild className="glow-yellow">
+              <Link to="/shop" className="flex items-center gap-2">
+                <ShoppingBag className="h-5 w-5" />
+                Bekijk de Shop
+              </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link to="/contact" className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                Zakelijk Advies
+                Vragen? Neem Contact Op
               </Link>
             </Button>
           </div>

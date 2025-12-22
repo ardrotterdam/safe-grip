@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -80,10 +80,13 @@ export function Header() {
           </Link>
         </nav>
 
-        {/* CTA Button */}
+        {/* Shop CTA Button */}
         <div className="hidden md:flex">
-          <Button asChild className={`transition-all duration-300 ${scrolled ? "scale-95" : "scale-100"}`}>
-            <Link to="/contact">Offerte Aanvragen</Link>
+          <Button asChild variant="shop" className={`transition-all duration-300 ${scrolled ? "scale-95" : "scale-100"}`}>
+            <Link to="/shop" className="flex items-center gap-2">
+              <ShoppingBag className="h-4 w-4" />
+              Naar de Shop
+            </Link>
           </Button>
         </div>
 
@@ -139,9 +142,10 @@ export function Header() {
               Contact
             </Link>
             
-            <Button asChild className="mt-2">
-              <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                Offerte Aanvragen
+            <Button asChild variant="shop" className="mt-2">
+              <Link to="/shop" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2">
+                <ShoppingBag className="h-4 w-4" />
+                Naar de Shop
               </Link>
             </Button>
           </nav>
