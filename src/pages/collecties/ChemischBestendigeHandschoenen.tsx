@@ -1,6 +1,6 @@
 import { CollectionLayout, ProductData } from "@/components/collections/CollectionLayout";
 import { ProductCard } from "@/components/collections/ProductCard";
-import gloveChemical from "@/assets/products/glove-chemical.jpg";
+import gloveChemical from "@/assets/products/glove-chemical.jpg?format=webp&quality=85";
 
 const producten: ProductData[] = [
   {
