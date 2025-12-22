@@ -16,11 +16,26 @@ import {
   TreePine,
   Quote,
   CheckCircle2,
-  Droplets
+  Droplets,
+  ShoppingBag,
+  Star
 } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 import heroImage from "@/assets/granberg/hero-norway-fjord.jpg";
 import historicHouse from "@/assets/granberg/granberg-house-historic.jpg";
+import gloveCutPro from "@/assets/granberg/glove-cut-pro.jpg";
+import gloveImpactPro from "@/assets/granberg/glove-impact-pro.jpg";
+import gloveArcticPro from "@/assets/granberg/glove-arctic-pro.jpg";
+import gloveChemicalPro from "@/assets/granberg/glove-chemical-pro.jpg";
 
 const noorseWaarden = [
   {
@@ -66,6 +81,53 @@ const trustBadges = [
   "Directe Levering",
   "Persoonlijk Advies",
   "Rotterdam, NL"
+];
+
+const granbergProducts = [
+  {
+    id: 1,
+    name: "Granberg 116.560",
+    subtitle: "Cut Pro",
+    description: "Snijbestendige handschoen met niveau F bescherming. HPPE vezel met nitril coating voor optimale grip.",
+    image: gloveCutPro,
+    badge: "Bestseller",
+    rating: 4.9,
+    certifications: ["EN 388: 4X44F", "Snijniveau F"],
+    link: "/collecties/snijbestendige-werkhandschoenen"
+  },
+  {
+    id: 2,
+    name: "Granberg 117.660",
+    subtitle: "Impact Pro",
+    description: "360° impactbescherming met TPR knokkelbeschermers. Ideaal voor offshore en zware industrie.",
+    image: gloveImpactPro,
+    badge: "Offshore Favoriet",
+    rating: 4.8,
+    certifications: ["EN 388: 4544FP", "Impact Level 2"],
+    link: "/collecties/impactbestendige-werkhandschoenen"
+  },
+  {
+    id: 3,
+    name: "Granberg 115.520",
+    subtitle: "Arctic Pro",
+    description: "Thermische winterhandschoen met waterdicht membraan. Bescherming tot -30°C.",
+    image: gloveArcticPro,
+    badge: "Winter Essential",
+    rating: 4.7,
+    certifications: ["EN 511: 231", "EN 388: 4131X"],
+    link: "/collecties/winter-werkhandschoenen"
+  },
+  {
+    id: 4,
+    name: "Granberg 114.690",
+    subtitle: "Chemical Pro",
+    description: "Chemisch bestendige nitrile handschoen met lange manchet. Beschermt tegen oplosmiddelen en chemicaliën.",
+    image: gloveChemicalPro,
+    badge: "Chemie Specialist",
+    rating: 4.8,
+    certifications: ["EN ISO 374-1", "EN 388: 4101X"],
+    link: "/collecties/chemisch-bestendige-handschoenen"
+  }
 ];
 
 export default function Granberg() {
@@ -331,6 +393,123 @@ export default function Granberg() {
                 </p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5.5: PRODUCT CAROUSEL */}
+      <section className="py-20 md:py-32 bg-gradient-to-br from-secondary/30 via-background to-background overflow-hidden">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block text-sm font-semibold tracking-widest text-accent uppercase mb-4">
+              Bestsellers
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-4">
+              Granberg Topmodellen
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Ontdek onze meest populaire Granberg werkhandschoenen, gekozen door professionals wereldwijd
+            </p>
+          </motion.div>
+
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {granbergProducts.map((product, index) => (
+                <CarouselItem key={product.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Card className="group overflow-hidden border-border/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 bg-card h-full">
+                      {/* Product Image */}
+                      <div className="aspect-square relative overflow-hidden bg-background">
+                        <img 
+                          src={product.image} 
+                          alt={product.name}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        {/* Badge */}
+                        <div className="absolute top-4 left-4">
+                          <Badge className="bg-primary text-primary-foreground font-medium">
+                            {product.badge}
+                          </Badge>
+                        </div>
+                        {/* Rating */}
+                        <div className="absolute top-4 right-4 flex items-center gap-1 px-2 py-1 glass rounded-full">
+                          <Star className="h-3.5 w-3.5 fill-primary text-primary" />
+                          <span className="text-xs font-medium text-foreground">{product.rating}</span>
+                        </div>
+                      </div>
+
+                      <CardContent className="p-6">
+                        {/* Product Name */}
+                        <div className="mb-3">
+                          <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                            {product.name}
+                          </h3>
+                          <p className="text-sm font-medium text-primary">
+                            {product.subtitle}
+                          </p>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                          {product.description}
+                        </p>
+
+                        {/* Certifications */}
+                        <div className="flex flex-wrap gap-2 mb-5">
+                          {product.certifications.map((cert) => (
+                            <span 
+                              key={cert}
+                              className="text-xs px-2 py-1 bg-secondary rounded-full text-muted-foreground"
+                            >
+                              {cert}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* CTA */}
+                        <Button asChild variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all">
+                          <Link to={product.link} className="flex items-center justify-center gap-2">
+                            <ShoppingBag className="h-4 w-4" />
+                            Bekijk Product
+                          </Link>
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex items-center justify-center gap-4 mt-8">
+              <CarouselPrevious className="static translate-y-0 bg-card border-border hover:bg-primary hover:text-primary-foreground hover:border-primary" />
+              <CarouselNext className="static translate-y-0 bg-card border-border hover:bg-primary hover:text-primary-foreground hover:border-primary" />
+            </div>
+          </Carousel>
+
+          {/* View All Button */}
+          <div className="text-center mt-12">
+            <Button asChild size="lg" variant="outline" className="border-primary/30 hover:bg-primary hover:text-primary-foreground">
+              <Link to="/shop" className="flex items-center gap-2">
+                Bekijk Alle Granberg Producten
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
