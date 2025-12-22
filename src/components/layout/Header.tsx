@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { SafeGripLogo } from "@/components/brand/SafeGripLogo";
 import { MegaMenu } from "./MegaMenu";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-
+import { useCart } from "@/contexts/CartContext";
+import { Badge } from "@/components/ui/badge";
 // Mobile menu data - matches mega menu structure
 const beschermingLinks = [
   { naam: "Snijbestendige handschoenen", url: "/collecties/snijbestendige-werkhandschoenen" },
@@ -36,6 +37,7 @@ export function Header() {
   const [collectiesOpen, setCollectiesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const { itemCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -106,7 +108,23 @@ export function Header() {
         </nav>
 
         {/* Shop CTA Button - Premium styling */}
-        <div className="hidden md:flex">
+        <div className="hidden md:flex items-center gap-3">
+          {/* Cart Icon with Badge */}
+          <Link 
+            to="/shop" 
+            className="relative p-2 rounded-lg hover:bg-foreground/5 transition-colors"
+            aria-label="Winkelwagen"
+          >
+            <ShoppingBag className="h-5 w-5 text-foreground/70 hover:text-foreground transition-colors" />
+            {itemCount > 0 && (
+              <Badge 
+                className="absolute -top-1 -right-1 h-5 min-w-[20px] flex items-center justify-center p-0 text-[10px] font-bold bg-primary text-primary-foreground border-2 border-background animate-in zoom-in-50 duration-200"
+              >
+                {itemCount > 99 ? "99+" : itemCount}
+              </Badge>
+            )}
+          </Link>
+          
           <Button asChild variant="shop" className={`transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 ${scrolled ? "scale-95" : "scale-100"}`}>
             <Link to="/shop" className="flex items-center gap-2">
               <ShoppingBag className="h-4 w-4" />
