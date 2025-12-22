@@ -3,36 +3,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "Hoe kies je de juiste snijbestendige handschoen?",
-    excerpt: "Een uitgebreide gids over snijbestendigheidsniveaus, materialen en toepassingen. Ontdek welke handschoen het beste past bij jouw werkzaamheden.",
-    date: "15 december 2024",
-    readTime: "5 min",
-    slug: "juiste-snijbestendige-handschoen-kiezen",
-    category: "Gidsen",
-  },
-  {
-    id: 2,
-    title: "EN 388 uitgelegd: wat betekenen de cijfers?",
-    excerpt: "De Europese norm EN 388 kan verwarrend zijn. We leggen uit wat elk cijfer betekent en hoe je deze informatie kunt gebruiken bij het selecteren van werkhandschoenen.",
-    date: "8 december 2024",
-    readTime: "4 min",
-    slug: "en-388-uitgelegd",
-    category: "Normen",
-  },
-  {
-    id: 3,
-    title: "5 tips voor handbescherming in de offshore industrie",
-    excerpt: "De offshore sector stelt hoge eisen aan handbescherming. Van impact- tot snijbestendigheid: deze tips helpen je de juiste keuze te maken.",
-    date: "1 december 2024",
-    readTime: "6 min",
-    slug: "handbescherming-offshore-industrie",
-    category: "Tips",
-  },
-];
+import { blogPosts } from "@/data/blogPosts";
 
 export default function Blog() {
   return (
