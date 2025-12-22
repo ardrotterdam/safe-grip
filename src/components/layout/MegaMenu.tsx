@@ -1,77 +1,45 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Scissors, Snowflake, FlaskConical, Shield, ArrowRight, Sparkles, Search, X, Command, CornerDownLeft } from "lucide-react";
+import { ChevronDown, Search, X, Command, Star, ArrowRight, CornerDownLeft } from "lucide-react";
 
-// Import product images
-import gloveCut from "@/assets/products/glove-cut.jpg";
-import gloveWinter from "@/assets/products/glove-winter.jpg";
-import gloveChemical from "@/assets/products/glove-chemical.jpg";
-import gloveImpact from "@/assets/products/glove-impact.jpg";
+// Menu data
+const beschermingLinks = [
+  { naam: "Snijbestendige handschoenen", url: "/collecties/snijbestendige-werkhandschoenen" },
+  { naam: "Chemisch bestendige handschoenen", url: "/collecties/chemisch-bestendige-handschoenen" },
+  { naam: "Impact handschoenen", url: "/collecties/impactbestendige-werkhandschoenen" },
+  { naam: "Warmte & lashandschoenen", url: "/shop" },
+  { naam: "Winterhandschoenen", url: "/collecties/winter-werkhandschoenen" },
+  { naam: "Assemblage handschoenen", url: "/shop" },
+];
 
-interface CollectionItem {
-  naam: string;
-  url: string;
-  beschrijving: string;
-  icon: typeof Scissors;
-  image: string;
-  highlight?: string;
-  features: string[];
-  keywords: string[];
-}
+const industrieLinks = [
+  { naam: "Offshore & Olie/Gas", url: "/shop" },
+  { naam: "Bouw & Constructie", url: "/shop" },
+  { naam: "Maritiem & Scheepvaart", url: "/shop" },
+  { naam: "Voedselindustrie", url: "/shop" },
+  { naam: "Logistiek & Warehouse", url: "/shop" },
+  { naam: "Bosbouw & Groen", url: "/shop" },
+];
 
-const collecties: CollectionItem[] = [
-  { 
-    naam: "Snijbestendige werkhandschoenen", 
-    url: "/collecties/snijbestendige-werkhandschoenen",
-    beschrijving: "Maximale bescherming tegen snijwonden met EN 388 certificering.",
-    icon: Scissors,
-    image: gloveCut,
-    highlight: "Bestseller",
-    features: ["EN 388 Level A-F", "Kevlar® vezels", "Tactiele grip"],
-    keywords: ["snijbestendig", "cut", "kevlar", "mes", "scherp", "snijden", "glas", "metaal"]
-  },
-  { 
-    naam: "Winter werkhandschoenen", 
-    url: "/collecties/winter-werkhandschoenen",
-    beschrijving: "Warme isolatie met behoud van behendigheid tot -30°C.",
-    icon: Snowflake,
-    image: gloveWinter,
-    features: ["Thinsulate™", "-30°C rating", "Waterdicht"],
-    keywords: ["winter", "koud", "warm", "thinsulate", "isolatie", "vorst", "sneeuw", "ijs"]
-  },
-  { 
-    naam: "Chemisch bestendige handschoenen", 
-    url: "/collecties/chemisch-bestendige-handschoenen",
-    beschrijving: "Bestand tegen chemicaliën, oliën en oplosmiddelen.",
-    icon: FlaskConical,
-    image: gloveChemical,
-    highlight: "Nieuw",
-    features: ["EN 374 gecertificeerd", "Nitril coating", "Lange manchet"],
-    keywords: ["chemisch", "chemical", "nitril", "olie", "oplosmiddel", "zuur", "base", "vloeistof"]
-  },
-  { 
-    naam: "Impactbestendige werkhandschoenen", 
-    url: "/collecties/impactbestendige-werkhandschoenen",
-    beschrijving: "TPR bescherming voor offshore, mining en zware industrie.",
-    icon: Shield,
-    image: gloveImpact,
-    features: ["EN 13594", "TPR padding", "Hi-Vis opties"],
-    keywords: ["impact", "stoot", "offshore", "mining", "tpr", "bescherming", "zwaar", "industrie"]
-  },
+const bestsellers = [
+  { naam: "Granberg 116.560 Cut Pro", url: "/collecties/snijbestendige-werkhandschoenen" },
+  { naam: "Granberg 117.660 Impact Pro", url: "/collecties/impactbestendige-werkhandschoenen" },
+  { naam: "Granberg 115.520 Arctic Pro", url: "/collecties/winter-werkhandschoenen" },
 ];
 
 // Quick links for search
-const quickLinks = [
-  { naam: "Shop", url: "/shop", beschrijving: "Bekijk alle producten" },
-  { naam: "Over Ons", url: "/over-ons", beschrijving: "Leer ons kennen" },
-  { naam: "Contact", url: "/contact", beschrijving: "Neem contact op" },
-  { naam: "Granberg", url: "/over-ons", beschrijving: "Officieel distributeur" },
+const allLinks = [
+  ...beschermingLinks.map(l => ({ ...l, category: "Bescherming" })),
+  ...industrieLinks.map(l => ({ ...l, category: "Industrie" })),
+  ...bestsellers.map(l => ({ ...l, category: "Bestsellers" })),
+  { naam: "Shop", url: "/shop", category: "Pagina's" },
+  { naam: "Over Ons", url: "/over-ons", category: "Pagina's" },
+  { naam: "Contact", url: "/contact", category: "Pagina's" },
 ];
 
 export function MegaMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchFocused, setSearchFocused] = useState(false);
   const [selectedResultIndex, setSelectedResultIndex] = useState(0);
@@ -81,23 +49,12 @@ export function MegaMenu() {
 
   // Filter results based on search query
   const searchResults = searchQuery.trim() 
-    ? collecties.filter(c => 
-        c.naam.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        c.beschrijving.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        c.features.some(f => f.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        c.keywords.some(k => k.toLowerCase().includes(searchQuery.toLowerCase()))
+    ? allLinks.filter(l => 
+        l.naam.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
 
-  const quickLinkResults = searchQuery.trim()
-    ? quickLinks.filter(l => 
-        l.naam.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        l.beschrijving.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : [];
-
-  const totalResults = searchResults.length + quickLinkResults.length;
-  const hasResults = totalResults > 0;
+  const hasResults = searchResults.length > 0;
   const showSearchResults = searchQuery.trim().length > 0;
 
   // Reset selected index when results change
@@ -113,25 +70,19 @@ export function MegaMenu() {
       case "ArrowDown":
         e.preventDefault();
         setSelectedResultIndex(prev => 
-          prev < totalResults - 1 ? prev + 1 : 0
+          prev < searchResults.length - 1 ? prev + 1 : 0
         );
         break;
       case "ArrowUp":
         e.preventDefault();
         setSelectedResultIndex(prev => 
-          prev > 0 ? prev - 1 : totalResults - 1
+          prev > 0 ? prev - 1 : searchResults.length - 1
         );
         break;
       case "Enter":
         e.preventDefault();
-        if (hasResults) {
-          let url: string;
-          if (selectedResultIndex < searchResults.length) {
-            url = searchResults[selectedResultIndex].url;
-          } else {
-            url = quickLinkResults[selectedResultIndex - searchResults.length].url;
-          }
-          navigate(url);
+        if (hasResults && searchResults[selectedResultIndex]) {
+          navigate(searchResults[selectedResultIndex].url);
           setIsOpen(false);
           setSearchQuery("");
         }
@@ -141,7 +92,7 @@ export function MegaMenu() {
         searchInputRef.current?.blur();
         break;
     }
-  }, [showSearchResults, totalResults, selectedResultIndex, searchResults, quickLinkResults, navigate, hasResults]);
+  }, [showSearchResults, searchResults, selectedResultIndex, navigate, hasResults]);
 
   // Global keyboard shortcut (Cmd/Ctrl + K)
   useEffect(() => {
@@ -165,7 +116,6 @@ export function MegaMenu() {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setIsOpen(false);
-      setActiveIndex(null);
       setSearchQuery("");
     }, 150);
   };
@@ -173,6 +123,11 @@ export function MegaMenu() {
   const clearSearch = () => {
     setSearchQuery("");
     searchInputRef.current?.focus();
+  };
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+    setSearchQuery("");
   };
 
   return (
@@ -203,30 +158,26 @@ export function MegaMenu() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.98 }}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute left-1/2 -translate-x-1/2 top-full pt-4 z-50"
+            className="absolute left-1/2 -translate-x-1/2 top-full pt-3 z-50"
           >
-            {/* Glass container */}
-            <div className="relative w-[900px] rounded-2xl overflow-hidden">
-              {/* Glassmorphism background */}
-              <div className="absolute inset-0 bg-background/80 backdrop-blur-2xl border border-foreground/10 rounded-2xl" />
-              
-              {/* Gradient accents */}
-              <div className="absolute top-0 left-0 w-1/2 h-1 bg-gradient-to-r from-primary via-primary/50 to-transparent rounded-tl-2xl" />
-              <div className="absolute top-0 right-0 w-1/3 h-1 bg-gradient-to-l from-accent via-accent/50 to-transparent rounded-tr-2xl" />
+            {/* Container */}
+            <div className="relative w-[700px] max-h-[400px] rounded-xl overflow-hidden bg-background border border-border shadow-xl">
+              {/* Accent line */}
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-[#0AADEF] to-accent" />
               
               {/* Content */}
-              <div className="relative p-6">
+              <div className="p-5">
                 {/* Search Bar */}
-                <div className="mb-6">
-                  <div className={`relative flex items-center transition-all duration-300 ${
-                    searchFocused ? "ring-2 ring-primary" : "ring-1 ring-foreground/10"
-                  } rounded-xl bg-foreground/5 overflow-hidden`}>
-                    <Search className={`absolute left-4 h-4 w-4 transition-colors ${
-                      searchFocused ? "text-primary" : "text-foreground/40"
+                <div className="mb-5">
+                  <div className={`relative flex items-center transition-all duration-200 ${
+                    searchFocused ? "ring-2 ring-[#0AADEF]" : "ring-1 ring-border"
+                  } rounded-lg bg-muted/50 overflow-hidden`}>
+                    <Search className={`absolute left-3 h-4 w-4 transition-colors ${
+                      searchFocused ? "text-[#0AADEF]" : "text-muted-foreground"
                     }`} />
                     <input
                       ref={searchInputRef}
@@ -236,21 +187,20 @@ export function MegaMenu() {
                       onFocus={() => setSearchFocused(true)}
                       onBlur={() => setSearchFocused(false)}
                       onKeyDown={handleKeyDown}
-                      placeholder="Zoek handschoenen, certificeringen, toepassingen..."
-                      className="w-full pl-11 pr-24 py-3.5 bg-transparent text-sm text-foreground placeholder:text-foreground/40 focus:outline-none"
+                      placeholder="Zoek handschoenen..."
+                      className="w-full pl-9 pr-20 py-2.5 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
                     />
                     
-                    {/* Clear button or keyboard shortcut hint */}
-                    <div className="absolute right-3 flex items-center gap-2">
+                    <div className="absolute right-2 flex items-center gap-2">
                       {searchQuery ? (
                         <button
                           onClick={clearSearch}
-                          className="p-1.5 rounded-lg hover:bg-foreground/10 transition-colors"
+                          className="p-1 rounded hover:bg-foreground/10 transition-colors"
                         >
-                          <X className="h-4 w-4 text-foreground/40" />
+                          <X className="h-4 w-4 text-muted-foreground" />
                         </button>
                       ) : (
-                        <div className="flex items-center gap-1 px-2 py-1 rounded-md bg-foreground/10 text-foreground/40">
+                        <div className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-muted text-muted-foreground">
                           <Command className="h-3 w-3" />
                           <span className="text-xs font-medium">K</span>
                         </div>
@@ -259,297 +209,144 @@ export function MegaMenu() {
                   </div>
                 </div>
 
-                {/* Search Results */}
+                {/* Content Area */}
                 <AnimatePresence mode="wait">
                   {showSearchResults ? (
                     <motion.div
                       key="search-results"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
                       transition={{ duration: 0.15 }}
+                      className="max-h-[280px] overflow-y-auto"
                     >
                       {hasResults ? (
-                        <div className="space-y-4">
-                          {/* Collection Results */}
-                          {searchResults.length > 0 && (
-                            <div>
-                              <h4 className="text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2 px-1">
-                                Collecties ({searchResults.length})
-                              </h4>
-                              <div className="grid grid-cols-2 gap-3">
-                                {searchResults.map((collectie, index) => {
-                                  const Icon = collectie.icon;
-                                  const isSelected = selectedResultIndex === index;
-                                  
-                                  return (
-                                    <Link
-                                      key={collectie.url}
-                                      to={collectie.url}
-                                      onClick={() => {
-                                        setIsOpen(false);
-                                        setSearchQuery("");
-                                      }}
-                                      className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-200 group ${
-                                        isSelected 
-                                          ? "bg-primary/10 ring-2 ring-primary" 
-                                          : "bg-foreground/5 hover:bg-foreground/10"
-                                      }`}
-                                    >
-                                      <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                        <img 
-                                          src={collectie.image} 
-                                          alt={collectie.naam}
-                                          className="w-full h-full object-cover"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-                                        <div className={`absolute bottom-1 right-1 w-6 h-6 rounded flex items-center justify-center ${
-                                          isSelected ? "bg-primary text-primary-foreground" : "bg-background/80"
-                                        }`}>
-                                          <Icon className="h-3 w-3" />
-                                        </div>
-                                      </div>
-                                      <div className="flex-1 min-w-0">
-                                        <div className="flex items-center gap-2">
-                                          <h5 className={`font-semibold text-sm truncate transition-colors ${
-                                            isSelected ? "text-primary" : "text-foreground group-hover:text-primary"
-                                          }`}>
-                                            {collectie.naam}
-                                          </h5>
-                                          {collectie.highlight && (
-                                            <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold ${
-                                              collectie.highlight === "Bestseller" 
-                                                ? "bg-primary/20 text-primary" 
-                                                : "bg-accent/20 text-accent"
-                                            }`}>
-                                              {collectie.highlight}
-                                            </span>
-                                          )}
-                                        </div>
-                                        <p className="text-xs text-foreground/60 mt-0.5 line-clamp-1">
-                                          {collectie.beschrijving}
-                                        </p>
-                                        <div className="flex items-center gap-1.5 mt-2">
-                                          {collectie.features.slice(0, 2).map(f => (
-                                            <span key={f} className="px-1.5 py-0.5 rounded bg-foreground/5 text-[9px] font-medium text-foreground/60">
-                                              {f}
-                                            </span>
-                                          ))}
-                                        </div>
-                                      </div>
-                                      {isSelected && (
-                                        <CornerDownLeft className="h-4 w-4 text-primary/60" />
-                                      )}
-                                    </Link>
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Quick Link Results */}
-                          {quickLinkResults.length > 0 && (
-                            <div>
-                              <h4 className="text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2 px-1">
-                                Pagina's
-                              </h4>
-                              <div className="flex flex-wrap gap-2">
-                                {quickLinkResults.map((link, index) => {
-                                  const resultIndex = searchResults.length + index;
-                                  const isSelected = selectedResultIndex === resultIndex;
-                                  
-                                  return (
-                                    <Link
-                                      key={link.url}
-                                      to={link.url}
-                                      onClick={() => {
-                                        setIsOpen(false);
-                                        setSearchQuery("");
-                                      }}
-                                      className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-                                        isSelected 
-                                          ? "bg-primary/10 ring-2 ring-primary text-primary" 
-                                          : "bg-foreground/5 hover:bg-foreground/10 text-foreground/70 hover:text-foreground"
-                                      }`}
-                                    >
-                                      <span className="text-sm font-medium">{link.naam}</span>
-                                      <ArrowRight className="h-3 w-3" />
-                                    </Link>
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Keyboard hints */}
-                          <div className="flex items-center justify-center gap-4 pt-4 border-t border-foreground/10">
-                            <div className="flex items-center gap-1.5 text-xs text-foreground/40">
-                              <kbd className="px-1.5 py-0.5 rounded bg-foreground/10 font-mono">↑</kbd>
-                              <kbd className="px-1.5 py-0.5 rounded bg-foreground/10 font-mono">↓</kbd>
-                              <span>navigeren</span>
-                            </div>
-                            <div className="flex items-center gap-1.5 text-xs text-foreground/40">
-                              <kbd className="px-1.5 py-0.5 rounded bg-foreground/10 font-mono">↵</kbd>
-                              <span>selecteren</span>
-                            </div>
-                            <div className="flex items-center gap-1.5 text-xs text-foreground/40">
-                              <kbd className="px-1.5 py-0.5 rounded bg-foreground/10 font-mono">esc</kbd>
-                              <span>wissen</span>
-                            </div>
-                          </div>
+                        <div className="space-y-1">
+                          {searchResults.map((result, index) => {
+                            const isSelected = selectedResultIndex === index;
+                            return (
+                              <Link
+                                key={`${result.url}-${index}`}
+                                to={result.url}
+                                onClick={handleLinkClick}
+                                className={`flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-sm ${
+                                  isSelected 
+                                    ? "bg-[#0AADEF]/10 text-[#0AADEF]" 
+                                    : "text-foreground/80 hover:bg-muted hover:text-[#0AADEF]"
+                                }`}
+                              >
+                                <div className="flex items-center gap-3">
+                                  <span>{result.naam}</span>
+                                  <span className="text-xs text-muted-foreground">{result.category}</span>
+                                </div>
+                                {isSelected && <CornerDownLeft className="h-3 w-3" />}
+                              </Link>
+                            );
+                          })}
                         </div>
                       ) : (
-                        <div className="text-center py-12">
-                          <Search className="h-10 w-10 text-foreground/20 mx-auto mb-3" />
-                          <p className="text-foreground/60 font-medium">Geen resultaten voor "{searchQuery}"</p>
-                          <p className="text-sm text-foreground/40 mt-1">Probeer andere zoektermen</p>
+                        <div className="text-center py-8">
+                          <p className="text-muted-foreground text-sm">Geen resultaten voor "{searchQuery}"</p>
                         </div>
                       )}
                     </motion.div>
                   ) : (
                     <motion.div
-                      key="collections-grid"
+                      key="menu-content"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.15 }}
                     >
-                      {/* Header */}
-                      <div className="flex items-center justify-between mb-6 pb-4 border-b border-foreground/10">
+                      {/* 3-Column Grid */}
+                      <div className="grid grid-cols-3 gap-8">
+                        {/* Column 1 - Bescherming */}
                         <div>
-                          <h3 className="text-lg font-bold text-foreground">Onze Collecties</h3>
-                          <p className="text-sm text-foreground/60">Professionele werkhandschoenen voor elke toepassing</p>
+                          <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                            Bescherming
+                          </h4>
+                          <ul className="space-y-1">
+                            {beschermingLinks.map((link) => (
+                              <li key={link.naam}>
+                                <Link
+                                  to={link.url}
+                                  onClick={handleLinkClick}
+                                  className="block text-sm text-foreground/80 hover:text-[#0AADEF] transition-colors py-1"
+                                >
+                                  {link.naam}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                        <Link 
-                          to="/shop"
-                          className="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors group"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          Bekijk alles
-                          <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                        </Link>
+
+                        {/* Column 2 - Industrie */}
+                        <div>
+                          <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                            Industrie
+                          </h4>
+                          <ul className="space-y-1">
+                            {industrieLinks.map((link) => (
+                              <li key={link.naam}>
+                                <Link
+                                  to={link.url}
+                                  onClick={handleLinkClick}
+                                  className="block text-sm text-foreground/80 hover:text-[#0AADEF] transition-colors py-1"
+                                >
+                                  {link.naam}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Column 3 - Populair */}
+                        <div>
+                          <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                            Populair
+                          </h4>
+                          <ul className="space-y-1 mb-4">
+                            {bestsellers.map((link) => (
+                              <li key={link.naam}>
+                                <Link
+                                  to={link.url}
+                                  onClick={handleLinkClick}
+                                  className="flex items-center gap-2 text-sm text-foreground/80 hover:text-[#0AADEF] transition-colors py-1"
+                                >
+                                  <Star className="h-3 w-3 text-primary fill-primary" />
+                                  {link.naam}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                          <Link
+                            to="/shop"
+                            onClick={handleLinkClick}
+                            className="inline-flex items-center gap-1.5 text-sm font-medium text-[#0AADEF] hover:text-[#0AADEF]/80 transition-colors"
+                          >
+                            Bekijk alle producten
+                            <ArrowRight className="h-3.5 w-3.5" />
+                          </Link>
+                        </div>
                       </div>
 
-                      {/* Grid of collections */}
-                      <div className="grid grid-cols-4 gap-4">
-                        {collecties.map((collectie, index) => {
-                          const Icon = collectie.icon;
-                          const isActive = activeIndex === index;
-                          
-                          return (
-                            <Link
-                              key={collectie.url}
-                              to={collectie.url}
-                              onClick={() => setIsOpen(false)}
-                              onMouseEnter={() => setActiveIndex(index)}
-                              onMouseLeave={() => setActiveIndex(null)}
-                              className="group relative"
-                            >
-                              <motion.div
-                                initial={false}
-                                animate={isActive ? { scale: 1.02 } : { scale: 1 }}
-                                transition={{ duration: 0.2 }}
-                                className={`relative rounded-xl overflow-hidden transition-all duration-300 ${
-                                  isActive 
-                                    ? "ring-2 ring-primary shadow-lg shadow-primary/20" 
-                                    : "ring-1 ring-foreground/10 hover:ring-foreground/20"
-                                }`}
-                              >
-                                {/* Image with overlay */}
-                                <div className="relative aspect-[4/3] overflow-hidden">
-                                  <motion.img
-                                    src={collectie.image}
-                                    alt={collectie.naam}
-                                    className="w-full h-full object-cover"
-                                    initial={false}
-                                    animate={isActive ? { scale: 1.1 } : { scale: 1 }}
-                                    transition={{ duration: 0.4 }}
-                                  />
-                                  
-                                  {/* Gradient overlay */}
-                                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-                                  
-                                  {/* Highlight badge */}
-                                  {collectie.highlight && (
-                                    <motion.div
-                                      initial={{ opacity: 0, x: -10 }}
-                                      animate={{ opacity: 1, x: 0 }}
-                                      className="absolute top-3 left-3"
-                                    >
-                                      <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${
-                                        collectie.highlight === "Bestseller" 
-                                          ? "bg-primary text-primary-foreground" 
-                                          : "bg-accent text-accent-foreground"
-                                      }`}>
-                                        <Sparkles className="h-3 w-3" />
-                                        {collectie.highlight}
-                                      </span>
-                                    </motion.div>
-                                  )}
-                                  
-                                  {/* Icon */}
-                                  <div className={`absolute top-3 right-3 w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                                    isActive ? "bg-primary text-primary-foreground" : "bg-background/80 text-foreground/60"
-                                  }`}>
-                                    <Icon className="h-4 w-4" />
-                                  </div>
-                                </div>
-                                
-                                {/* Content */}
-                                <div className="p-4">
-                                  <h4 className="font-semibold text-foreground text-sm mb-1 group-hover:text-primary transition-colors line-clamp-1">
-                                    {collectie.naam}
-                                  </h4>
-                                  <p className="text-xs text-foreground/60 mb-3 line-clamp-2">
-                                    {collectie.beschrijving}
-                                  </p>
-                                  
-                                  {/* Features */}
-                                  <div className="flex flex-wrap gap-1.5">
-                                    {collectie.features.map((feature, i) => (
-                                      <motion.span
-                                        key={feature}
-                                        initial={{ opacity: 0, y: 5 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: i * 0.05 }}
-                                        className="inline-block px-2 py-0.5 rounded-md bg-foreground/5 text-[10px] font-medium text-foreground/70"
-                                      >
-                                        {feature}
-                                      </motion.span>
-                                    ))}
-                                  </div>
-                                </div>
-                                
-                                {/* Hover indicator */}
-                                <motion.div
-                                  initial={{ scaleX: 0 }}
-                                  animate={isActive ? { scaleX: 1 } : { scaleX: 0 }}
-                                  transition={{ duration: 0.2 }}
-                                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent origin-left"
-                                />
-                              </motion.div>
-                            </Link>
-                          );
-                        })}
-                      </div>
-
-                      {/* Bottom CTA */}
-                      <div className="mt-6 pt-4 border-t border-foreground/10">
-                        <div className="flex items-center justify-between">
+                      {/* Trust Bar */}
+                      <div className="mt-5 pt-4 border-t border-border">
+                        <div className="flex items-center justify-between text-xs text-muted-foreground">
                           <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-2 text-sm text-foreground/60">
-                              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                            <div className="flex items-center gap-1.5">
+                              <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
                               250+ modellen op voorraad
                             </div>
-                            <div className="w-px h-4 bg-foreground/20" />
-                            <span className="text-sm text-foreground/60">Gratis verzending vanaf €150</span>
+                            <span>•</span>
+                            <span>Gratis verzending vanaf €150</span>
                           </div>
                           <Link 
                             to="/contact"
-                            className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
-                            onClick={() => setIsOpen(false)}
+                            onClick={handleLinkClick}
+                            className="hover:text-[#0AADEF] transition-colors"
                           >
-                            Advies nodig? Neem contact op →
+                            Advies nodig? →
                           </Link>
                         </div>
                       </div>
