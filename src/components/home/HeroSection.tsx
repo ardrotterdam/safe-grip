@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, ChevronRight, Award, Package, Clock, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
-import heroBackground from "@/assets/hero-offshore-workers.jpg";
+import heroBackground from "@/assets/hero-offshore-workers.jpg?format=webp&quality=85";
 
 const trustBadges = [
   { icon: Clock, label: "60+ jaar expertise", sublabel: "Granberg sinds 1960" },
