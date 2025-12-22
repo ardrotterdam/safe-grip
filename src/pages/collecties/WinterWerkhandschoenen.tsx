@@ -1,5 +1,6 @@
 import { CollectionLayout } from "@/components/collections/CollectionLayout";
 import { ProductCard } from "@/components/collections/ProductCard";
+import gloveWinter from "@/assets/products/glove-winter.jpg";
 
 const producten = [
   {
@@ -55,6 +56,7 @@ export default function WinterWerkhandschoenen() {
           beschrijving={product.beschrijving}
           kenmerken={product.kenmerken}
           bundel={product.bundel}
+          afbeelding={gloveWinter}
         />
       ))}
     </CollectionLayout>
