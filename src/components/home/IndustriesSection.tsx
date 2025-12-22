@@ -2,11 +2,17 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, HardHat, Anchor, Factory, Droplets, Flame, TreeDeciduous } from "lucide-react";
+// @ts-ignore - vite-imagetools
 import forestryChainsaw from "@/assets/industries/forestry-chainsaw.jpg?format=webp&quality=85";
+// @ts-ignore - vite-imagetools
 import maritimeOffshore from "@/assets/industries/maritime-offshore.jpg?format=webp&quality=85";
+// @ts-ignore - vite-imagetools
 import constructionSite from "@/assets/industries/construction-site.jpg?format=webp&quality=85";
+// @ts-ignore - vite-imagetools
 import oilGasRefinery from "@/assets/industries/oil-gas-refinery.jpg?format=webp&quality=85";
+// @ts-ignore - vite-imagetools
 import foodProcessing from "@/assets/industries/food-processing.jpg?format=webp&quality=85";
+// @ts-ignore - vite-imagetools
 import weldingMetalwork from "@/assets/industries/welding-metalwork.jpg?format=webp&quality=85";
 
 const industrieen = [
