@@ -4,6 +4,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, HardHat, Anchor, Factory, Droplets, Flame, TreeDeciduous } from "lucide-react";
 import forestryChainsaw from "@/assets/industries/forestry-chainsaw.jpg";
 import maritimeOffshore from "@/assets/industries/maritime-offshore.jpg";
+import constructionSite from "@/assets/industries/construction-site.jpg";
+import oilGasRefinery from "@/assets/industries/oil-gas-refinery.jpg";
+import foodProcessing from "@/assets/industries/food-processing.jpg";
+import weldingMetalwork from "@/assets/industries/welding-metalwork.jpg";
+
 const industrieen = [
   {
     id: "bouw",
@@ -12,8 +17,8 @@ const industrieen = [
     icon: HardHat,
     features: ["Snijbestendig", "Impactbescherming", "Grip op nat oppervlak"],
     cta: "Bekijk bouwhandschoenen",
-    bgImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80",
-    altText: "Bouwvakker met beschermende werkhandschoenen op bouwplaats - SafeGrip Granberg",
+    bgImage: constructionSite,
+    altText: "Bouwvakkers met beschermende werkhandschoenen op bouwplaats - SafeGrip Granberg",
   },
   {
     id: "offshore",
@@ -22,8 +27,8 @@ const industrieen = [
     icon: Droplets,
     features: ["Oliebestendig", "Chemische bescherming", "Antistatisch"],
     cta: "Bekijk offshore handschoenen",
-    bgImage: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=1920&q=80",
-    altText: "Offshore platform medewerker met oliebestendige werkhandschoenen - SafeGrip Granberg",
+    bgImage: oilGasRefinery,
+    altText: "Petrochemie medewerkers met oliebestendige werkhandschoenen - SafeGrip Granberg",
   },
   {
     id: "voedsel",
@@ -32,8 +37,8 @@ const industrieen = [
     icon: Factory,
     features: ["Voedselveilig", "Snijbestendig", "Wasbaar"],
     cta: "Bekijk voedselhandschoenen",
-    bgImage: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=1920&q=80",
-    altText: "Voedselindustrie medewerker met voedselveilige handschoenen - SafeGrip Granberg",
+    bgImage: foodProcessing,
+    altText: "Voedselindustrie medewerkers met voedselveilige handschoenen - SafeGrip Granberg",
   },
   {
     id: "bosbouw",
@@ -52,7 +57,7 @@ const industrieen = [
     icon: Flame,
     features: ["Hittebestendig", "Spatbescherming", "Duurzaam leer"],
     cta: "Bekijk lashandschoenen",
-    bgImage: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&q=80",
+    bgImage: weldingMetalwork,
     altText: "Lasser met hittebestendige lashandschoenen - SafeGrip Granberg",
   },
   {
