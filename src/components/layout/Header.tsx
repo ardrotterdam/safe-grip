@@ -1,20 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ChevronDown, ShoppingBag } from "lucide-react";
+import { Menu, X, ShoppingBag, Scissors, Snowflake, FlaskConical, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { SafeGripLogo } from "@/components/brand/SafeGripLogo";
+import { MegaMenu } from "./MegaMenu";
 
-const collecties = [
-  { naam: "Snijbestendige werkhandschoenen", url: "/collecties/snijbestendige-werkhandschoenen" },
-  { naam: "Winter werkhandschoenen", url: "/collecties/winter-werkhandschoenen" },
-  { naam: "Chemisch bestendige handschoenen", url: "/collecties/chemisch-bestendige-handschoenen" },
-  { naam: "Impactbestendige werkhandschoenen", url: "/collecties/impactbestendige-werkhandschoenen" },
+const mobileCollecties = [
+  { naam: "Snijbestendige werkhandschoenen", url: "/collecties/snijbestendige-werkhandschoenen", icon: Scissors },
+  { naam: "Winter werkhandschoenen", url: "/collecties/winter-werkhandschoenen", icon: Snowflake },
+  { naam: "Chemisch bestendige handschoenen", url: "/collecties/chemisch-bestendige-handschoenen", icon: FlaskConical },
+  { naam: "Impactbestendige werkhandschoenen", url: "/collecties/impactbestendige-werkhandschoenen", icon: Shield },
 ];
 
 export function Header() {
@@ -50,7 +45,7 @@ export function Header() {
           />
         </Link>
 
-        {/* Desktop Navigation - Refined styling */}
+        {/* Desktop Navigation with Mega Menu */}
         <nav className="hidden md:flex items-center gap-1">
           <Link 
             to="/" 
@@ -59,20 +54,8 @@ export function Header() {
             Home
           </Link>
           
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-foreground/5 rounded-lg transition-all duration-200">
-              Collecties <ChevronDown className="h-3.5 w-3.5" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-background/95 backdrop-blur-xl border-foreground/10 shadow-2xl">
-              {collecties.map((collectie) => (
-                <DropdownMenuItem key={collectie.url} asChild>
-                  <Link to={collectie.url} className="cursor-pointer">
-                    {collectie.naam}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          {/* Mega Menu for Collecties */}
+          <MegaMenu />
 
           <Link 
             to="/over-ons" 
@@ -123,16 +106,20 @@ export function Header() {
             
             <div className="flex flex-col">
               <span className="px-4 py-3 text-sm font-semibold text-primary">Collecties</span>
-              {collecties.map((collectie) => (
-                <Link
-                  key={collectie.url}
-                  to={collectie.url}
-                  className="text-sm text-foreground/70 pl-8 py-2.5 hover:text-foreground hover:bg-foreground/5 rounded-lg transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {collectie.naam}
-                </Link>
-              ))}
+              {mobileCollecties.map((collectie) => {
+                const Icon = collectie.icon;
+                return (
+                  <Link
+                    key={collectie.url}
+                    to={collectie.url}
+                    className="flex items-center gap-3 text-sm text-foreground/70 pl-6 py-2.5 hover:text-foreground hover:bg-foreground/5 rounded-lg transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Icon className="h-4 w-4 text-primary/70" />
+                    {collectie.naam}
+                  </Link>
+                );
+              })}
             </div>
             
             <Link 
