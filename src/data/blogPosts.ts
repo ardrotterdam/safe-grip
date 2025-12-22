@@ -1,3 +1,7 @@
+import snijbestendigeImage from "@/assets/blog/snijbestendige-handschoenen.jpg";
+import en388Image from "@/assets/blog/en388-certificering.jpg";
+import offshoreImage from "@/assets/blog/offshore-handbescherming.jpg";
+
 export interface BlogPost {
   id: number;
   title: string;
@@ -8,6 +12,7 @@ export interface BlogPost {
   slug: string;
   category: string;
   author: string;
+  image: string;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -72,6 +77,7 @@ Heeft u vragen over welke handschoen het beste bij uw situatie past? Neem gerust
     slug: "juiste-snijbestendige-handschoen-kiezen",
     category: "Gidsen",
     author: "SafeGrip Team",
+    image: snijbestendigeImage,
   },
   {
     id: 2,
@@ -154,6 +160,7 @@ EN 388 biedt een gestandaardiseerde manier om handschoenen te vergelijken. Door 
     slug: "en-388-uitgelegd",
     category: "Normen",
     author: "SafeGrip Team",
+    image: en388Image,
   },
   {
     id: 3,
@@ -238,6 +245,7 @@ Wilt u advies op maat voor uw offshore operatie? Neem contact met ons op voor ee
     slug: "handbescherming-offshore-industrie",
     category: "Tips",
     author: "SafeGrip Team",
+    image: offshoreImage,
   },
 ];
 

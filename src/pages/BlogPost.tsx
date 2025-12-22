@@ -25,30 +25,41 @@ export default function BlogPost() {
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:type" content="article" />
+        <meta property="og:image" content={post.image} />
         <meta property="article:published_time" content={post.date} />
         <meta property="article:author" content={post.author} />
       </Helmet>
 
-      {/* Hero Section */}
-      <section className="relative py-16 md:py-24 bg-gradient-to-br from-background via-background to-muted/30">
-        <div className="container">
-          {/* Back Link */}
-          <Link 
-            to="/blog" 
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Terug naar blog
-          </Link>
+      {/* Hero Image */}
+      <section className="relative h-[40vh] md:h-[50vh] overflow-hidden">
+        <img 
+          src={post.image} 
+          alt={post.title}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+      </section>
 
-          <div className="max-w-3xl">
+      {/* Content Header */}
+      <section className="relative py-12 md:py-16 bg-background -mt-20 md:-mt-32 z-10">
+        <div className="container">
+          <div className="max-w-3xl mx-auto bg-card rounded-2xl shadow-xl p-8 md:p-12 border border-border">
+            {/* Back Link */}
+            <Link 
+              to="/blog" 
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-6"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Terug naar blog
+            </Link>
+
             {/* Category */}
             <span className="inline-block px-3 py-1 mb-4 text-xs font-medium bg-primary/10 text-primary rounded-full">
               {post.category}
             </span>
 
             {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-foreground mb-6">
               {post.title}
             </h1>
 
