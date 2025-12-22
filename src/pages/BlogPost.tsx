@@ -38,7 +38,18 @@ export default function BlogPost() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+
+        {post.imageOverlayText && (
+          <div className="absolute inset-0 flex items-center justify-center p-6">
+            <div className="rounded-2xl bg-background/85 backdrop-blur-sm border border-border px-8 py-5 shadow-xl">
+              <span className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground">
+                {post.imageOverlayText}
+              </span>
+            </div>
+          </div>
+        )}
       </section>
+
 
       {/* Content Header */}
       <section className="relative py-12 md:py-16 bg-background -mt-20 md:-mt-32 z-10">

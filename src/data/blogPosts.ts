@@ -13,7 +13,9 @@ export interface BlogPost {
   category: string;
   author: string;
   image: string;
+  imageOverlayText?: string;
 }
+
 
 export const blogPosts: BlogPost[] = [
   {
@@ -161,6 +163,7 @@ EN 388 biedt een gestandaardiseerde manier om handschoenen te vergelijken. Door 
     category: "Normen",
     author: "SafeGrip Team",
     image: en388Image,
+    imageOverlayText: "EN 388",
   },
   {
     id: 3,
