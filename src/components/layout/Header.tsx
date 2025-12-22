@@ -82,10 +82,10 @@ export function Header() {
 
         {/* Shop CTA Button */}
         <div className="hidden md:flex">
-          <Button asChild variant="shop" className={`transition-all duration-300 ${scrolled ? "scale-95" : "scale-100"}`}>
+          <Button asChild variant="shop" className={`transition-all duration-300 glow-yellow ${scrolled ? "scale-95" : "scale-100"}`}>
             <Link to="/shop" className="flex items-center gap-2">
               <ShoppingBag className="h-4 w-4" />
-              Naar de Shop
+              Shop Nu
             </Link>
           </Button>
         </div>
@@ -142,10 +142,10 @@ export function Header() {
               Contact
             </Link>
             
-            <Button asChild variant="shop" className="mt-2">
+            <Button asChild variant="shop" className="mt-2 glow-yellow">
               <Link to="/shop" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2">
                 <ShoppingBag className="h-4 w-4" />
-                Naar de Shop
+                Shop Nu
               </Link>
             </Button>
           </nav>
