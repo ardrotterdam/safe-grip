@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { SafeGripLogo } from "@/components/brand/SafeGripLogo";
+import { CONTACT_INFO, SERVICE_REGIONS } from "@/config/contact";
 
 const collecties = [
   { naam: "Snijbestendige werkhandschoenen", url: "/collecties/snijbestendige-werkhandschoenen" },
@@ -136,19 +137,19 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary" />
-                <a href="mailto:info@safegrip.nl" className="hover:text-primary transition-colors">
-                  info@safegrip.nl
+                <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-primary transition-colors">
+                  {CONTACT_INFO.email}
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary" />
-                <a href="tel:+31201234567" className="hover:text-primary transition-colors">
-                  +31 (0)20 123 4567
+                <a href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`} className="hover:text-primary transition-colors">
+                  {CONTACT_INFO.phoneDisplay}
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary mt-0.5" />
-                <span>Nederland & België</span>
+                <span>{SERVICE_REGIONS.join(" & ")}</span>
               </li>
             </ul>
           </div>
@@ -157,7 +158,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} SafeGrip. Alle rechten voorbehouden.
+            © {new Date().getFullYear()} {CONTACT_INFO.company.name}. Alle rechten voorbehouden.
           </p>
           <p className="text-sm text-muted-foreground">
             Officieel Granberg distributeur Benelux

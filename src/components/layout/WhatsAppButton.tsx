@@ -1,8 +1,9 @@
 import { MessageCircle } from "lucide-react";
+import { CONTACT_INFO } from "@/config/contact";
 
 export function WhatsAppButton() {
-  const phoneNumber = "31612345678"; // Replace with actual SafeGrip WhatsApp number
-  const message = encodeURIComponent("Hallo SafeGrip, ik heb een vraag over jullie werkhandschoenen.");
+  const phoneNumber = CONTACT_INFO.whatsapp.replace(/[^0-9]/g, '');
+  const message = encodeURIComponent(`Hallo ${CONTACT_INFO.company.name}, ik heb een vraag over jullie werkhandschoenen.`);
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   return (

@@ -16,6 +16,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { CONTACT_INFO, SERVICE_REGIONS } from "@/config/contact";
 
 const onderwerpen = [
   "Vraag over bestelling",
@@ -101,17 +102,19 @@ export default function Contact() {
   const contactPageSchema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "Contact SafeGrip",
+    "name": `Contact ${CONTACT_INFO.company.name}`,
     "description": "Neem contact op met SafeGrip voor productadvies, offertes of zakelijke samenwerkingen.",
     "url": "https://safegrip.nl/contact",
     "mainEntity": {
       "@type": "Organization",
-      "name": "SafeGrip",
-      "telephone": "+31201234567",
-      "email": "info@safegrip.nl",
+      "name": CONTACT_INFO.company.name,
+      "telephone": CONTACT_INFO.phone.replace(/\s/g, ''),
+      "email": CONTACT_INFO.email,
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Rotterdam",
+        "streetAddress": CONTACT_INFO.address.street,
+        "postalCode": CONTACT_INFO.address.postalCode,
+        "addressLocality": CONTACT_INFO.address.city,
         "addressCountry": "NL"
       }
     }
@@ -257,8 +260,8 @@ export default function Contact() {
                     <Mail className="h-5 w-5 text-primary mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-foreground">E-mail</p>
-                      <a href="mailto:info@safegrip.nl" className="text-sm text-muted-foreground hover:text-primary">
-                        info@safegrip.nl
+                      <a href={`mailto:${CONTACT_INFO.email}`} className="text-sm text-muted-foreground hover:text-primary">
+                        {CONTACT_INFO.email}
                       </a>
                     </div>
                   </div>
@@ -267,8 +270,8 @@ export default function Contact() {
                     <Phone className="h-5 w-5 text-primary mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-foreground">Telefoon</p>
-                      <a href="tel:+31201234567" className="text-sm text-muted-foreground hover:text-primary">
-                        +31 (0)20 123 4567
+                      <a href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`} className="text-sm text-muted-foreground hover:text-primary">
+                        {CONTACT_INFO.phoneDisplay}
                       </a>
                     </div>
                   </div>
@@ -277,7 +280,7 @@ export default function Contact() {
                     <MapPin className="h-5 w-5 text-primary mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-foreground">Regio</p>
-                      <p className="text-sm text-muted-foreground">Nederland & België</p>
+                      <p className="text-sm text-muted-foreground">{SERVICE_REGIONS.join(" & ")}</p>
                     </div>
                   </div>
                   
@@ -285,7 +288,7 @@ export default function Contact() {
                     <Clock className="h-5 w-5 text-primary mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-foreground">Reactietijd</p>
-                      <p className="text-sm text-muted-foreground">Binnen 24 uur op werkdagen</p>
+                      <p className="text-sm text-muted-foreground">{CONTACT_INFO.support.responseTime} op werkdagen</p>
                     </div>
                   </div>
                 </div>
