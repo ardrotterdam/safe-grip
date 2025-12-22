@@ -10,6 +10,7 @@ import { CartDrawer } from "@/components/cart/CartDrawer";
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
 import OverOns from "./pages/OverOns";
+import Blog from "./pages/Blog";
 import Shop from "./pages/Shop";
 import Privacy from "./pages/Privacy";
 import AlgemeneVoorwaarden from "./pages/AlgemeneVoorwaarden";
@@ -35,6 +36,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/over-ons" element={<OverOns />} />
+              <Route path="/blog" element={<Blog />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/algemene-voorwaarden" element={<AlgemeneVoorwaarden />} />
               <Route path="/shop" element={<Shop />} />
