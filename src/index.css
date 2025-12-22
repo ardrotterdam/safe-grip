@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* SafeGrip Design System - B2B Industrial Theme
-   Primary: Safety Yellow from logo
+/* SafeGrip Design System 2026 - B2B Industrial Theme
+   Primary: Safety Yellow from logo (#FFE600)
+   Accent: SafeGrip Blue (#0AADEF)
    Background: Deep black/dark grey
    Professional, industrial, B2B wholesale
 */
@@ -30,8 +31,9 @@
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 48 100% 50%;
-    --accent-foreground: 0 0% 4%;
+    /* SafeGrip Blue (#0AADEF) - Accent color */
+    --accent: 197 93% 49%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
@@ -40,14 +42,22 @@
     --input: 0 0% 15%;
     --ring: 48 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
 
     /* Custom SafeGrip tokens */
     --safety-yellow: 48 100% 50%;
     --safety-yellow-glow: 48 100% 60%;
+    --safegrip-blue: 197 93% 49%;
+    --safegrip-blue-light: 197 93% 60%;
     --deep-black: 0 0% 4%;
     --dark-grey: 0 0% 10%;
+    --medium-grey: 0 0% 18%;
     --light-grey: 0 0% 85%;
+
+    /* Glassmorphism tokens */
+    --glass-bg: 0 0% 100% / 0.05;
+    --glass-border: 0 0% 100% / 0.1;
+    --glass-blur: 20px;
 
     --sidebar-background: 0 0% 6%;
     --sidebar-foreground: 0 0% 98%;
@@ -73,8 +83,8 @@
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
-    --accent: 48 100% 50%;
-    --accent-foreground: 0 0% 4%;
+    --accent: 197 93% 49%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 20%;
@@ -97,21 +107,101 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
   }
 }
 
 @layer utilities {
   .text-gradient-yellow {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-[hsl(var(--safety-yellow-glow))] bg-clip-text text-transparent;
+  }
+
+  .text-gradient-blue {
+    @apply bg-gradient-to-r from-accent to-[hsl(var(--safegrip-blue-light))] bg-clip-text text-transparent;
   }
   
   .glow-yellow {
     box-shadow: 0 0 20px hsl(var(--safety-yellow) / 0.3),
                 0 0 40px hsl(var(--safety-yellow) / 0.1);
   }
+
+  .glow-blue {
+    box-shadow: 0 0 20px hsl(var(--safegrip-blue) / 0.3),
+                0 0 40px hsl(var(--safegrip-blue) / 0.1);
+  }
   
   .border-glow {
     border-color: hsl(var(--safety-yellow) / 0.5);
+  }
+
+  .border-glow-blue {
+    border-color: hsl(var(--safegrip-blue) / 0.5);
+  }
+
+  /* Glassmorphism utilities */
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .glass-dark {
+    background: hsl(0 0% 0% / 0.6);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .glass-card {
+    background: linear-gradient(
+      135deg,
+      hsl(0 0% 100% / 0.08) 0%,
+      hsl(0 0% 100% / 0.02) 100%
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(0 0% 100% / 0.1);
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px hsl(var(--safegrip-blue) / 0.2);
+  }
+
+  /* Micro-animations */
+  .hover-lift {
+    @apply transition-transform duration-300;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-200;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  /* Trust badge style */
+  .trust-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-foreground;
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply h-px bg-gradient-to-r from-transparent via-border to-transparent;
   }
 }

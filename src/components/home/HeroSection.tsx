@@ -1,72 +1,122 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Shield, Truck, Building2, ShoppingBag } from "lucide-react";
+import { ShoppingBag, ChevronRight, Award, Package, Clock } from "lucide-react";
+import heroBackground from "@/assets/hero-industrial-bg.jpg";
+
+const trustBadges = [
+  { icon: Clock, label: "60+ jaar expertise", sublabel: "Granberg sinds 1960" },
+  { icon: Package, label: "250+ modellen", sublabel: "Compleet assortiment" },
+  { icon: Award, label: "Red Dot Award", sublabel: "Bekroond design" },
+];
 
 export function HeroSection() {
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBackground})` }}
+      />
       
-      <div className="container relative">
-        <div className="max-w-3xl mx-auto text-center space-y-8">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
-            <Shield className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Officieel Granberg Distributeur Benelux</span>
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
+      
+      {/* Content */}
+      <div className="container relative z-10 py-20">
+        <div className="max-w-3xl space-y-8">
+          {/* Official Badge */}
+          <div 
+            className="inline-flex items-center gap-3 px-5 py-2.5 rounded glass-card animate-fade-in"
+            style={{ animationDelay: "0.1s" }}
+          >
+            <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <span className="text-sm font-semibold tracking-wide text-foreground">
+              Officieel Granberg Distributeur Benelux
+            </span>
           </div>
           
-          {/* Headline */}
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight">
-            Professionele Werkhandschoenen voor{" "}
-            <span className="text-primary">Industrie & Offshore</span>
+          {/* Main Headline */}
+          <h1 
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight animate-fade-in-up"
+            style={{ animationDelay: "0.2s" }}
+          >
+            <span className="text-foreground">Professionele</span>
+            <br />
+            <span className="text-gradient-blue">Werkhandschoenen</span>
+            <br />
+            <span className="text-foreground">voor de Industrie</span>
           </h1>
           
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            B2B groothandel in hoogwaardige beschermende werkhandschoenen. 
-            Direct bestellen met vaste prijzen per bundel.
+          <p 
+            className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed animate-fade-in-up"
+            style={{ animationDelay: "0.3s" }}
+          >
+            B2B groothandel met directe levering. Vaste prijzen per bundel, 
+            geen offerteaanvragen nodig.
           </p>
           
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="shop" asChild className="glow-yellow">
+          <div 
+            className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up"
+            style={{ animationDelay: "0.4s" }}
+          >
+            <Button 
+              size="lg" 
+              variant="shop" 
+              asChild 
+              className="glow-yellow text-lg px-8 py-6 font-bold"
+            >
               <Link to="/shop" className="flex items-center gap-2">
                 <ShoppingBag className="h-5 w-5" />
-                Naar de Shop
+                Shop Nu
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link to="/contact">Contact Opnemen</Link>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              asChild 
+              className="border-accent/50 hover:bg-accent/10 text-lg px-8 py-6"
+            >
+              <Link to="/shop" className="flex items-center gap-2">
+                Bekijk Collecties
+                <ChevronRight className="h-5 w-5" />
+              </Link>
             </Button>
           </div>
-          
-          {/* Trust Indicators */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-border mt-12">
-            <div className="flex items-center justify-center gap-3">
-              <Shield className="h-8 w-8 text-primary" />
-              <div className="text-left">
-                <p className="text-sm font-medium text-foreground">PBM Gecertificeerd</p>
-                <p className="text-xs text-muted-foreground">EN 388, EN 511, EN 374</p>
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <Truck className="h-8 w-8 text-primary" />
-              <div className="text-left">
-                <p className="text-sm font-medium text-foreground">Snelle Levering</p>
-                <p className="text-xs text-muted-foreground">NL & BE dekking</p>
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <Building2 className="h-8 w-8 text-primary" />
-              <div className="text-left">
-                <p className="text-sm font-medium text-foreground">B2B Specialist</p>
-                <p className="text-xs text-muted-foreground">Staffelprijzen beschikbaar</p>
-              </div>
-            </div>
+        </div>
+        
+        {/* Trust Badges */}
+        <div 
+          className="mt-16 pt-8 border-t border-border/50 animate-fade-in-up"
+          style={{ animationDelay: "0.5s" }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {trustBadges.map((badge, index) => {
+              const Icon = badge.icon;
+              return (
+                <div 
+                  key={badge.label}
+                  className="flex items-center gap-4 p-4 rounded-lg glass-card hover-lift"
+                  style={{ animationDelay: `${0.6 + index * 0.1}s` }}
+                >
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center">
+                    <Icon className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-foreground">{badge.label}</p>
+                    <p className="text-sm text-muted-foreground">{badge.sublabel}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
+      
+      {/* Decorative elements */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 }
