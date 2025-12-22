@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, ChevronRight, Award, Package, Clock, Shield } from "lucide-react";
+import { useState, useEffect } from "react";
 import heroBackground from "@/assets/hero-offshore-workers.jpg";
 
 const trustBadges = [
@@ -10,16 +11,31 @@ const trustBadges = [
 ];
 
 export function HeroSection() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = heroBackground;
+    img.onload = () => setIsLoaded(true);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image with Ken Burns effect */}
+      {/* Background Image with Ken Burns effect - lazy loaded */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 animate-[kenburns_20s_ease-in-out_infinite_alternate]"
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 animate-[kenburns_20s_ease-in-out_infinite_alternate] transition-opacity duration-1000 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
         style={{ 
           backgroundImage: `url(${heroBackground})`,
           backgroundPosition: "center 30%",
         }}
       />
+      
+      {/* Placeholder while loading */}
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-background" />
+      )}
       
       {/* Cinematic gradient overlays for depth */}
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
