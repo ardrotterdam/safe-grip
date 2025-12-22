@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, HardHat, Anchor, Factory, Droplets, Flame, TreeDeciduous } from "lucide-react";
 import forestryChainsaw from "@/assets/industries/forestry-chainsaw.jpg";
-
+import maritimeOffshore from "@/assets/industries/maritime-offshore.jpg";
 const industrieen = [
   {
     id: "bouw",
@@ -58,12 +58,12 @@ const industrieen = [
   {
     id: "maritiem",
     naam: "Maritiem & Offshore",
-    beschrijving: "Bestand tegen extreme omstandigheden op zee. Waterbestendig met optimale grip.",
+    beschrijving: "Ontwikkeld voor de veeleisende Noordzee offshore industrie. Bewezen handbescherming voor maritieme professionals wereldwijd.",
     icon: Anchor,
-    features: ["Waterbestendig", "Zoutbestendig", "Drijfvermogen"],
+    features: ["Oliebestendig", "Impactbestendig", "Zoutwater-proof", "EN 388 Gecertificeerd"],
     cta: "Bekijk maritieme handschoenen",
-    bgImage: "https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=1920&q=80",
-    altText: "Maritieme werker met waterbestendige handschoenen - SafeGrip Granberg",
+    bgImage: maritimeOffshore,
+    altText: "Offshore werkhandschoenen voor maritieme industrie - SafeGrip Granberg",
   },
 ];
 
