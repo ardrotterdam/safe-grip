@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 
 interface ProductCardProps {
   naam: string;
@@ -16,9 +17,10 @@ export function ProductCard({ naam, beschrijving, kenmerken, bundel, afbeelding 
       {/* Product image */}
       <div className="aspect-square bg-muted relative overflow-hidden">
         {afbeelding ? (
-          <img 
+          <OptimizedImage 
             src={afbeelding} 
             alt={naam}
+            containerClassName="w-full h-full"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (

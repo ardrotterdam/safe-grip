@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, HardHat, Anchor, Factory, Droplets, Flame, TreeDeciduous } from "lucide-react";
@@ -72,6 +72,79 @@ const industrieen = [
   },
 ];
 
+// Lazy loading background component
+function LazyBackgroundPanel({ 
+  bgImage, 
+  altText, 
+  children 
+}: { 
+  bgImage: string; 
+  altText: string; 
+  children: React.ReactNode;
+}) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px", threshold: 0 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (isInView && bgImage) {
+      const img = new Image();
+      img.src = bgImage;
+      img.onload = () => setIsLoaded(true);
+    }
+  }, [isInView, bgImage]);
+
+  // Reset loaded state when image changes
+  useEffect(() => {
+    if (isInView) {
+      setIsLoaded(false);
+      const img = new Image();
+      img.src = bgImage;
+      img.onload = () => setIsLoaded(true);
+    }
+  }, [bgImage, isInView]);
+
+  return (
+    <div 
+      ref={containerRef}
+      className="relative rounded-2xl overflow-hidden min-h-[500px]" 
+      role="img" 
+      aria-label={altText}
+    >
+      {/* Background Image with lazy loading */}
+      <div 
+        className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
+        style={isInView ? { backgroundImage: `url(${bgImage})` } : undefined}
+      />
+      {/* Placeholder while loading */}
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-muted animate-pulse" />
+      )}
+      {children}
+    </div>
+  );
+}
+
 export function IndustriesSection() {
   const [activeTab, setActiveTab] = useState(industrieen[0].id);
   const activeIndustrie = industrieen.find(i => i.id === activeTab) || industrieen[0];
@@ -115,13 +188,7 @@ export function IndustriesSection() {
         </div>
 
         {/* Content Panel */}
-        <div className="relative rounded-2xl overflow-hidden min-h-[500px]" role="img" aria-label={activeIndustrie.altText}>
-          {/* Background Image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-all duration-700"
-            style={{ backgroundImage: `url(${activeIndustrie.bgImage})` }}
-          />
-          
+        <LazyBackgroundPanel bgImage={activeIndustrie.bgImage} altText={activeIndustrie.altText}>
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
           
@@ -170,7 +237,7 @@ export function IndustriesSection() {
               </Button>
             </div>
           </div>
-        </div>
+        </LazyBackgroundPanel>
       </div>
     </section>
   );
