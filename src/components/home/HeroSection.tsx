@@ -60,7 +60,7 @@ export function HeroSection() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight animate-fade-in-up"
             style={{ animationDelay: "0.2s" }}
           >
-            <span className="text-foreground">Gebouwd voor</span>
+            <span className="text-foreground">Gemaakt voor</span>
             <br />
             <span className="text-gradient-yellow">Extreme</span>
             <br />
