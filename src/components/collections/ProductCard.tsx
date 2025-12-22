@@ -49,7 +49,7 @@ export function ProductCard({ naam, beschrijving, kenmerken, bundel }: ProductCa
             {bundel}
           </span>
           <Button size="sm" variant="ghost" asChild className="text-primary">
-            <Link to="/contact">Offerte</Link>
+            <Link to="/shop">Bekijk</Link>
           </Button>
         </div>
       </CardContent>

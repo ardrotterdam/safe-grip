@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Shield, Users, Award, Truck } from "lucide-react";
+import { Shield, Users, Award, Truck, ShoppingBag } from "lucide-react";
 
 const kernwaarden = [
   {
@@ -75,11 +75,14 @@ export default function OverOns() {
                 advies over normeringen en maatvoering.
               </p>
               <p className="text-muted-foreground">
-                Alle producten worden geleverd per bundel met aantrekkelijke staffelprijzen. 
-                Neem contact op voor een offerte op maat.
+                Alle producten worden geleverd per bundel met vaste prijzen. 
+                Bekijk ons assortiment in de shop.
               </p>
-              <Button asChild>
-                <Link to="/contact">Neem Contact Op</Link>
+              <Button asChild variant="shop">
+                <Link to="/shop" className="flex items-center gap-2">
+                  <ShoppingBag className="h-4 w-4" />
+                  Bekijk de Shop
+                </Link>
               </Button>
             </div>
             
@@ -152,14 +155,17 @@ export default function OverOns() {
             Klaar om samen te werken?
           </h2>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Neem contact op voor een offerte op maat of om onze collectie te bespreken.
+            Bekijk ons assortiment of neem contact op om onze collectie te bespreken.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild className="glow-yellow">
-              <Link to="/contact">Offerte Aanvragen</Link>
+            <Button size="lg" variant="shop" asChild className="glow-yellow">
+              <Link to="/shop" className="flex items-center gap-2">
+                <ShoppingBag className="h-5 w-5" />
+                Naar de Shop
+              </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link to="/collecties/snijbestendige-werkhandschoenen">Bekijk Collecties</Link>
+              <Link to="/contact">Contact Opnemen</Link>
             </Button>
           </div>
         </div>

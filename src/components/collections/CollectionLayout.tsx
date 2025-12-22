@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ShoppingBag } from "lucide-react";
 
 interface CollectionLayoutProps {
   title: string;
@@ -53,11 +53,14 @@ export function CollectionLayout({
               {intro}
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button asChild>
-                <Link to="/contact">Offerte Aanvragen</Link>
+              <Button asChild variant="shop">
+                <Link to="/shop" className="flex items-center gap-2">
+                  <ShoppingBag className="h-4 w-4" />
+                  Bekijk alle collecties
+                </Link>
               </Button>
               <Button variant="outline" asChild>
-                <Link to="/contact">Zakelijk Advies</Link>
+                <Link to="/contact">Vragen? Neem contact op</Link>
               </Button>
             </div>
           </div>
@@ -69,7 +72,7 @@ export function CollectionLayout({
         <div className="container">
           <div className="flex items-center justify-between mb-8">
             <p className="text-muted-foreground">
-              Alle producten leverbaar per bundel. Staffelprijzen op aanvraag.
+              Alle producten met vaste prijzen per bundel. Direct te bestellen.
             </p>
           </div>
           
@@ -86,11 +89,19 @@ export function CollectionLayout({
             Interesse in deze collectie?
           </h2>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Vraag een offerte aan voor staffelprijzen of neem contact op voor persoonlijk advies over de beste handschoen voor uw toepassing.
+            Bekijk alle producten in onze shop of neem contact op voor persoonlijk advies.
           </p>
-          <Button size="lg" asChild className="glow-yellow">
-            <Link to="/contact">Offerte Aanvragen</Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" variant="shop" asChild className="glow-yellow">
+              <Link to="/shop" className="flex items-center gap-2">
+                <ShoppingBag className="h-5 w-5" />
+                Naar de Shop
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <Link to="/contact">Contact Opnemen</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </Layout>

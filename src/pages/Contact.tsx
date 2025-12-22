@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,7 +18,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 const onderwerpen = [
-  "Offerte aanvragen",
+  "Vraag over bestelling",
   "Dealer worden",
   "Vraag over maatvoering / normering",
   "Productadvies",
@@ -102,10 +103,10 @@ export default function Contact() {
         <title>Contact | SafeGrip Benelux</title>
         <meta 
           name="description" 
-          content="Neem contact op met SafeGrip voor offertes, productadvies of zakelijke samenwerkingen. B2B groothandel in werkhandschoenen voor NL & BE."
+          content="Neem contact op met SafeGrip voor productadvies of zakelijke samenwerkingen. B2B groothandel in werkhandschoenen voor NL & BE."
         />
         <meta property="og:title" content="Contact | SafeGrip Benelux" />
-        <meta property="og:description" content="Neem contact op met SafeGrip voor offertes, productadvies of zakelijke samenwerkingen." />
+        <meta property="og:description" content="Neem contact op met SafeGrip voor productadvies of zakelijke samenwerkingen." />
       </Helmet>
 
       <section className="py-12 bg-gradient-to-b from-primary/5 to-transparent">
@@ -115,7 +116,7 @@ export default function Contact() {
               Contact
             </h1>
             <p className="text-lg text-muted-foreground">
-              Vraag een offerte aan, word dealer of stel uw vragen aan ons team. 
+              Stel uw vragen aan ons team of word dealer. 
               We reageren binnen 24 uur op werkdagen.
             </p>
           </div>
@@ -257,11 +258,13 @@ export default function Contact() {
               </div>
 
               <div className="p-6 rounded-lg bg-primary/10 border border-primary/20 space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">Zakelijke klant?</h3>
+                <h3 className="text-lg font-semibold text-foreground">Direct bestellen?</h3>
                 <p className="text-sm text-muted-foreground">
-                  Vraag direct een offerte aan met staffelprijzen. 
-                  Alle producten leverbaar per bundel.
+                  Bekijk ons assortiment met vaste prijzen per bundel in de shop.
                 </p>
+                <Button asChild variant="shop" size="sm">
+                  <Link to="/shop">Naar de Shop</Link>
+                </Button>
               </div>
             </div>
           </div>
