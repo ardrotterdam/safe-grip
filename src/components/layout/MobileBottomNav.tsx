@@ -44,7 +44,7 @@ export function MobileBottomNav() {
             <a
               key={item.label}
               href={item.to}
-              className="flex flex-col items-center justify-center gap-1 flex-1 h-full text-muted-foreground hover:text-primary transition-colors"
+              className="relative flex flex-col items-center justify-center gap-1 flex-1 h-full text-muted-foreground hover:text-primary transition-colors"
             >
               <item.icon className="h-5 w-5" />
               <span className="text-xs font-medium">{item.label}</span>
@@ -54,11 +54,12 @@ export function MobileBottomNav() {
               key={item.to}
               to={item.to}
               end={item.to === "/"}
-              className="flex flex-col items-center justify-center gap-1 flex-1 h-full text-muted-foreground hover:text-primary transition-colors"
-              activeClassName="text-primary"
+              className="relative flex flex-col items-center justify-center gap-1 flex-1 h-full text-muted-foreground hover:text-primary transition-colors group"
+              activeClassName="text-primary [&>.active-indicator]:scale-x-100"
             >
               <item.icon className="h-5 w-5" />
               <span className="text-xs font-medium">{item.label}</span>
+              <span className="active-indicator absolute bottom-1 w-8 h-0.5 bg-primary rounded-full scale-x-0 transition-transform duration-300 origin-center" />
             </NavLink>
           )
         ))}
