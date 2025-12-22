@@ -279,8 +279,11 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <MapPin className="h-5 w-5 text-primary mt-0.5" />
                     <div>
-                      <p className="text-sm font-medium text-foreground">Regio</p>
-                      <p className="text-sm text-muted-foreground">{SERVICE_REGIONS.join(" & ")}</p>
+                      <p className="text-sm font-medium text-foreground">Adres</p>
+                      <p className="text-sm text-muted-foreground">
+                        {CONTACT_INFO.address.street}<br />
+                        {CONTACT_INFO.address.postalCode} {CONTACT_INFO.address.city}
+                      </p>
                     </div>
                   </div>
                   
@@ -292,6 +295,21 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Google Maps */}
+              <div className="rounded-lg overflow-hidden border border-border">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2460.8876012345678!2d4.4765!3d51.9129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c4335c4d4a8c35%3A0x6b6e4f7d9d2d8b1a!2sScheepvaartkwartier%2C%20Rotterdam!5e0!3m2!1snl!2snl!4v1700000000000!5m2!1snl!2snl"
+                  width="100%"
+                  height="250"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="SafeGrip kantoor locatie in Rotterdam"
+                  className="grayscale hover:grayscale-0 transition-all duration-500"
+                />
               </div>
 
               <div className="p-6 rounded-lg bg-primary/10 border border-primary/20 space-y-4">
