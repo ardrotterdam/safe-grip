@@ -36,17 +36,71 @@ const collecties = [
   },
 ];
 
+// Product Category Schema for Shop
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "SafeGrip Werkhandschoenen Collecties",
+  "description": "Professionele Granberg werkhandschoenen voor industrie, bouw en offshore",
+  "url": "https://safegrip.nl/shop",
+  "numberOfItems": 4,
+  "itemListElement": collecties.map((collectie, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": collectie.titel,
+    "description": collectie.beschrijving,
+    "url": `https://safegrip.nl${collectie.url}`
+  }))
+};
+
+// BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://safegrip.nl"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Shop",
+      "item": "https://safegrip.nl/shop"
+    }
+  ]
+};
+
 export default function Shop() {
   return (
     <Layout>
       <Helmet>
-        <title>Shop | SafeGrip Werkhandschoenen</title>
+        {/* Primary Meta Tags */}
+        <title>Shop Werkhandschoenen | Snijbestendig, Winter, Chemisch & Impact | SafeGrip</title>
         <meta 
           name="description" 
-          content="Bekijk ons complete assortiment professionele werkhandschoenen. Snijbestendige, winter, chemisch bestendige en impactbestendige handschoenen. Direct bestellen met vaste prijzen."
+          content="Bekijk ons complete assortiment Granberg werkhandschoenen. Snijbestendige (EN 388), winter (EN 511), chemisch bestendige (EN 374) en impactbestendige handschoenen. B2B prijzen, direct bestellen."
         />
-        <meta property="og:title" content="Shop | SafeGrip Werkhandschoenen" />
-        <meta property="og:description" content="Bekijk ons complete assortiment professionele werkhandschoenen voor industrie en offshore." />
+        <meta name="keywords" content="werkhandschoenen kopen, snijbestendige handschoenen, winterhandschoenen werk, chemisch bestendige handschoenen, impactbestendige handschoenen, EN 388, EN 511, EN 374, Granberg handschoenen, B2B werkhandschoenen" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://safegrip.nl/shop" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://safegrip.nl/shop" />
+        <meta property="og:title" content="Shop Werkhandschoenen | SafeGrip Granberg Distributeur" />
+        <meta property="og:description" content="Bekijk ons complete assortiment professionele Granberg werkhandschoenen. Direct bestellen met vaste B2B prijzen." />
+        <meta property="og:locale" content="nl_NL" />
+
+        {/* JSON-LD Schemas */}
+        <script type="application/ld+json">
+          {JSON.stringify(itemListSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
       </Helmet>
 
       {/* Hero */}

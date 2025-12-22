@@ -73,17 +73,51 @@ function CountUpNumber({ target, suffix }: { target: number; suffix: string }) {
   );
 }
 
+// About Page Schema
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Over SafeGrip",
+  "description": "SafeGrip is de officiële Granberg distributeur voor Nederland en België. 60+ jaar Noorse kwaliteit.",
+  "url": "https://safegrip.nl/over-ons",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "SafeGrip",
+    "foundingDate": "1961",
+    "description": "Officieel Granberg distributeur voor de Benelux",
+    "areaServed": ["Netherlands", "Belgium"],
+    "brand": {
+      "@type": "Brand",
+      "name": "Granberg"
+    }
+  }
+};
+
 export default function OverOns() {
   return (
     <Layout>
       <Helmet>
-        <title>Over SafeGrip | Granberg Distributeur Benelux</title>
+        {/* Primary Meta Tags */}
+        <title>Over SafeGrip | Officieel Granberg Distributeur | 60+ Jaar Noorse Kwaliteit</title>
         <meta 
           name="description" 
-          content="SafeGrip is de officiële Granberg distributeur voor de Benelux. B2B groothandel in professionele werkhandschoenen voor industrie, bouw en offshore."
+          content="SafeGrip is de officiële Granberg distributeur voor Nederland en België. 60+ jaar Noorse kwaliteit in professionele werkhandschoenen. B2B groothandel vanuit Rotterdam."
         />
-        <meta property="og:title" content="Over SafeGrip | Granberg Distributeur Benelux" />
-        <meta property="og:description" content="SafeGrip is de officiële Granberg distributeur voor de Benelux." />
+        <meta name="keywords" content="SafeGrip, Granberg distributeur, werkhandschoenen groothandel, Noorse kwaliteit, B2B handschoenen, Rotterdam, Benelux, officieel distributeur" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://safegrip.nl/over-ons" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://safegrip.nl/over-ons" />
+        <meta property="og:title" content="Over SafeGrip | Officieel Granberg Distributeur Benelux" />
+        <meta property="og:description" content="60+ jaar Noorse kwaliteit. Officieel Granberg distributeur voor Nederland en België." />
+        <meta property="og:locale" content="nl_NL" />
+
+        {/* JSON-LD Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(aboutPageSchema)}
+        </script>
       </Helmet>
 
       {/* Hero Section with Dark Background */}
