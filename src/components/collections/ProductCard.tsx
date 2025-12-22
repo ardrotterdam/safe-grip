@@ -1,7 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { OptimizedImage } from "@/components/ui/optimized-image";
+import { useCart } from "@/contexts/CartContext";
+import { ShoppingCart } from "lucide-react";
+import { toast } from "sonner";
 
 interface ResponsiveImageSet {
   mobile?: string;
@@ -15,14 +17,28 @@ interface ProductCardProps {
   kenmerken: string[];
   bundel: string;
   afbeelding?: string | ResponsiveImageSet;
+  sku?: string;
+  prijs?: number;
 }
 
-export function ProductCard({ naam, beschrijving, kenmerken, bundel, afbeelding }: ProductCardProps) {
+export function ProductCard({ naam, beschrijving, kenmerken, bundel, afbeelding, sku, prijs = 0 }: ProductCardProps) {
+  const { addItem } = useCart();
+  
   // Handle both string and responsive image set
   const imageSrc = typeof afbeelding === 'string' ? afbeelding : afbeelding?.desktop;
   const srcSet = typeof afbeelding === 'object' && afbeelding 
     ? `${afbeelding.mobile || afbeelding.desktop} 480w, ${afbeelding.tablet || afbeelding.desktop} 768w, ${afbeelding.desktop} 1280w`
     : undefined;
+
+  const handleAddToCart = () => {
+    addItem({
+      id: sku || naam,
+      name: naam,
+      price: prijs,
+      image: imageSrc,
+    });
+    toast.success(`${naam} toegevoegd aan winkelwagen`);
+  };
 
   return (
     <Card className="group overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
@@ -71,13 +87,19 @@ export function ProductCard({ naam, beschrijving, kenmerken, bundel, afbeelding 
           ))}
         </div>
         
-        {/* Bundel info */}
+        {/* Bundel info & Add to cart */}
         <div className="pt-2 border-t border-border flex items-center justify-between">
           <span className="text-sm text-muted-foreground">
             {bundel}
           </span>
-          <Button size="sm" variant="ghost" asChild className="text-primary">
-            <Link to="/shop">Bekijk</Link>
+          <Button 
+            size="sm" 
+            variant="default" 
+            onClick={handleAddToCart}
+            className="gap-1"
+          >
+            <ShoppingCart className="h-4 w-4" />
+            Toevoegen
           </Button>
         </div>
       </CardContent>
