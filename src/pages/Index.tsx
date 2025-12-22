@@ -6,6 +6,7 @@ import { IndustriesSection } from "@/components/home/IndustriesSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { FAQSection } from "@/components/home/FAQSection";
 import { CTASection } from "@/components/home/CTASection";
+import heroImage from "@/assets/hero-offshore-workers.jpg";
 
 // Organization Schema for SEO
 const organizationSchema = {
@@ -81,6 +82,9 @@ const Index = () => {
   return (
     <Layout>
       <Helmet>
+        {/* Preload critical hero image for faster LCP */}
+        <link rel="preload" as="image" href={heroImage} fetchPriority="high" />
+        
         {/* Primary Meta Tags */}
         <title>SafeGrip | Officieel Granberg Distributeur Nederland & België | Professionele Werkhandschoenen</title>
         <meta 
