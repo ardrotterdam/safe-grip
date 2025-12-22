@@ -1,5 +1,6 @@
 import { CollectionLayout, ProductData } from "@/components/collections/CollectionLayout";
 import { ProductCard } from "@/components/collections/ProductCard";
+// @ts-ignore - vite-imagetools
 import gloveImpact from "@/assets/products/glove-impact.jpg?format=webp&quality=85";
 
 const producten: ProductData[] = [

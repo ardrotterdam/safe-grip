@@ -25,7 +25,6 @@ export default defineConfig(({ mode }) => ({
       },
     }),
     mode === "development" && componentTagger(),
-    mode === "development" && componentTagger(),
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: ["favicon.svg", "favicon.png", "robots.txt"],

@@ -2,7 +2,14 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, ChevronRight, Award, Package, Clock, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
-import heroBackground from "@/assets/hero-offshore-workers.jpg?format=webp&quality=85";
+
+// Responsive hero images
+// @ts-ignore - vite-imagetools query parameters
+import heroMobile from "@/assets/hero-offshore-workers.jpg?w=640&format=webp&quality=80";
+// @ts-ignore - vite-imagetools query parameters
+import heroTablet from "@/assets/hero-offshore-workers.jpg?w=1024&format=webp&quality=85";
+// @ts-ignore - vite-imagetools query parameters
+import heroDesktop from "@/assets/hero-offshore-workers.jpg?w=1920&format=webp&quality=85";
 
 const trustBadges = [
   { icon: Clock, label: "60+ jaar expertise", sublabel: "Granberg sinds 1960" },
@@ -12,29 +19,48 @@ const trustBadges = [
 
 export function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [currentSrc, setCurrentSrc] = useState(heroDesktop);
+
+  // Select appropriate image based on screen size
+  useEffect(() => {
+    const updateSrc = () => {
+      const width = window.innerWidth;
+      if (width <= 640) {
+        setCurrentSrc(heroMobile);
+      } else if (width <= 1024) {
+        setCurrentSrc(heroTablet);
+      } else {
+        setCurrentSrc(heroDesktop);
+      }
+    };
+
+    updateSrc();
+    window.addEventListener('resize', updateSrc);
+    return () => window.removeEventListener('resize', updateSrc);
+  }, []);
 
   useEffect(() => {
     const img = new Image();
-    img.src = heroBackground;
+    img.src = currentSrc;
     img.onload = () => setIsLoaded(true);
-  }, []);
+  }, [currentSrc]);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image with Ken Burns effect - lazy loaded */}
+      {/* Background Image with Ken Burns effect - responsive lazy loaded */}
       <div 
         className={`absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 animate-[kenburns_20s_ease-in-out_infinite_alternate] transition-opacity duration-1000 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
         style={{ 
-          backgroundImage: `url(${heroBackground})`,
+          backgroundImage: `url(${currentSrc})`,
           backgroundPosition: "center 30%",
         }}
       />
       
       {/* Placeholder while loading */}
       {!isLoaded && (
-        <div className="absolute inset-0 bg-background" />
+        <div className="absolute inset-0 bg-background animate-pulse" />
       )}
       
       {/* Cinematic gradient overlays for depth */}

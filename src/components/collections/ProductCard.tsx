@@ -3,22 +3,36 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 
+interface ResponsiveImageSet {
+  mobile?: string;
+  tablet?: string;
+  desktop: string;
+}
+
 interface ProductCardProps {
   naam: string;
   beschrijving: string;
   kenmerken: string[];
   bundel: string;
-  afbeelding?: string;
+  afbeelding?: string | ResponsiveImageSet;
 }
 
 export function ProductCard({ naam, beschrijving, kenmerken, bundel, afbeelding }: ProductCardProps) {
+  // Handle both string and responsive image set
+  const imageSrc = typeof afbeelding === 'string' ? afbeelding : afbeelding?.desktop;
+  const srcSet = typeof afbeelding === 'object' && afbeelding 
+    ? `${afbeelding.mobile || afbeelding.desktop} 480w, ${afbeelding.tablet || afbeelding.desktop} 768w, ${afbeelding.desktop} 1280w`
+    : undefined;
+
   return (
     <Card className="group overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
       {/* Product image */}
       <div className="aspect-square bg-muted relative overflow-hidden">
-        {afbeelding ? (
+        {imageSrc ? (
           <OptimizedImage 
-            src={afbeelding} 
+            src={imageSrc} 
+            srcSet={srcSet}
+            sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
             alt={naam}
             containerClassName="w-full h-full"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
