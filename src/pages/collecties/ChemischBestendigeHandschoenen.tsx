@@ -1,5 +1,6 @@
 import { CollectionLayout } from "@/components/collections/CollectionLayout";
 import { ProductCard } from "@/components/collections/ProductCard";
+import gloveChemical from "@/assets/products/glove-chemical.jpg";
 
 const producten = [
   {
@@ -55,6 +56,7 @@ export default function ChemischBestendigeHandschoenen() {
           beschrijving={product.beschrijving}
           kenmerken={product.kenmerken}
           bundel={product.bundel}
+          afbeelding={gloveChemical}
         />
       ))}
     </CollectionLayout>
