@@ -126,6 +126,11 @@ export function Footer() {
                   Privacyverklaring
                 </Link>
               </li>
+              <li>
+                <Link to="/algemene-voorwaarden" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Algemene Voorwaarden
+                </Link>
+              </li>
             </ul>
           </div>
 
