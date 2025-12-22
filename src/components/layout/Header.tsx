@@ -37,7 +37,7 @@ export function Header() {
   const [collectiesOpen, setCollectiesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const { itemCount } = useCart();
+  const { itemCount, setIsOpen } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,10 +110,10 @@ export function Header() {
         {/* Shop CTA Button - Premium styling */}
         <div className="hidden md:flex items-center gap-3">
           {/* Cart Icon with Badge */}
-          <Link 
-            to="/shop" 
+          <button 
+            onClick={() => setIsOpen(true)}
             className="relative p-2 rounded-lg hover:bg-foreground/5 transition-colors"
-            aria-label="Winkelwagen"
+            aria-label="Winkelwagen openen"
           >
             <ShoppingBag className="h-5 w-5 text-foreground/70 hover:text-foreground transition-colors" />
             {itemCount > 0 && (
@@ -123,7 +123,7 @@ export function Header() {
                 {itemCount > 99 ? "99+" : itemCount}
               </Badge>
             )}
-          </Link>
+          </button>
           
           <Button asChild variant="shop" className={`transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 ${scrolled ? "scale-95" : "scale-100"}`}>
             <Link to="/shop" className="flex items-center gap-2">
