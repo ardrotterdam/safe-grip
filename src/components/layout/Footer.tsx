@@ -80,7 +80,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <Link to="/">
-              <SafeGripLogo size={36} showText={true} />
+              <SafeGripLogo variant="black" />
             </Link>
             <p className="text-sm text-muted-foreground">
               Professionele B2B groothandel in werkhandschoenen. Officieel Granberg distributeur voor de Benelux.
