@@ -2,8 +2,9 @@ import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ShoppingBag, Anchor, Factory, Ship, HardHat, Cog, Truck, Utensils, TreeDeciduous } from "lucide-react";
+import { ShoppingBag, Anchor, Factory, Ship, HardHat, Cog, Truck, Utensils, TreeDeciduous, MapPin } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
+import kantoorImage from "@/assets/kantoor-rotterdam.webp";
 
 const industrieTags = [
   { label: "Offshore", icon: Anchor },
@@ -120,7 +121,36 @@ export default function OverOns() {
         </script>
       </Helmet>
 
-      {/* Hero Section with Dark Background */}
+      {/* Office Hero Section */}
+      <section className="relative h-[50vh] min-h-[400px] md:h-[60vh] overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${kantoorImage})` }}
+        />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent" />
+        
+        {/* Content */}
+        <div className="container relative z-10 h-full flex flex-col justify-end pb-12 md:pb-16">
+          <div className="max-w-2xl space-y-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-safegrip-blue/20 backdrop-blur-sm border border-safegrip-blue/30">
+              <MapPin className="h-4 w-4 text-safegrip-blue" />
+              <span className="text-sm font-medium text-foreground">Scheepvaartkwartier, Rotterdam</span>
+            </div>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+              Ons Kantoor in het Hart van Rotterdam
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-xl">
+              Vanuit dit monumentale pand bedienen wij de Benelux met persoonlijk advies en snelle levering.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content Section */}
       <section className="relative py-20 md:py-28 overflow-hidden bg-background">
         {/* Grain texture overlay */}
         <div 
@@ -138,11 +168,11 @@ export default function OverOns() {
                 <p className="text-safegrip-blue font-semibold tracking-wide uppercase text-sm">
                   Officieel Granberg distributeur voor Nederland en België
                 </p>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
                   Waar Noorse Kwaliteit de{" "}
                   <span className="text-gradient-blue">Rotterdamse Haven</span>{" "}
                   Ontmoet
-                </h1>
+                </h2>
               </div>
 
               <div className="space-y-4 text-muted-foreground">
