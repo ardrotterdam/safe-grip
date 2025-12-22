@@ -97,16 +97,50 @@ export default function Contact() {
     );
   }
 
+  // Contact Page Schema
+  const contactPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact SafeGrip",
+    "description": "Neem contact op met SafeGrip voor productadvies, offertes of zakelijke samenwerkingen.",
+    "url": "https://safegrip.nl/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "SafeGrip",
+      "telephone": "+31201234567",
+      "email": "info@safegrip.nl",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rotterdam",
+        "addressCountry": "NL"
+      }
+    }
+  };
+
   return (
     <Layout>
       <Helmet>
-        <title>Contact | SafeGrip Benelux</title>
+        {/* Primary Meta Tags */}
+        <title>Contact SafeGrip | Werkhandschoenen Advies & Offertes | Benelux</title>
         <meta 
           name="description" 
-          content="Neem contact op met SafeGrip voor productadvies of zakelijke samenwerkingen. B2B groothandel in werkhandschoenen voor NL & BE."
+          content="Neem contact op met SafeGrip voor productadvies, offertes of zakelijke samenwerkingen. B2B groothandel in Granberg werkhandschoenen. Reactie binnen 24 uur."
         />
-        <meta property="og:title" content="Contact | SafeGrip Benelux" />
-        <meta property="og:description" content="Neem contact op met SafeGrip voor productadvies of zakelijke samenwerkingen." />
+        <meta name="keywords" content="contact SafeGrip, werkhandschoenen advies, offerte aanvragen, B2B handschoenen, Granberg dealer worden, PBM leverancier contact" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://safegrip.nl/contact" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://safegrip.nl/contact" />
+        <meta property="og:title" content="Contact SafeGrip | Werkhandschoenen Advies & Offertes" />
+        <meta property="og:description" content="Neem contact op voor productadvies of zakelijke samenwerkingen. Reactie binnen 24 uur." />
+        <meta property="og:locale" content="nl_NL" />
+
+        {/* JSON-LD Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(contactPageSchema)}
+        </script>
       </Helmet>
 
       <section className="py-12 bg-gradient-to-b from-primary/5 to-transparent">
