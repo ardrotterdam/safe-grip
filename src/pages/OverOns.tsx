@@ -2,30 +2,76 @@ import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Shield, Users, Award, Truck, ShoppingBag } from "lucide-react";
+import { ShoppingBag, Anchor, Factory, Ship, HardHat, Cog, Truck, Utensils, TreeDeciduous } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
 
-const kernwaarden = [
-  {
-    icon: Shield,
-    titel: "Kwaliteit",
-    beschrijving: "Alleen gecertificeerde werkhandschoenen die voldoen aan de hoogste Europese normen.",
-  },
-  {
-    icon: Users,
-    titel: "Partnerschap",
-    beschrijving: "Langdurige relaties met onze klanten door persoonlijk advies en betrouwbare service.",
-  },
-  {
-    icon: Award,
-    titel: "Expertise",
-    beschrijving: "Jarenlange ervaring in PBM en diepgaande kennis van handschoennormeringen.",
-  },
-  {
-    icon: Truck,
-    titel: "Leverbetrouwbaarheid",
-    beschrijving: "Snelle levering door de hele Benelux met een uitgebreid voorraadprogramma.",
-  },
+const industrieTags = [
+  { label: "Offshore", icon: Anchor },
+  { label: "Petrochemie", icon: Factory },
+  { label: "Scheepvaart", icon: Ship },
+  { label: "Bouw", icon: HardHat },
+  { label: "Staal", icon: Cog },
+  { label: "Logistiek", icon: Truck },
+  { label: "Voedsel", icon: Utensils },
+  { label: "Bosbouw", icon: TreeDeciduous },
 ];
+
+const stats = [
+  { value: 60, suffix: "+", label: "Jaar Expertise" },
+  { value: 250, suffix: "+", label: "Modellen" },
+  { value: 53, suffix: "", label: "Landen" },
+  { value: 24, suffix: "u", label: "Reactietijd" },
+];
+
+const trustBadges = [
+  { emoji: "🇳🇴", label: "Noorse Kwaliteit", sublabel: "Sinds 1961" },
+  { emoji: "🏆", label: "Red Dot Award Winnaar", sublabel: "Design Excellence" },
+  { emoji: "🧪", label: "EU Gecertificeerd", sublabel: "EN 388 / EN 407" },
+  { emoji: "⚓", label: "Scheepvaartkwartier Rotterdam", sublabel: "Benelux HQ" },
+];
+
+function CountUpNumber({ target, suffix }: { target: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          const duration = 2000;
+          const steps = 60;
+          const increment = target / steps;
+          let current = 0;
+          
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              setCount(target);
+              clearInterval(timer);
+            } else {
+              setCount(Math.floor(current));
+            }
+          }, duration / steps);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [target]);
+
+  return (
+    <span ref={ref} className="text-4xl md:text-5xl font-extrabold text-safegrip-blue">
+      {count}{suffix}
+    </span>
+  );
+}
 
 export default function OverOns() {
   return (
@@ -40,121 +86,130 @@ export default function OverOns() {
         <meta property="og:description" content="SafeGrip is de officiële Granberg distributeur voor de Benelux." />
       </Helmet>
 
-      {/* Hero */}
-      <section className="py-12 bg-gradient-to-b from-primary/5 to-transparent">
-        <div className="container">
-          <div className="max-w-3xl">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Over SafeGrip
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Uw betrouwbare B2B partner voor professionele werkhandschoenen in de Benelux.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section with Dark Background */}
+      <section className="relative py-20 md:py-28 overflow-hidden bg-background">
+        {/* Grain texture overlay */}
+        <div 
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          }}
+        />
 
-      {/* Main Content */}
-      <section className="py-12">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-foreground">
-                Officieel Granberg Distributeur
-              </h2>
-              <p className="text-muted-foreground">
-                SafeGrip is de exclusieve distributeur van Granberg werkhandschoenen voor 
-                Nederland en België. Granberg is een Zweedse fabrikant die sinds 1993 
-                hoogwaardige beschermende werkhandschoenen produceert voor de meest 
-                veeleisende industrieën.
-              </p>
-              <p className="text-muted-foreground">
-                Als B2B groothandel leveren wij aan bedrijven in sectoren zoals offshore, 
-                bouw, industrie, logistiek en petrochemie. Onze focus ligt op het leveren 
-                van de juiste handschoen voor elke toepassing, ondersteund door deskundig 
-                advies over normeringen en maatvoering.
-              </p>
-              <p className="text-muted-foreground">
-                Alle producten worden geleverd per bundel met vaste prijzen. 
-                Bekijk ons assortiment in de shop.
-              </p>
-              <Button asChild variant="shop">
+        <div className="container relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Column - Story */}
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <p className="text-safegrip-blue font-semibold tracking-wide uppercase text-sm">
+                  Officieel Granberg distributeur voor Nederland en België
+                </p>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+                  Waar Noorse Kwaliteit de{" "}
+                  <span className="text-gradient-blue">Rotterdamse Haven</span>{" "}
+                  Ontmoet
+                </h1>
+              </div>
+
+              <div className="space-y-4 text-muted-foreground">
+                <p className="text-lg">
+                  SafeGrip is de exclusieve distributeur van Granberg werkhandschoenen voor 
+                  Nederland en België. Granberg is een Noorse fabrikant die sinds 1961 
+                  hoogwaardige beschermende werkhandschoenen produceert voor de meest 
+                  veeleisende industrieën.
+                </p>
+                <p>
+                  Vanuit het Rotterdamse Scheepvaartkwartier bedienen wij bedrijven in de 
+                  Benelux met persoonlijk advies en snelle levering. Onze focus ligt op het 
+                  leveren van de juiste handschoen voor elke toepassing, ondersteund door 
+                  60+ jaar Noorse expertise.
+                </p>
+              </div>
+
+              {/* Industry Tags */}
+              <div className="flex flex-wrap gap-2">
+                {industrieTags.map((tag) => {
+                  const Icon = tag.icon;
+                  return (
+                    <span 
+                      key={tag.label}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card/50 border border-border/50 text-sm text-muted-foreground hover:border-safegrip-blue/50 hover:text-foreground transition-all duration-300"
+                    >
+                      <Icon className="h-3.5 w-3.5 text-safegrip-blue" />
+                      {tag.label}
+                    </span>
+                  );
+                })}
+              </div>
+
+              <Button asChild variant="shop" size="lg" className="glow-yellow">
                 <Link to="/shop" className="flex items-center gap-2">
-                  <ShoppingBag className="h-4 w-4" />
+                  <ShoppingBag className="h-5 w-5" />
                   Bekijk de Shop
                 </Link>
               </Button>
             </div>
-            
-            <div className="bg-card rounded-lg p-8 border border-border">
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary">
-                    <span className="text-2xl font-bold text-primary-foreground">SG</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground">SafeGrip</h3>
-                    <p className="text-muted-foreground">Benelux B2B Specialist</p>
-                  </div>
+
+            {/* Right Column - Stats Card with Glassmorphism */}
+            <div className="relative">
+              {/* Blue glow behind card */}
+              <div className="absolute inset-0 bg-safegrip-blue/20 blur-[100px] rounded-full scale-75" />
+              
+              <div className="relative glass-card rounded-2xl p-8 md:p-10 border border-safegrip-blue/20">
+                {/* Subtle blue gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-safegrip-blue/5 to-transparent rounded-2xl pointer-events-none" />
+                
+                <div className="relative grid grid-cols-2 gap-8">
+                  {stats.map((stat) => (
+                    <div key={stat.label} className="text-center space-y-2">
+                      <CountUpNumber target={stat.value} suffix={stat.suffix} />
+                      <p className="text-sm text-muted-foreground font-medium">
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-                <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
-                  <div>
-                    <p className="text-2xl font-bold text-primary">500+</p>
-                    <p className="text-sm text-muted-foreground">Zakelijke klanten</p>
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-primary">30+</p>
-                    <p className="text-sm text-muted-foreground">Jaar ervaring</p>
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-primary">NL & BE</p>
-                    <p className="text-sm text-muted-foreground">Dekking</p>
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-primary">24u</p>
-                    <p className="text-sm text-muted-foreground">Reactietijd</p>
-                  </div>
-                </div>
+
+                {/* Decorative corner accent */}
+                <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-safegrip-blue/30 rounded-tr-2xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-safegrip-blue/30 rounded-bl-2xl pointer-events-none" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Kernwaarden */}
-      <section className="py-12 bg-card">
+      {/* Trust Badges Section */}
+      <section className="py-16 bg-card/50 border-y border-border/50">
         <div className="container">
-          <h2 className="text-2xl font-bold text-foreground text-center mb-12">
-            Onze Kernwaarden
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {kernwaarden.map((waarde) => {
-              const Icon = waarde.icon;
-              return (
-                <div key={waarde.titel} className="text-center space-y-4">
-                  <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground">
-                    {waarde.titel}
-                  </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {trustBadges.map((badge) => (
+              <div 
+                key={badge.label}
+                className="group flex items-center gap-4 p-6 rounded-xl bg-background/50 border border-border/50 hover:border-safegrip-blue/30 hover-lift transition-all duration-300"
+              >
+                <span className="text-4xl">{badge.emoji}</span>
+                <div>
+                  <p className="font-semibold text-foreground group-hover:text-safegrip-blue transition-colors">
+                    {badge.label}
+                  </p>
                   <p className="text-sm text-muted-foreground">
-                    {waarde.beschrijving}
+                    {badge.sublabel}
                   </p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-12">
+      {/* CTA Section */}
+      <section className="py-16 bg-background">
         <div className="container text-center">
-          <h2 className="text-2xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
             Klaar om samen te werken?
           </h2>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
             Bekijk ons assortiment of neem contact op om onze collectie te bespreken.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
