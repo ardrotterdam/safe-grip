@@ -122,10 +122,10 @@ export default function OverOns() {
       </Helmet>
 
       {/* Office Hero Section */}
-      <section className="relative h-[50vh] min-h-[400px] md:h-[60vh] overflow-hidden">
+      <section className="relative h-[60vh] min-h-[450px] md:h-[70vh] overflow-hidden">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-bottom"
           style={{ backgroundImage: `url(${kantoorImage})` }}
         />
         
