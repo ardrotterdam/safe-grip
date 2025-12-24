@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SafeGrip Logo - Editable Version -->
+<!-- Colors: Yellow Plate #f7d600, Black #1a1a1a, Screw #8b7500 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" fill="none">
+  
+  <!-- ==================== BACKGROUND ==================== -->
+  
+  <!-- Outer black frame (rounded rectangle) -->
+  <rect id="outer-frame" x="0" y="0" width="360" height="120" rx="20" ry="20" fill="#1a1a1a"/>
+  
+  <!-- Inner yellow metal plate -->
+  <rect id="yellow-plate" x="8" y="8" width="344" height="104" rx="14" ry="14" fill="#f7d600"/>
+  
+  <!-- Gradient overlay for metallic shine effect -->
+  <defs>
+    <linearGradient id="plate-shine" x1="0%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffe600" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#d4b600" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect id="shine-overlay" x="8" y="8" width="172" height="104" rx="14" ry="14" fill="url(#plate-shine)"/>
+  
+  <!-- ==================== SCREWS ==================== -->
+  
+  <g id="screws">
+    <!-- Top-left screw -->
+    <g id="screw-top-left">
+      <circle cx="28" cy="28" r="6" fill="#8b7500"/>
+      <path d="M24 28h8M28 24v8" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Top-right screw -->
+    <g id="screw-top-right">
+      <circle cx="332" cy="28" r="6" fill="#8b7500"/>
+      <path d="M328 28h8M332 24v8" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Bottom-left screw -->
+    <g id="screw-bottom-left">
+      <circle cx="28" cy="92" r="6" fill="#8b7500"/>
+      <path d="M24 92h8M28 88v8" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Bottom-right screw -->
+    <g id="screw-bottom-right">
+      <circle cx="332" cy="92" r="6" fill="#8b7500"/>
+      <path d="M328 92h8M332 88v8" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+  </g>
+  
+  <!-- ==================== SAFE TEXT ==================== -->
+  
+  <g id="safe-text" fill="#1a1a1a">
+    <!-- Leading dash/bar before S -->
+    <path id="dash-safe" d="M42 52h18l-4 16H38l4-16z"/>
+    
+    <!-- Letter S -->
+    <path id="letter-S" d="M62 44c12-2 28-2 32 8 2 6-2 12-10 14l-4 1c-6 2-8 4-7 7 1 4 8 5 16 3l6-1-2 10c-14 4-32 2-36-10-2-8 4-14 14-17l4-1c5-1 7-3 6-6-2-4-10-4-18-1l-6 2 2-10 3-1z"/>
+    
+    <!-- Letter A -->
+    <path id="letter-A" d="M104 44h20l14 42h-16l-2-8h-16l-4 8H84l20-42zm8 10l-6 16h12l-4-16h-2z"/>
+    
+    <!-- Letter F -->
+    <path id="letter-F" d="M140 44h38l-3 10h-22l-2 8h18l-2 10h-18l-4 14h-14l9-42z"/>
+    
+    <!-- Letter E -->
+    <path id="letter-E" d="M178 44h38l-2 10h-24l-2 6h20l-2 10h-20l-2 6h24l-2 10h-38l10-42z"/>
+  </g>
+  
+  <!-- Decorative lines above SAFE -->
+  <g id="safe-lines">
+    <path d="M58 38h60" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+    <path d="M62 32h50" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  
+  <!-- ==================== GRIP TEXT ==================== -->
+  
+  <g id="grip-text" fill="#1a1a1a">
+    <!-- Letter G with arrow notch -->
+    <path id="letter-G-body" d="M232 44c16-2 32 4 30 20-2 18-18 24-40 22l8-42zm4 32c10 1 16-4 17-12 1-6-4-10-12-9l-4 21z"/>
+    <path id="letter-G-bar" d="M226 58h12l-2 10h-12l2-10z"/>
+    
+    <!-- Letter R -->
+    <path id="letter-R" d="M268 44h26c12 0 18 6 16 16-1 6-6 10-12 12l8 14h-16l-6-12h-6l-3 12h-14l7-42zm12 22h8c4 0 7-2 8-6 0-4-3-6-7-6h-8l-1 12z"/>
+    
+    <!-- Letter I -->
+    <path id="letter-I" d="M318 44h14l-8 42h-14l8-42z"/>
+    
+    <!-- Letter P -->
+    <path id="letter-P" d="M336 44h26c12 0 18 8 16 18-2 12-12 18-26 18h-10l-3 6h-14l11-42zm10 26h8c6 0 10-3 11-8 0-5-4-8-10-8h-8l-1 16z"/>
+  </g>
+  
+  <!-- Decorative lines above GRIP -->
+  <g id="grip-lines">
+    <path d="M230 38h90" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+    <path d="M234 32h80" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  
+</svg>
