@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { CONTACT_INFO, SERVICE_REGIONS } from "@/config/contact";
-import safegripLogo from "@/assets/brand/safegrip-logo.png";
+import safegripLogo from "@/assets/brand/safegrip-logo.svg";
 
 const collecties = [
   { naam: "Snijbestendige werkhandschoenen", url: "/collecties/snijbestendige-werkhandschoenen" },

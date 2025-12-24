@@ -6,7 +6,7 @@ import { MegaMenu } from "./MegaMenu";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useCart } from "@/contexts/CartContext";
 import { Badge } from "@/components/ui/badge";
-import safegripLogo from "@/assets/brand/safegrip-logo.png";
+import safegripLogo from "@/assets/brand/safegrip-logo.svg";
 // Mobile menu data - matches mega menu structure
 const beschermingLinks = [
   { naam: "Snijbestendige handschoenen", url: "/collecties/snijbestendige-werkhandschoenen" },
