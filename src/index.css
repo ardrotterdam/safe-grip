@@ -256,7 +256,7 @@
     mix-blend-mode: soft-light;
   }
 
-  /* Desktop spotlight - Smart 4-layer focus system for Granberg gloves */
+  /* Desktop spotlight - Smart 5-layer focus system for Granberg gloves */
   .hero-spotlight-desktop::before {
     background: 
       /* Layer 1: Dim the workers in background (left/center area) */
@@ -273,14 +273,21 @@
         rgba(255, 245, 180, 0.2) 45%,
         transparent 100%
       ),
-      /* Layer 3: Safety Yellow brand glow around gloves */
+      /* Layer 3: Secondary spotlight on Granberg branding/text area */
+      radial-gradient(
+        ellipse 12% 10% at 83% 72%,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 250, 230, 0.12) 60%,
+        transparent 100%
+      ),
+      /* Layer 4: Safety Yellow brand glow around gloves */
       radial-gradient(
         ellipse 22% 30% at 85% 68%,
         rgba(225, 221, 0, 0.15) 0%,
         rgba(225, 221, 0, 0.06) 55%,
         transparent 100%
       ),
-      /* Layer 4: Asymmetric vignette guiding eye to gloves */
+      /* Layer 5: Asymmetric vignette guiding eye to gloves */
       radial-gradient(
         ellipse 75% 65% at 80% 65%,
         transparent 15%,
