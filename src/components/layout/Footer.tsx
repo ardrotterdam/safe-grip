@@ -4,8 +4,8 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { SafeGripLogo } from "@/components/brand/SafeGripLogo";
 import { CONTACT_INFO, SERVICE_REGIONS } from "@/config/contact";
+import safegripLogo from "@/assets/brand/safegrip-logo.png";
 
 const collecties = [
   { naam: "Snijbestendige werkhandschoenen", url: "/collecties/snijbestendige-werkhandschoenen" },
@@ -80,7 +80,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <Link to="/">
-              <SafeGripLogo variant="black" />
+              <img src={safegripLogo} alt="SafeGrip" className="h-12" />
             </Link>
             <p className="text-sm text-muted-foreground">
               Professionele B2B groothandel in werkhandschoenen. Officieel Granberg distributeur voor de Benelux.
