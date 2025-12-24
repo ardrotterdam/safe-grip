@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" fill="none">
   <!-- Outer black rounded rectangle -->
-  <rect x="0" y="0" width="360" height="120" rx="20" ry="20" fill="#1a1a1a"/>
+  <rect width="360" height="120" rx="20" fill="#1a1a1a"/>
   
   <!-- Inner yellow plate -->
-  <rect x="8" y="8" width="344" height="104" rx="14" ry="14" fill="#f7d600"/>
+  <rect x="8" y="8" width="344" height="104" rx="14" fill="#f7d600"/>
   
   <!-- Subtle gradient overlay for depth -->
   <defs>
@@ -12,7 +12,7 @@
       <stop offset="100%" stop-color="#d4b600" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  <rect x="8" y="8" width="172" height="104" rx="14" ry="14" fill="url(#plateShine)"/>
+  <rect x="8" y="8" width="172" height="104" rx="14" fill="url(#plateShine)"/>
   
   <!-- Corner screws -->
   <!-- Top-left screw -->
