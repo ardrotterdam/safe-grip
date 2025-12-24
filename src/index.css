@@ -277,13 +277,22 @@
     }
 
     .hero-spotlight-mobile::after {
-      /* Centered spotlight for the GRANBERG 9001 glove */
-      background: radial-gradient(
-        circle at 50% 40%,
-        rgba(255, 250, 220, 0.35) 0%,
-        rgba(255, 245, 180, 0.2) 30%,
-        transparent 60%
-      );
+      /* Centered spotlight with Safety Yellow glow for the GRANBERG 9001 glove */
+      background: 
+        /* Inner Safety Yellow glow - brand reinforcement */
+        radial-gradient(
+          ellipse 40% 50% at 50% 45%,
+          rgba(225, 221, 0, 0.15) 0%,
+          rgba(225, 221, 0, 0.08) 40%,
+          transparent 70%
+        ),
+        /* Outer warm spotlight */
+        radial-gradient(
+          circle at 50% 40%,
+          rgba(255, 250, 220, 0.3) 0%,
+          rgba(255, 245, 180, 0.15) 35%,
+          transparent 60%
+        );
     }
   }
 }
