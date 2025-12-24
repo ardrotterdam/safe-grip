@@ -20,7 +20,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="hero-spotlight relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image with Ken Burns effect */}
       <div 
         className={`absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 animate-[kenburns_20s_ease-in-out_infinite_alternate] transition-opacity duration-1000 ${
@@ -42,7 +42,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-background/40" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,transparent_40%,hsl(var(--background)/0.8)_100%)]" />
       
-      <div className="container relative z-10 py-24 lg:py-32">
+      <div className="container relative z-20 py-24 lg:py-32">
         <div className="max-w-2xl space-y-8">
           {/* Official Badge with subtle animation */}
           <div 
