@@ -129,7 +129,7 @@ export function HeroSection() {
         
         {/* Trust Badges - More refined */}
         <div 
-          className="mt-20 pt-10 border-t border-foreground/10 animate-fade-in-up"
+          className="mt-32 pt-10 border-t border-foreground/10 animate-fade-in-up"
           style={{ animationDelay: "0.5s" }}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
