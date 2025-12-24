@@ -256,13 +256,44 @@
     mix-blend-mode: soft-light;
   }
 
-  /* Responsive: adjust spotlight for mobile */
+  /* Responsive: adjust spotlight for mobile with GRANBERG 9001 glove */
   @media (max-width: 768px) {
     .hero-spotlight {
-      --spotlight-x: 75%;
-      --spotlight-y: 65%;
-      --spotlight-size: 55%;
-      --spotlight-blur: 60px;
+      --spotlight-x: 50%;           /* Center - glove is centered on mobile */
+      --spotlight-y: 45%;           /* Higher - focus on glove */
+      --spotlight-size: 70%;        /* Larger radius for full coverage */
+      --spotlight-intensity: 0.4;   /* Slightly reduced for product visibility */
+      --spotlight-blur: 60px;       /* Softer edge */
+      --vignette-intensity: 0.5;    /* Stronger vignette for drama */
     }
+
+    .hero-spotlight-mobile::before {
+      /* More dramatic vignette for product focus */
+      background: radial-gradient(
+        ellipse 70% 60% at 50% 45%,
+        transparent 30%,
+        rgba(0, 0, 0, 0.6) 100%
+      );
+    }
+
+    .hero-spotlight-mobile::after {
+      /* Centered spotlight for the GRANBERG 9001 glove */
+      background: radial-gradient(
+        circle at 50% 40%,
+        rgba(255, 250, 220, 0.35) 0%,
+        rgba(255, 245, 180, 0.2) 30%,
+        transparent 60%
+      );
+    }
+  }
+}
+
+/* Ken Burns animation for mobile - subtler, product-focused */
+@keyframes kenburns-mobile {
+  0% {
+    transform: scale(1.02) translateY(0);
+  }
+  100% {
+    transform: scale(1.06) translateY(-2%);
   }
 }
