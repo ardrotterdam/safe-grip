@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, ChevronRight, Award, Package, Clock, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
-import heroBackground from "@/assets/hero-offshore-workers.jpg";
+import { useIsMobile } from "@/hooks/use-mobile";
+import heroDesktop from "@/assets/hero-offshore-workers.jpg";
+import heroMobile from "@/assets/hero-granberg-9001-mobile.png";
 
 const trustBadges = [
   { icon: Clock, label: "60+ jaar expertise", sublabel: "Granberg sinds 1960" },
@@ -12,24 +14,43 @@ const trustBadges = [
 
 export function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const isMobile = useIsMobile();
+  const heroImage = isMobile ? heroMobile : heroDesktop;
+  const heroAlt = isMobile 
+    ? "GRANBERG 9001 Red Dot Award winnende snijbestendige werkhandschoen met Level F bescherming, Kozane technologie en Hi-Viz geel-groene kleur voor offshore en industrie"
+    : "Offshore werknemers met Granberg professionele werkhandschoenen in industriële omgeving";
 
   useEffect(() => {
-    const img = new Image();
-    img.src = heroBackground;
-    img.onload = () => setIsLoaded(true);
-  }, []);
+    // Preload both images for fast switching
+    const preloadDesktop = new Image();
+    const preloadMobile = new Image();
+    preloadDesktop.src = heroDesktop;
+    preloadMobile.src = heroMobile;
+    
+    const currentImg = new Image();
+    currentImg.src = heroImage;
+    currentImg.onload = () => setIsLoaded(true);
+  }, [heroImage]);
 
   return (
-    <section className="hero-spotlight relative min-h-screen flex items-center overflow-hidden">
+    <section 
+      className={`hero-spotlight relative min-h-screen flex items-center overflow-hidden ${isMobile ? 'hero-spotlight-mobile' : ''}`}
+      aria-label={heroAlt}
+    >
       {/* Background Image with Ken Burns effect */}
       <div 
-        className={`absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 animate-[kenburns_20s_ease-in-out_infinite_alternate] transition-opacity duration-1000 ${
+        className={`absolute inset-0 bg-no-repeat transition-opacity duration-1000 ${
           isLoaded ? "opacity-100" : "opacity-0"
+        } ${isMobile 
+          ? "bg-contain bg-center bg-background animate-[kenburns-mobile_25s_ease-in-out_infinite_alternate]" 
+          : "bg-cover scale-105 animate-[kenburns_20s_ease-in-out_infinite_alternate]"
         }`}
         style={{ 
-          backgroundImage: `url(${heroBackground})`,
-          backgroundPosition: "center 30%",
+          backgroundImage: `url(${heroImage})`,
+          backgroundPosition: isMobile ? "center 40%" : "center 30%",
         }}
+        role="img"
+        aria-label={heroAlt}
       />
       
       {/* Placeholder while loading */}
