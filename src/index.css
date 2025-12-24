@@ -256,31 +256,38 @@
     mix-blend-mode: soft-light;
   }
 
-  /* Desktop spotlight - Focus on the Granberg gloves (right side of image) */
+  /* Desktop spotlight - Smart 4-layer focus system for Granberg gloves */
   .hero-spotlight-desktop::before {
     background: 
-      /* Inner Safety Yellow glow on the gloves */
+      /* Layer 1: Dim the workers in background (left/center area) */
       radial-gradient(
-        ellipse 35% 45% at 72% 48%,
-        rgba(225, 221, 0, 0.18) 0%,
-        rgba(225, 221, 0, 0.08) 45%,
-        transparent 75%
+        ellipse 50% 70% at 85% 65%,
+        transparent 0%,
+        rgba(0, 0, 0, 0.35) 55%,
+        rgba(0, 0, 0, 0.55) 100%
       ),
-      /* Warm spotlight beam effect */
+      /* Layer 2: Tight intense spotlight precisely on gloves */
       radial-gradient(
-        ellipse 45% 60% at 75% 45%,
-        rgba(255, 250, 220, 0.22) 0%,
-        rgba(255, 245, 180, 0.1) 40%,
-        transparent 70%
+        ellipse 18% 25% at 85% 68%,
+        rgba(255, 250, 220, 0.4) 0%,
+        rgba(255, 245, 180, 0.2) 45%,
+        transparent 100%
       ),
-      /* Vignette to draw eye to the gloves */
+      /* Layer 3: Safety Yellow brand glow around gloves */
       radial-gradient(
-        ellipse 100% 80% at 70% 50%,
-        transparent 25%,
-        rgba(0, 0, 0, 0.25) 100%
+        ellipse 22% 30% at 85% 68%,
+        rgba(225, 221, 0, 0.15) 0%,
+        rgba(225, 221, 0, 0.06) 55%,
+        transparent 100%
+      ),
+      /* Layer 4: Asymmetric vignette guiding eye to gloves */
+      radial-gradient(
+        ellipse 75% 65% at 80% 65%,
+        transparent 15%,
+        rgba(0, 0, 0, 0.4) 100%
       );
     z-index: 5;
-    animation: spotlight-desktop-pulse 5s ease-in-out infinite alternate;
+    animation: spotlight-desktop-pulse 4s ease-in-out infinite alternate;
   }
 
   @keyframes spotlight-desktop-pulse {
