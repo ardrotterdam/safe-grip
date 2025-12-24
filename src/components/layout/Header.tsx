@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ShoppingBag, ChevronRight, Star, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SafeGripLogo } from "@/components/brand/SafeGripLogo";
 import { MegaMenu } from "./MegaMenu";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useCart } from "@/contexts/CartContext";
 import { Badge } from "@/components/ui/badge";
+import safegripLogo from "@/assets/brand/safegrip-logo.png";
 // Mobile menu data - matches mega menu structure
 const beschermingLinks = [
   { naam: "Snijbestendige handschoenen", url: "/collecties/snijbestendige-werkhandschoenen" },
@@ -71,9 +71,13 @@ export function Header() {
       <div className={`container flex items-center justify-between transition-all duration-500 ${
         scrolled ? "h-16" : "h-20"
       }`}>
-        {/* Logo wordmark */}
+        {/* Logo */}
         <Link to="/" className="group transition-all duration-300 hover:scale-[1.02]">
-          <SafeGripLogo variant="yellow" />
+          <img 
+            src={safegripLogo} 
+            alt="SafeGrip" 
+            className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-12'}`}
+          />
         </Link>
 
         {/* Desktop Navigation with Mega Menu */}
@@ -153,7 +157,7 @@ export function Header() {
               <SheetHeader className="p-4 border-b border-border">
                 <div className="flex items-center justify-between">
                   <SheetTitle className="text-left">
-                    <SafeGripLogo variant="black" />
+                    <img src={safegripLogo} alt="SafeGrip" className="h-10" />
                   </SheetTitle>
                 </div>
               </SheetHeader>
