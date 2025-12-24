@@ -58,10 +58,43 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-background animate-pulse" />
       )}
       
-      {/* Cinematic gradient overlays for depth */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-background/40" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,transparent_40%,hsl(var(--background)/0.8)_100%)]" />
+      {/* Cinematic gradient overlays for depth - rechterkant lichter voor Red Dot Award zichtbaarheid */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-background/30" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,transparent_50%,hsl(var(--background)/0.6)_100%)]" />
+      
+      {/* Red Dot Award spotlight - extra helderheid rechtsboven op handschoen */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_35%_40%_at_80%_25%,rgba(255,250,230,0.15)_0%,transparent_70%)]" />
+      
+      {/* Zee/Ocean wave animation overlay - subtiele beweging op het water */}
+      {!isMobile && (
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(180deg, transparent 0%, transparent 45%, rgba(100,180,220,0.03) 50%, rgba(80,160,200,0.05) 55%, transparent 65%)',
+            animation: 'oceanWave 5s ease-in-out infinite',
+          }}
+        />
+      )}
+      {!isMobile && (
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(180deg, transparent 0%, transparent 48%, rgba(150,200,230,0.04) 52%, rgba(120,180,210,0.03) 56%, transparent 62%)',
+            animation: 'oceanWave 6s ease-in-out infinite 1.5s',
+          }}
+        />
+      )}
+      {/* Shimmer effect op water */}
+      {!isMobile && (
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse 20% 8% at 55% 52%, rgba(255,255,255,0.06) 0%, transparent 100%)',
+            animation: 'oceanShimmer 4s ease-in-out infinite',
+          }}
+        />
+      )}
       
       <div className="container relative z-20 py-24 lg:py-32">
         <div className="max-w-2xl space-y-8">
