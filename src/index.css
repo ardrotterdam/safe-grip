@@ -256,6 +256,42 @@
     mix-blend-mode: soft-light;
   }
 
+  /* Desktop spotlight - Focus on the Granberg gloves (right side of image) */
+  .hero-spotlight-desktop::before {
+    background: 
+      /* Inner Safety Yellow glow on the gloves */
+      radial-gradient(
+        ellipse 35% 45% at 72% 48%,
+        rgba(225, 221, 0, 0.18) 0%,
+        rgba(225, 221, 0, 0.08) 45%,
+        transparent 75%
+      ),
+      /* Warm spotlight beam effect */
+      radial-gradient(
+        ellipse 45% 60% at 75% 45%,
+        rgba(255, 250, 220, 0.22) 0%,
+        rgba(255, 245, 180, 0.1) 40%,
+        transparent 70%
+      ),
+      /* Vignette to draw eye to the gloves */
+      radial-gradient(
+        ellipse 100% 80% at 70% 50%,
+        transparent 25%,
+        rgba(0, 0, 0, 0.25) 100%
+      );
+    z-index: 5;
+    animation: spotlight-desktop-pulse 5s ease-in-out infinite alternate;
+  }
+
+  @keyframes spotlight-desktop-pulse {
+    0% {
+      opacity: 0.85;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
   /* Responsive: adjust spotlight for mobile with GRANBERG 9001 glove */
   @media (max-width: 768px) {
     .hero-spotlight {
