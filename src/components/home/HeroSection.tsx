@@ -34,7 +34,7 @@ export function HeroSection() {
 
   return (
     <section 
-      className={`hero-spotlight relative min-h-screen flex items-center overflow-hidden ${isMobile ? 'hero-spotlight-mobile' : ''}`}
+      className={`hero-spotlight relative min-h-screen flex items-center overflow-hidden ${isMobile ? 'hero-spotlight-mobile' : 'hero-spotlight-desktop'}`}
       aria-label={heroAlt}
     >
       {/* Background Image with Ken Burns effect */}
