@@ -266,14 +266,21 @@
         rgba(0, 0, 0, 0.35) 55%,
         rgba(0, 0, 0, 0.55) 100%
       ),
-      /* Layer 2: Tight intense spotlight precisely on gloves */
+      /* Layer 2: Tight intense spotlight precisely on gloves (wrist area) */
       radial-gradient(
         ellipse 18% 25% at 85% 68%,
         rgba(255, 250, 220, 0.4) 0%,
         rgba(255, 245, 180, 0.2) 45%,
         transparent 100%
       ),
-      /* Layer 3: Secondary spotlight on Granberg branding/text area */
+      /* Layer 2b: Secondary spotlight on knuckles Granberg branding */
+      radial-gradient(
+        ellipse 15% 18% at 75% 42%,
+        rgba(255, 250, 220, 0.3) 0%,
+        rgba(255, 245, 180, 0.12) 60%,
+        transparent 100%
+      ),
+      /* Layer 3: Tertiary spotlight on wrist branding/text area */
       radial-gradient(
         ellipse 12% 10% at 83% 72%,
         rgba(255, 255, 255, 0.25) 0%,
