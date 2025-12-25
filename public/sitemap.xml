@@ -1,63 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.safe-grip.eu/</loc>
+    <loc>https://safe-grip.eu/</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.safe-grip.eu/shop</loc>
+    <loc>https://safe-grip.eu/shop</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.safe-grip.eu/over-ons</loc>
+    <loc>https://safe-grip.eu/granberg</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://safe-grip.eu/over-ons</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.safe-grip.eu/contact</loc>
+    <loc>https://safe-grip.eu/contact</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.safe-grip.eu/privacy</loc>
+    <loc>https://safe-grip.eu/blog</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://safe-grip.eu/collecties/snijbestendige-werkhandschoenen</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://safe-grip.eu/collecties/chemisch-bestendige-handschoenen</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://safe-grip.eu/collecties/winter-werkhandschoenen</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://safe-grip.eu/collecties/impactbestendige-werkhandschoenen</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://safe-grip.eu/privacy</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.safe-grip.eu/algemene-voorwaarden</loc>
+    <loc>https://safe-grip.eu/algemene-voorwaarden</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.safe-grip.eu/collecties/snijbestendige-werkhandschoenen</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.safe-grip.eu/collecties/chemisch-bestendige-handschoenen</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.safe-grip.eu/collecties/winter-werkhandschoenen</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.safe-grip.eu/collecties/impactbestendige-werkhandschoenen</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
 </urlset>

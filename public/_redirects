@@ -1,0 +1,8 @@
+# Redirect www to non-www (301 permanent)
+https://www.safe-grip.eu/* https://safe-grip.eu/:splat 301!
+
+# Redirect http to https for www
+http://www.safe-grip.eu/* https://safe-grip.eu/:splat 301!
+
+# Redirect http to https for non-www
+http://safe-grip.eu/* https://safe-grip.eu/:splat 301!
