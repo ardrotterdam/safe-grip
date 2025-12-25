@@ -11,6 +11,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  publicDir: 'public',
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
@@ -27,7 +28,7 @@ export default defineConfig(({ mode }) => ({
     }),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "favicon.png", "robots.txt"],
+      includeAssets: ["favicon.svg", "favicon.png", "robots.txt", "sitemap.xml"],
       manifest: {
         name: "Safe-Grip | Professionele Werkhandschoenen",
         short_name: "Safe-Grip",
