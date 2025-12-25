@@ -13,10 +13,9 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/((?!api|_next|sitemap.xml|robots.txt|favicon.ico|.*\\..*).*)",
-      "destination": "/index.html"
-    }
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {
