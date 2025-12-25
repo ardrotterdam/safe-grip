@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { ShoppingBag, Anchor, Factory, Ship, HardHat, Cog, Truck, Utensils, TreeDeciduous, MapPin } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import kantoorImage from "@/assets/kantoor-rotterdam.webp";
+import { SITE_URL } from "@/config/site";
 
 const industrieTags = [
   { label: "Offshore", icon: Anchor },
@@ -80,7 +81,7 @@ const aboutPageSchema = {
   "@type": "AboutPage",
   "name": "Over SafeGrip",
   "description": "SafeGrip is de officiële Granberg distributeur voor Nederland en België. 60+ jaar Noorse kwaliteit.",
-  "url": "https://safegrip.nl/over-ons",
+  "url": `${SITE_URL}/over-ons`,
   "mainEntity": {
     "@type": "Organization",
     "name": "SafeGrip",
@@ -106,11 +107,11 @@ export default function OverOns() {
         />
         <meta name="keywords" content="SafeGrip, Granberg distributeur, werkhandschoenen groothandel, Noorse kwaliteit, B2B handschoenen, Rotterdam, Benelux, officieel distributeur" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://safegrip.nl/over-ons" />
+        <link rel="canonical" href={`${SITE_URL}/over-ons`} />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://safegrip.nl/over-ons" />
+        <meta property="og:url" content={`${SITE_URL}/over-ons`} />
         <meta property="og:title" content="Over SafeGrip | Officieel Granberg Distributeur Benelux" />
         <meta property="og:description" content="60+ jaar Noorse kwaliteit. Officieel Granberg distributeur voor Nederland en België." />
         <meta property="og:locale" content="nl_NL" />

@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Shield, Mail, Phone } from "lucide-react";
+import { SITE_URL } from "@/config/site";
 
 const Privacy = () => {
   const privacySchema = {
@@ -8,7 +9,7 @@ const Privacy = () => {
     "@type": "WebPage",
     "name": "Privacyverklaring - SafeGrip",
     "description": "Privacyverklaring van SafeGrip B.V. conform de AVG/GDPR wetgeving.",
-    "url": "https://safegrip.nl/privacy",
+    "url": `${SITE_URL}/privacy`,
     "inLanguage": "nl-NL"
   };
 
@@ -18,7 +19,8 @@ const Privacy = () => {
         <title>Privacyverklaring | SafeGrip - AVG Conforme Privacy Policy</title>
         <meta name="description" content="Lees onze privacyverklaring. SafeGrip respecteert uw privacy en verwerkt persoonsgegevens conform de AVG/GDPR wetgeving." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://safegrip.nl/privacy" />
+        <link rel="canonical" href={`${SITE_URL}/privacy`} />
+        <meta property="og:url" content={`${SITE_URL}/privacy`} />
         <script type="application/ld+json">
           {JSON.stringify(privacySchema)}
         </script>

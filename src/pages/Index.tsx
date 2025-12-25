@@ -7,6 +7,7 @@ import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { FAQSection } from "@/components/home/FAQSection";
 import { CTASection } from "@/components/home/CTASection";
 import heroImage from "@/assets/hero-offshore-workers.jpg";
+import { SITE_URL } from "@/config/site";
 
 // Organization Schema for SEO
 const organizationSchema = {
@@ -14,8 +15,8 @@ const organizationSchema = {
   "@type": "Organization",
   "name": "SafeGrip",
   "alternateName": "SafeGrip Benelux",
-  "url": "https://safegrip.nl",
-  "logo": "https://safegrip.nl/logo.png",
+  "url": SITE_URL,
+  "logo": `${SITE_URL}/logo.png`,
   "description": "Officieel Granberg distributeur voor Nederland en België. B2B groothandel in professionele werkhandschoenen.",
   "address": {
     "@type": "PostalAddress",
@@ -40,7 +41,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "SafeGrip",
-  "url": "https://safegrip.nl",
+  "url": SITE_URL,
   "description": "B2B groothandel in professionele Granberg werkhandschoenen voor de Benelux",
   "publisher": {
     "@type": "Organization",
@@ -53,8 +54,8 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "SafeGrip",
-  "@id": "https://safegrip.nl",
-  "url": "https://safegrip.nl",
+  "@id": SITE_URL,
+  "url": SITE_URL,
   "description": "Officieel Granberg distributeur - B2B werkhandschoenen groothandel",
   "address": {
     "@type": "PostalAddress",
@@ -94,23 +95,23 @@ const Index = () => {
         <meta name="keywords" content="werkhandschoenen, Granberg, SafeGrip, B2B, groothandel, snijbestendige handschoenen, chemisch bestendige handschoenen, winterhandschoenen, impactbestendige handschoenen, PBM, persoonlijke beschermingsmiddelen, Nederland, België, Benelux, EN 388, EN 407, EN 511, offshore handschoenen, bouw handschoenen" />
         <meta name="author" content="SafeGrip" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://safegrip.nl" />
+        <link rel="canonical" href={SITE_URL} />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://safegrip.nl" />
+        <meta property="og:url" content={SITE_URL} />
         <meta property="og:title" content="SafeGrip | Officieel Granberg Distributeur Benelux" />
         <meta property="og:description" content="B2B groothandel in professionele Granberg werkhandschoenen. Snijbestendig, chemisch bestendig, winter & impactbestendig. Levering binnen 24 uur in Nederland en België." />
-        <meta property="og:image" content="https://safegrip.nl/og-image.jpg" />
+        <meta property="og:image" content={`${SITE_URL}/og-image.jpg`} />
         <meta property="og:locale" content="nl_NL" />
         <meta property="og:site_name" content="SafeGrip" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content="https://safegrip.nl" />
+        <meta name="twitter:url" content={SITE_URL} />
         <meta name="twitter:title" content="SafeGrip | Officieel Granberg Distributeur Benelux" />
         <meta name="twitter:description" content="B2B groothandel in professionele Granberg werkhandschoenen voor Nederland en België." />
-        <meta name="twitter:image" content="https://safegrip.nl/twitter-image.jpg" />
+        <meta name="twitter:image" content={`${SITE_URL}/twitter-image.jpg`} />
 
         {/* Additional SEO Tags */}
         <meta name="geo.region" content="NL-ZH" />

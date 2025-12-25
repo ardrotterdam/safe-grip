@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { SITE_URL } from "@/config/site";
 
 import heroImage from "@/assets/granberg/hero-norway-fjord.jpg";
 import historicHouse from "@/assets/granberg/granberg-house-historic.jpg";
@@ -139,7 +140,8 @@ export default function Granberg() {
           name="description" 
           content="Ontdek Granberg: sinds 1961 de Noorse standaard in professionele handbescherming. Red Dot Award winnaar, 250+ modellen. SafeGrip is officieel distributeur voor Nederland en België." 
         />
-        <link rel="canonical" href="https://safegrip.nl/granberg" />
+        <link rel="canonical" href={`${SITE_URL}/granberg`} />
+        <meta property="og:url" content={`${SITE_URL}/granberg`} />
         <meta property="og:title" content="Granberg Handschoenen | 60+ Jaar Noorse Kwaliteit" />
         <meta property="og:description" content="Ontdek Granberg: sinds 1961 de Noorse standaard in professionele handbescherming." />
         <meta property="og:type" content="website" />

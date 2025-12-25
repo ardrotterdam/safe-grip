@@ -4,6 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { getBlogPostBySlug, blogPosts } from "@/data/blogPosts";
 import { ArrowLeft, Calendar, Clock, User, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { SITE_URL } from "@/config/site";
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -21,7 +22,8 @@ export default function BlogPost() {
       <Helmet>
         <title>{post.title} | SafeGrip Blog</title>
         <meta name="description" content={post.excerpt} />
-        <link rel="canonical" href={`https://safegrip.nl/blog/${post.slug}`} />
+        <link rel="canonical" href={`${SITE_URL}/blog/${post.slug}`} />
+        <meta property="og:url" content={`${SITE_URL}/blog/${post.slug}`} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:type" content="article" />

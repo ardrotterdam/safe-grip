@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { FileText, Mail, Phone } from "lucide-react";
+import { SITE_URL } from "@/config/site";
 
 const AlgemeneVoorwaarden = () => {
   const termsSchema = {
@@ -8,7 +9,7 @@ const AlgemeneVoorwaarden = () => {
     "@type": "WebPage",
     "name": "Algemene Voorwaarden - SafeGrip",
     "description": "Algemene verkoop- en leveringsvoorwaarden van SafeGrip B.V. voor B2B klanten.",
-    "url": "https://safegrip.nl/algemene-voorwaarden",
+    "url": `${SITE_URL}/algemene-voorwaarden`,
     "inLanguage": "nl-NL"
   };
 
@@ -18,7 +19,8 @@ const AlgemeneVoorwaarden = () => {
         <title>Algemene Voorwaarden | SafeGrip - B2B Verkoop & Levering</title>
         <meta name="description" content="Lees onze algemene verkoop- en leveringsvoorwaarden voor B2B klanten. SafeGrip is uw betrouwbare partner voor professionele werkhandschoenen." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://safegrip.nl/algemene-voorwaarden" />
+        <link rel="canonical" href={`${SITE_URL}/algemene-voorwaarden`} />
+        <meta property="og:url" content={`${SITE_URL}/algemene-voorwaarden`} />
         <script type="application/ld+json">
           {JSON.stringify(termsSchema)}
         </script>

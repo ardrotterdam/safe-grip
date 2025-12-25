@@ -17,6 +17,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { CONTACT_INFO, SERVICE_REGIONS } from "@/config/contact";
+import { SITE_URL } from "@/config/site";
 
 const onderwerpen = [
   "Vraag over bestelling",
@@ -104,7 +105,7 @@ export default function Contact() {
     "@type": "ContactPage",
     "name": `Contact ${CONTACT_INFO.company.name}`,
     "description": "Neem contact op met SafeGrip voor productadvies, offertes of zakelijke samenwerkingen.",
-    "url": "https://safegrip.nl/contact",
+    "url": `${SITE_URL}/contact`,
     "mainEntity": {
       "@type": "Organization",
       "name": CONTACT_INFO.company.name,
@@ -131,11 +132,11 @@ export default function Contact() {
         />
         <meta name="keywords" content="contact SafeGrip, werkhandschoenen advies, offerte aanvragen, B2B handschoenen, Granberg dealer worden, PBM leverancier contact" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://safegrip.nl/contact" />
+        <link rel="canonical" href={`${SITE_URL}/contact`} />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://safegrip.nl/contact" />
+        <meta property="og:url" content={`${SITE_URL}/contact`} />
         <meta property="og:title" content="Contact SafeGrip | Werkhandschoenen Advies & Offertes" />
         <meta property="og:description" content="Neem contact op voor productadvies of zakelijke samenwerkingen. Reactie binnen 24 uur." />
         <meta property="og:locale" content="nl_NL" />

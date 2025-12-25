@@ -5,12 +5,16 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { CookieConsent } from "./CookieConsent";
 import { ScrollToTop } from "./ScrollToTop";
 import { MobileBottomNav } from "./MobileBottomNav";
+import { useSEO } from "@/hooks/use-seo";
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 export function Layout({ children }: LayoutProps) {
+  // Update canonical and og:url on route change for SPA SEO
+  useSEO();
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />

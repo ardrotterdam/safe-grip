@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Shield, Snowflake, FlaskConical, Hammer, ArrowRight } from "lucide-react";
+import { SITE_URL } from "@/config/site";
 
 const collecties = [
   {
@@ -42,14 +43,14 @@ const itemListSchema = {
   "@type": "ItemList",
   "name": "SafeGrip Werkhandschoenen Collecties",
   "description": "Professionele Granberg werkhandschoenen voor industrie, bouw en offshore",
-  "url": "https://safegrip.nl/shop",
+  "url": `${SITE_URL}/shop`,
   "numberOfItems": 4,
   "itemListElement": collecties.map((collectie, index) => ({
     "@type": "ListItem",
     "position": index + 1,
     "name": collectie.titel,
     "description": collectie.beschrijving,
-    "url": `https://safegrip.nl${collectie.url}`
+    "url": `${SITE_URL}${collectie.url}`
   }))
 };
 
@@ -62,13 +63,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://safegrip.nl"
+      "item": SITE_URL
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Shop",
-      "item": "https://safegrip.nl/shop"
+      "item": `${SITE_URL}/shop`
     }
   ]
 };
@@ -85,11 +86,11 @@ export default function Shop() {
         />
         <meta name="keywords" content="werkhandschoenen kopen, snijbestendige handschoenen, winterhandschoenen werk, chemisch bestendige handschoenen, impactbestendige handschoenen, EN 388, EN 511, EN 374, Granberg handschoenen, B2B werkhandschoenen" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://safegrip.nl/shop" />
+        <link rel="canonical" href={`${SITE_URL}/shop`} />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://safegrip.nl/shop" />
+        <meta property="og:url" content={`${SITE_URL}/shop`} />
         <meta property="og:title" content="Shop Werkhandschoenen | SafeGrip Granberg Distributeur" />
         <meta property="og:description" content="Bekijk ons complete assortiment professionele Granberg werkhandschoenen. Direct bestellen met vaste B2B prijzen." />
         <meta property="og:locale" content="nl_NL" />

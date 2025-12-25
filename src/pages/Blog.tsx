@@ -4,6 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
+import { SITE_URL } from "@/config/site";
 
 export default function Blog() {
   return (
@@ -14,7 +15,7 @@ export default function Blog() {
           name="description" 
           content="Nieuws, tips en inzichten over professionele handbescherming. Lees onze artikelen over werkhandschoenen, normen en industriespecifieke oplossingen." 
         />
-        <link rel="canonical" href="https://safegrip.nl/blog" />
+        <link rel="canonical" href={`${SITE_URL}/blog`} />
       </Helmet>
 
       {/* Hero Section */}

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { ChevronRight, ShoppingBag } from "lucide-react";
+import { SITE_URL } from "@/config/site";
 
 export interface ProductData {
   naam: string;
@@ -47,7 +48,7 @@ const generateProductSchema = (product: ProductData, categoryUrl: string) => ({
   },
   "offers": {
     "@type": "Offer",
-    "url": `https://safegrip.nl${categoryUrl}`,
+    "url": `${SITE_URL}${categoryUrl}`,
     "priceCurrency": "EUR",
     "price": product.prijs || "Op aanvraag",
     "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
@@ -93,7 +94,7 @@ const generateItemListSchema = (producten: ProductData[], title: string, categor
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": title,
-  "url": `https://safegrip.nl${categoryUrl}`,
+  "url": `${SITE_URL}${categoryUrl}`,
   "numberOfItems": producten.length,
   "itemListElement": producten.map((product, index) => ({
     "@type": "ListItem",
@@ -111,19 +112,19 @@ const generateBreadcrumbSchema = (title: string, categoryUrl: string) => ({
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://safegrip.nl"
+      "item": SITE_URL
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Shop",
-      "item": "https://safegrip.nl/shop"
+      "item": `${SITE_URL}/shop`
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": title,
-      "item": `https://safegrip.nl${categoryUrl}`
+      "item": `${SITE_URL}${categoryUrl}`
     }
   ]
 });
@@ -134,11 +135,11 @@ const generateCollectionPageSchema = (title: string, description: string, catego
   "@type": "CollectionPage",
   "name": title,
   "description": description,
-  "url": `https://safegrip.nl${categoryUrl}`,
+  "url": `${SITE_URL}${categoryUrl}`,
   "isPartOf": {
     "@type": "WebSite",
     "name": "SafeGrip",
-    "url": "https://safegrip.nl"
+    "url": SITE_URL
   },
   "about": {
     "@type": "Thing",
@@ -149,7 +150,7 @@ const generateCollectionPageSchema = (title: string, description: string, catego
   "provider": {
     "@type": "Organization",
     "name": "SafeGrip",
-    "url": "https://safegrip.nl"
+    "url": SITE_URL
   }
 });
 
@@ -175,11 +176,11 @@ export function CollectionLayout({
         <meta name="description" content={metaDescription} />
         <meta name="keywords" content={keywords} />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={`https://safegrip.nl${canonicalUrl}`} />
+        <link rel="canonical" href={`${SITE_URL}${canonicalUrl}`} />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://safegrip.nl${canonicalUrl}`} />
+        <meta property="og:url" content={`${SITE_URL}${canonicalUrl}`} />
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:locale" content="nl_NL" />
