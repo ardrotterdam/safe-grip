@@ -85,6 +85,8 @@ export default defineConfig(({ mode }) => ({
         ]
       },
       workbox: {
+        // HIER ZIT DE FIX:
+        navigateFallbackDenylist: [/^\/sitemap.xml$/, /^\/robots.txt$/],
         globPatterns: ["**/*.{js,css,html,ico,png,svg,jpg,jpeg,webp,woff,woff2}"],
         runtimeCaching: [
           {
