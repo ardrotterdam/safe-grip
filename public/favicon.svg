@@ -1,7 +1,7 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Yellow background with rounded corners -->
-  <rect width="64" height="64" rx="4" fill="#FFE600"/>
+  <!-- Yellow background -->
+  <rect width="64" height="64" fill="#FFE600"/>
   
-  <!-- Bold italic "S" in black - industrial style -->
-  <path d="M44.5 18.5C42.8 15.3 38.5 12 31.5 12C22 12 16 17.5 16 25C16 32.5 22.5 35.5 30 37.5C37.5 39.5 40 41.5 40 45C40 49 36.5 52 31 52C24.5 52 20.5 48.5 19 44L12 47.5C14.5 54 21.5 60 31.5 60C42 60 48.5 53.5 48.5 45C48.5 37 42 33.5 34 31.5C26.5 29.5 24 28 24 24.5C24 21 27.5 18.5 32 18.5C37 18.5 40 21 41.5 24L44.5 18.5Z" fill="#000000" transform="skewX(-8)"/>
+  <!-- Bold "S" in black - matching the uploaded design -->
+  <path d="M43.5 19.5C41.5 15.5 37 12 30.5 12C21 12 15 17 15 24.5C15 32 21 35 29 37.5C36.5 39.8 39 42 39 46C39 50.5 35 53.5 29.5 53.5C22.5 53.5 18 49.5 16.5 44.5L10 48C12.5 55 20 61 30 61C41 61 48 54 48 45.5C48 37.5 41.5 34 33.5 31.5C26 29.2 23.5 27 23.5 23.5C23.5 19.5 27 16.5 31.5 16.5C36.5 16.5 40 19 42 23L43.5 19.5Z" fill="#000000"/>
 </svg>
