@@ -1,15 +1,7 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="64" height="64" fill="#1a1a1a" rx="8" />
+  <!-- Yellow background with rounded corners -->
+  <rect width="64" height="64" rx="4" fill="#FFE600"/>
   
-  <!-- S letter -->
-  <text x="8" y="46" fill="#FFE600" style="font-family: Impact, Arial Black, sans-serif; font-size: 38px; font-weight: 900;">S</text>
-  
-  <!-- Triple grip bars -->
-  <rect x="26" y="26" width="12" height="3" fill="#FFE600" />
-  <rect x="26" y="31" width="12" height="3" fill="#FFE600" />
-  <rect x="26" y="36" width="12" height="3" fill="#FFE600" />
-  
-  <!-- G letter -->
-  <text x="40" y="46" fill="#FFE600" style="font-family: Impact, Arial Black, sans-serif; font-size: 38px; font-weight: 900;">G</text>
+  <!-- Bold italic "S" in black - industrial style -->
+  <path d="M44.5 18.5C42.8 15.3 38.5 12 31.5 12C22 12 16 17.5 16 25C16 32.5 22.5 35.5 30 37.5C37.5 39.5 40 41.5 40 45C40 49 36.5 52 31 52C24.5 52 20.5 48.5 19 44L12 47.5C14.5 54 21.5 60 31.5 60C42 60 48.5 53.5 48.5 45C48.5 37 42 33.5 34 31.5C26.5 29.5 24 28 24 24.5C24 21 27.5 18.5 32 18.5C37 18.5 40 21 41.5 24L44.5 18.5Z" fill="#000000" transform="skewX(-8)"/>
 </svg>
