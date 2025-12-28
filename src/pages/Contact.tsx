@@ -301,6 +301,12 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
+
+                <div className="pt-4 border-t border-border">
+                  <p className="text-xs text-muted-foreground">
+                    KVK: {CONTACT_INFO.company.kvk} | BTW: {CONTACT_INFO.company.btw}
+                  </p>
+                </div>
               </div>
 
               {/* Google Maps */}
