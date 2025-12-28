@@ -28,7 +28,7 @@ export const CONTACT_INFO = {
   },
   
   support: {
-    hours: "Ma-Vr 08:00 - 17:00",
+    hours: "Ma-Vr 09:00 - 17:00",
     responseTime: "Binnen 24 uur"
   }
 } as const;

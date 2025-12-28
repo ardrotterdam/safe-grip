@@ -296,8 +296,9 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <Clock className="h-5 w-5 text-primary mt-0.5" />
                     <div>
-                      <p className="text-sm font-medium text-foreground">Reactietijd</p>
-                      <p className="text-sm text-muted-foreground">{CONTACT_INFO.support.responseTime} op werkdagen</p>
+                      <p className="text-sm font-medium text-foreground">Openingstijden</p>
+                      <p className="text-sm text-muted-foreground">{CONTACT_INFO.support.hours}</p>
+                      <p className="text-xs text-muted-foreground mt-1">Reactie {CONTACT_INFO.support.responseTime.toLowerCase()}</p>
                     </div>
                   </div>
                 </div>
