@@ -6,6 +6,7 @@ import { ShoppingBag, Anchor, Factory, Ship, HardHat, Cog, Truck, Utensils, Tree
 import { useEffect, useState, useRef } from "react";
 import kantoorImage from "@/assets/kantoor-rotterdam.webp";
 import { SITE_URL } from "@/config/site";
+import { CONTACT_INFO } from "@/config/contact";
 
 const industrieTags = [
   { label: "Offshore", icon: Anchor },
@@ -167,7 +168,7 @@ export default function OverOns() {
                 Onderdeel van ABshops.nl
               </a>
               <p className="text-sm text-muted-foreground">
-                KVK: 72037628
+                KVK: {CONTACT_INFO.company.kvk} | BTW: {CONTACT_INFO.company.btw}
               </p>
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
