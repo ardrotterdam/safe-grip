@@ -139,7 +139,7 @@ export default function OverOns() {
           <div className="max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-safegrip-blue/20 backdrop-blur-sm border border-safegrip-blue/30">
               <MapPin className="h-4 w-4 text-safegrip-blue" />
-              <span className="text-sm font-medium text-foreground">Westplein, Rotterdam</span>
+              <span className="text-sm font-medium text-foreground">Westplein 12, Rotterdam</span>
             </div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
               Ons Kantoor in het Hart van Rotterdam
@@ -147,6 +147,37 @@ export default function OverOns() {
             <p className="text-lg text-muted-foreground max-w-xl">
               Vanuit dit monumentale pand bedienen wij de Benelux met persoonlijk advies en snelle levering.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Google Maps Section */}
+      <section className="py-12 bg-card/50 border-y border-border/50">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-foreground">Bezoek Ons</h2>
+              <p className="text-muted-foreground">
+                Westplein 12, 3016 BM Rotterdam<br />
+                Onderdeel van ABshops.nl
+              </p>
+              <p className="text-sm text-muted-foreground">
+                KVK: 72037628
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2460.7!2d4.4717!3d51.9186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c4335d4e44a2d3%3A0x1!2sWestplein%2012%2C%203016%20BM%20Rotterdam!5e0!3m2!1snl!2snl!4v1700000000000!5m2!1snl!2snl"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="SafeGrip kantoor locatie - Westplein 12, Rotterdam"
+                className="grayscale hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
           </div>
         </div>
       </section>
