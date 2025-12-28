@@ -9,6 +9,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 374", "Type A", "Nitril"],
     bundel: "Per 6 paar",
     sku: "GRB-114420",
+    prijs: "56.50",
   },
   {
     naam: "Granberg 114.430 Acid Resist",
@@ -16,6 +17,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 374", "Zuurbestendig", "Lang manchet"],
     bundel: "Per 6 paar",
     sku: "GRB-114430",
+    prijs: "62.90",
   },
   {
     naam: "Granberg 114.440 Solvent Shield",
@@ -23,6 +25,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 374", "Oplosmiddelen", "Gevoerd"],
     bundel: "Per 12 paar",
     sku: "GRB-114440",
+    prijs: "98.00",
   },
   {
     naam: "Granberg 114.450 Lab Safety",
@@ -30,6 +33,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 374", "Precisie", "Latex vrij"],
     bundel: "Per 6 paar",
     sku: "GRB-114450",
+    prijs: "48.00",
   },
   {
     naam: "Granberg 114.460 Industrial Chem",
@@ -37,6 +41,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 374", "Type B", "Verstevigd"],
     bundel: "Per 6 paar",
     sku: "GRB-114460",
+    prijs: "58.50",
   },
   {
     naam: "Granberg 114.470 Multi Chem",
@@ -44,6 +49,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 374", "Type A", "Dubbellaags"],
     bundel: "Per 6 paar",
     sku: "GRB-114470",
+    prijs: "64.00",
   },
 ];
 

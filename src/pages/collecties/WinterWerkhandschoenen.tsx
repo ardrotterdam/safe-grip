@@ -9,6 +9,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 511", "Tot -30°C", "Waterdicht"],
     bundel: "Per 6 paar",
     sku: "GRB-115520",
+    prijs: "68.50",
   },
   {
     naam: "Granberg 115.530 Cold Grip",
@@ -16,6 +17,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 511", "Grip coating", "Ademend"],
     bundel: "Per 6 paar",
     sku: "GRB-115530",
+    prijs: "54.90",
   },
   {
     naam: "Granberg 115.540 Winter Work",
@@ -23,6 +25,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 511", "Flexibel", "Touchscreen"],
     bundel: "Per 12 paar",
     sku: "GRB-115540",
+    prijs: "89.00",
   },
   {
     naam: "Granberg 115.550 Polar Extreme",
@@ -30,6 +33,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 511", "Tot -40°C", "Thinsulate"],
     bundel: "Per 6 paar",
     sku: "GRB-115550",
+    prijs: "78.00",
   },
   {
     naam: "Granberg 115.560 Thermal Flex",
@@ -37,6 +41,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 511", "Flexibel", "Lichtgewicht"],
     bundel: "Per 12 paar",
     sku: "GRB-115560",
+    prijs: "72.50",
   },
   {
     naam: "Granberg 115.570 Cold Worker",
@@ -44,6 +49,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 511", "Verstevigd", "Waterdicht"],
     bundel: "Per 6 paar",
     sku: "GRB-115570",
+    prijs: "62.00",
   },
 ];
 

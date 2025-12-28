@@ -9,6 +9,7 @@ const producten: ProductData[] = [
     kenmerken: ["Snijniveau D", "EN 388:2016", "Nitril coating"],
     bundel: "Per 6 paar",
     sku: "GRB-116560",
+    prijs: "42.50",
   },
   {
     naam: "Granberg 116.570 Cut Protect Pro",
@@ -16,6 +17,7 @@ const producten: ProductData[] = [
     kenmerken: ["Snijniveau E", "EN 388:2016", "PU palm"],
     bundel: "Per 6 paar",
     sku: "GRB-116570",
+    prijs: "48.90",
   },
   {
     naam: "Granberg 116.580 Industrial Cut",
@@ -23,6 +25,7 @@ const producten: ProductData[] = [
     kenmerken: ["Snijniveau C", "Verstevigd", "Ademend"],
     bundel: "Per 12 paar",
     sku: "GRB-116580",
+    prijs: "72.00",
   },
   {
     naam: "Granberg 116.590 Glass Handler",
@@ -30,6 +33,7 @@ const producten: ProductData[] = [
     kenmerken: ["Snijniveau D", "Anti-slip", "Latex vrij"],
     bundel: "Per 6 paar",
     sku: "GRB-116590",
+    prijs: "45.00",
   },
   {
     naam: "Granberg 116.600 Metal Work",
@@ -37,6 +41,7 @@ const producten: ProductData[] = [
     kenmerken: ["Snijniveau E", "Slijtvast", "Oliebestendig"],
     bundel: "Per 6 paar",
     sku: "GRB-116600",
+    prijs: "52.50",
   },
   {
     naam: "Granberg 116.610 Assembly Cut",
@@ -44,6 +49,7 @@ const producten: ProductData[] = [
     kenmerken: ["Snijniveau B", "Touchscreen", "Flexibel"],
     bundel: "Per 12 paar",
     sku: "GRB-116610",
+    prijs: "64.80",
   },
 ];
 

@@ -9,6 +9,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 388", "TPR Impact", "Offshore"],
     bundel: "Per 6 paar",
     sku: "GRB-117660",
+    prijs: "74.50",
   },
   {
     naam: "Granberg 117.670 Heavy Duty Impact",
@@ -16,6 +17,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 388", "Versterkt", "Oliebestendig"],
     bundel: "Per 6 paar",
     sku: "GRB-117670",
+    prijs: "68.90",
   },
   {
     naam: "Granberg 117.680 Rig Worker",
@@ -23,6 +25,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 388", "Waterdicht", "Hi-Vis"],
     bundel: "Per 6 paar",
     sku: "GRB-117680",
+    prijs: "82.00",
   },
   {
     naam: "Granberg 117.690 Construction Pro",
@@ -30,6 +33,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 388", "Slijtvast", "Grip"],
     bundel: "Per 12 paar",
     sku: "GRB-117690",
+    prijs: "112.00",
   },
   {
     naam: "Granberg 117.700 Mining Impact",
@@ -37,6 +41,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 388", "Extra TPR", "Verstevigd"],
     bundel: "Per 6 paar",
     sku: "GRB-117700",
+    prijs: "88.50",
   },
   {
     naam: "Granberg 117.710 Mechanic Pro",
@@ -44,6 +49,7 @@ const producten: ProductData[] = [
     kenmerken: ["EN 388", "Flexibel", "Touchscreen"],
     bundel: "Per 12 paar",
     sku: "GRB-117710",
+    prijs: "96.00",
   },
 ];
 
