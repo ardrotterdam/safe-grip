@@ -131,6 +131,58 @@ const granbergProducts = [
   }
 ];
 
+// Brand Schema for Granberg
+const brandSchema = {
+  "@context": "https://schema.org",
+  "@type": "Brand",
+  "name": "Granberg",
+  "description": "Noorse fabrikant van professionele werkhandschoenen sinds 1961",
+  "url": `${SITE_URL}/granberg`,
+  "logo": `${SITE_URL}/safegrip-logo.svg`,
+  "foundingDate": "1961",
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "Bjoa, Norway"
+  },
+  "slogan": "Handbescherming Zonder Compromissen"
+};
+
+// BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": SITE_URL
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Granberg",
+      "item": `${SITE_URL}/granberg`
+    }
+  ]
+};
+
+// Product ItemList Schema
+const productListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Granberg Werkhandschoenen Collectie",
+  "description": "Professionele Granberg werkhandschoenen met Noorse kwaliteit",
+  "numberOfItems": granbergProducts.length,
+  "itemListElement": granbergProducts.map((product, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": `${product.name} ${product.subtitle}`,
+    "description": product.description,
+    "url": `${SITE_URL}${product.link}`
+  }))
+};
+
 export default function Granberg() {
   return (
     <Layout>
@@ -145,6 +197,17 @@ export default function Granberg() {
         <meta property="og:title" content="Granberg Handschoenen | 60+ Jaar Noorse Kwaliteit" />
         <meta property="og:description" content="Ontdek Granberg: sinds 1961 de Noorse standaard in professionele handbescherming." />
         <meta property="og:type" content="website" />
+        
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(brandSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(productListSchema)}
+        </script>
       </Helmet>
 
       {/* SECTION 1: HERO */}

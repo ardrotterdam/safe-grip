@@ -121,6 +121,26 @@ export default function Contact() {
     }
   };
 
+  // BreadcrumbList Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": SITE_URL
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": `${SITE_URL}/contact`
+      }
+    ]
+  };
+
   return (
     <Layout>
       <Helmet>
@@ -141,9 +161,12 @@ export default function Contact() {
         <meta property="og:description" content="Neem contact op voor productadvies of zakelijke samenwerkingen. Reactie binnen 24 uur." />
         <meta property="og:locale" content="nl_NL" />
 
-        {/* JSON-LD Schema */}
+        {/* JSON-LD Schemas */}
         <script type="application/ld+json">
           {JSON.stringify(contactPageSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
         </script>
       </Helmet>
 
