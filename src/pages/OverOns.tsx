@@ -29,7 +29,7 @@ const trustBadges = [
   { emoji: "🇳🇴", label: "Noorse Kwaliteit", sublabel: "Sinds 1961" },
   { emoji: "🏆", label: "Red Dot Award Winnaar", sublabel: "Design Excellence" },
   { emoji: "🧪", label: "EU Gecertificeerd", sublabel: "EN 388 / EN 407" },
-  { emoji: "⚓", label: "Scheepvaartkwartier Rotterdam", sublabel: "Benelux HQ" },
+  { emoji: "⚓", label: "Westplein Rotterdam", sublabel: "Onderdeel van ABshops.nl" },
 ];
 
 function CountUpNumber({ target, suffix }: { target: number; suffix: string }) {
@@ -139,7 +139,7 @@ export default function OverOns() {
           <div className="max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-safegrip-blue/20 backdrop-blur-sm border border-safegrip-blue/30">
               <MapPin className="h-4 w-4 text-safegrip-blue" />
-              <span className="text-sm font-medium text-foreground">Scheepvaartkwartier, Rotterdam</span>
+              <span className="text-sm font-medium text-foreground">Westplein, Rotterdam</span>
             </div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
               Ons Kantoor in het Hart van Rotterdam
@@ -184,7 +184,7 @@ export default function OverOns() {
                   veeleisende industrieën.
                 </p>
                 <p>
-                  Vanuit het Rotterdamse Scheepvaartkwartier bedienen wij bedrijven in de 
+                  Vanuit Rotterdam bedienen wij bedrijven in de 
                   Benelux met persoonlijk advies en snelle levering. Onze focus ligt op het 
                   leveren van de juiste handschoen voor elke toepassing, ondersteund door 
                   60+ jaar Noorse expertise.
