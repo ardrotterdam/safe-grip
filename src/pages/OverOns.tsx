@@ -208,7 +208,13 @@ export default function OverOns() {
                 </p>
               </div>
             </div>
-            <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+            <div 
+              className="rounded-lg overflow-hidden"
+              style={{
+                border: '1px solid rgba(255,255,255,0.1)',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.3)'
+              }}
+            >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2460.7!2d4.4717!3d51.9186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c4335d4e44a2d3%3A0x1!2sWestplein%2012%2C%203016%20BM%20Rotterdam!5e0!3m2!1snl!2snl!4v1700000000000!5m2!1snl!2snl"
                 width="100%"
