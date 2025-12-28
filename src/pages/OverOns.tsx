@@ -167,9 +167,14 @@ export default function OverOns() {
                 Westplein 12, 3016 BM Rotterdam<br />
                 Onderdeel van ABshops.nl
               </a>
-              <p className="text-sm text-muted-foreground">
-                KVK: {CONTACT_INFO.company.kvk} | BTW: {CONTACT_INFO.company.btw}
-              </p>
+              <div className="space-y-1">
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-medium text-foreground">Openingstijden:</span> {CONTACT_INFO.support.hours}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  KVK: {CONTACT_INFO.company.kvk} | BTW: {CONTACT_INFO.company.btw}
+                </p>
+              </div>
             </div>
             <div className="rounded-xl overflow-hidden border border-border shadow-lg">
               <iframe
