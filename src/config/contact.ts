@@ -19,7 +19,7 @@ export const CONTACT_INFO = {
     name: "SafeGrip",
     legalName: "SafeGrip (onderdeel van ABshops.nl)",
     kvk: "72037628",
-    btw: "NL123456789B01"
+    btw: "NL001703956B72"
   },
   
   social: {
