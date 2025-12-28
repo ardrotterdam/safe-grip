@@ -281,10 +281,15 @@ export default function Contact() {
                     <MapPin className="h-5 w-5 text-primary mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-foreground">Adres</p>
-                      <p className="text-sm text-muted-foreground">
+                      <a 
+                        href="https://www.google.com/maps/search/?api=1&query=Westplein+12,+3016+BM+Rotterdam"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      >
                         {CONTACT_INFO.address.street}<br />
                         {CONTACT_INFO.address.postalCode} {CONTACT_INFO.address.city}
-                      </p>
+                      </a>
                     </div>
                   </div>
                   
