@@ -57,26 +57,30 @@ const localBusinessSchema = {
   "@id": SITE_URL,
   "url": SITE_URL,
   "description": "Officieel Granberg distributeur - B2B werkhandschoenen groothandel",
+  "telephone": "+31108005912",
+  "email": "info@safe-grip.nl",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Scheepvaartkwartier",
+    "streetAddress": "Westplein 12",
     "addressLocality": "Rotterdam",
     "addressRegion": "Zuid-Holland",
-    "postalCode": "3000",
+    "postalCode": "3016 BM",
     "addressCountry": "NL"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 51.9225,
-    "longitude": 4.47917
+    "latitude": 51.9186,
+    "longitude": 4.4717
   },
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    "opens": "08:00",
+    "opens": "09:00",
     "closes": "17:00"
   },
-  "priceRange": "€€"
+  "priceRange": "€€",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+  "currenciesAccepted": "EUR"
 };
 
 const Index = () => {

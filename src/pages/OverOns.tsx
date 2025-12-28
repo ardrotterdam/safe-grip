@@ -86,14 +86,43 @@ const aboutPageSchema = {
   "mainEntity": {
     "@type": "Organization",
     "name": "SafeGrip",
+    "legalName": CONTACT_INFO.company.legalName,
     "foundingDate": "1961",
     "description": "Officieel Granberg distributeur voor de Benelux",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": CONTACT_INFO.address.street,
+      "postalCode": CONTACT_INFO.address.postalCode,
+      "addressLocality": CONTACT_INFO.address.city,
+      "addressCountry": "NL"
+    },
     "areaServed": ["Netherlands", "Belgium"],
     "brand": {
       "@type": "Brand",
       "name": "Granberg"
-    }
+    },
+    "taxID": CONTACT_INFO.company.btw
   }
+};
+
+// BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": SITE_URL
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Over Ons",
+      "item": `${SITE_URL}/over-ons`
+    }
+  ]
 };
 
 export default function OverOns() {
@@ -117,9 +146,12 @@ export default function OverOns() {
         <meta property="og:description" content="60+ jaar Noorse kwaliteit. Officieel Granberg distributeur voor Nederland en België." />
         <meta property="og:locale" content="nl_NL" />
 
-        {/* JSON-LD Schema */}
+        {/* JSON-LD Schemas */}
         <script type="application/ld+json">
           {JSON.stringify(aboutPageSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
         </script>
       </Helmet>
 

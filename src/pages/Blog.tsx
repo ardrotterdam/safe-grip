@@ -6,6 +6,44 @@ import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
 import { SITE_URL } from "@/config/site";
 
+// Blog CollectionPage Schema
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "SafeGrip Blog",
+  "description": "Nieuws, tips en inzichten over professionele handbescherming",
+  "url": `${SITE_URL}/blog`,
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": blogPosts.map((post, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": `${SITE_URL}/blog/${post.slug}`,
+      "name": post.title
+    }))
+  }
+};
+
+// BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": SITE_URL
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": `${SITE_URL}/blog`
+    }
+  ]
+};
+
 export default function Blog() {
   return (
     <Layout>
@@ -16,6 +54,14 @@ export default function Blog() {
           content="Nieuws, tips en inzichten over professionele handbescherming. Lees onze artikelen over werkhandschoenen, normen en industriespecifieke oplossingen." 
         />
         <link rel="canonical" href={`${SITE_URL}/blog`} />
+        
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(blogSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
       </Helmet>
 
       {/* Hero Section */}
