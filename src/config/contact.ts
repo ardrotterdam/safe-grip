@@ -3,22 +3,22 @@
 
 export const CONTACT_INFO = {
   email: "info@safe-grip.nl",
-  phone: "+31 10 123 4567",
-  phoneDisplay: "+31 (0)10 123 4567",
-  whatsapp: "+31612345678",
+  phone: "+31 10 800 5912",
+  phoneDisplay: "+31 (0)10 800 5912",
+  whatsapp: "+31108005912",
   
   address: {
-    street: "Scheepvaartkwartier 42",
-    postalCode: "3011 TH",
+    street: "Westplein 12",
+    postalCode: "3016 BM",
     city: "Rotterdam",
     country: "Nederland",
-    full: "Scheepvaartkwartier 42, 3011 TH Rotterdam, Nederland"
+    full: "Westplein 12, 3016 BM Rotterdam, Nederland"
   },
   
   company: {
     name: "SafeGrip",
-    legalName: "SafeGrip B.V.",
-    kvk: "12345678",
+    legalName: "SafeGrip (onderdeel van ABshops.nl)",
+    kvk: "72037628",
     btw: "NL123456789B01"
   },
   

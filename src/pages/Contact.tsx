@@ -301,7 +301,7 @@ export default function Contact() {
               {/* Google Maps */}
               <div className="rounded-lg overflow-hidden border border-border">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2460.8876012345678!2d4.4765!3d51.9129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c4335c4d4a8c35%3A0x6b6e4f7d9d2d8b1a!2sScheepvaartkwartier%2C%20Rotterdam!5e0!3m2!1snl!2snl!4v1700000000000!5m2!1snl!2snl"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2460.7!2d4.4717!3d51.9186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c4335d4e44a2d3%3A0x1!2sWestplein%2012%2C%203016%20BM%20Rotterdam!5e0!3m2!1snl!2snl!4v1700000000000!5m2!1snl!2snl"
                   width="100%"
                   height="250"
                   style={{ border: 0 }}
