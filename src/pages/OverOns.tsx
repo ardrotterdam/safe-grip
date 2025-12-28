@@ -157,10 +157,15 @@ export default function OverOns() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-4">
               <h2 className="text-2xl font-bold text-foreground">Bezoek Ons</h2>
-              <p className="text-muted-foreground">
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=Westplein+12,+3016+BM+Rotterdam"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
                 Westplein 12, 3016 BM Rotterdam<br />
                 Onderdeel van ABshops.nl
-              </p>
+              </a>
               <p className="text-sm text-muted-foreground">
                 KVK: 72037628
               </p>
