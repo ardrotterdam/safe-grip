@@ -164,10 +164,10 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} {CONTACT_INFO.company.name}. Alle rechten voorbehouden.
+              © {new Date().getFullYear()} {CONTACT_INFO.company.name} · Onderdeel van ABshops.nl
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              KVK: {CONTACT_INFO.company.kvk} | BTW: {CONTACT_INFO.company.btw}
+              KVK: {CONTACT_INFO.company.kvk} · BTW: {CONTACT_INFO.company.btw}
             </p>
           </div>
           <p className="text-sm text-muted-foreground">
