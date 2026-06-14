@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, ShoppingBag } from "lucide-react";
+import { CONTACT_INFO } from "@/config/contact";
 
 export function CTASection() {
   return (
@@ -34,13 +35,13 @@ export function CTASection() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8 text-sm text-muted-foreground">
-            <a href="tel:+31201234567" className="flex items-center gap-2 hover:text-primary transition-colors">
+            <a href={`tel:${CONTACT_INFO.phone.replace(/\s/g, "")}`} className="flex items-center gap-2 hover:text-primary transition-colors">
               <Phone className="h-4 w-4" />
-              +31 (0)20 123 4567
+              {CONTACT_INFO.phoneDisplay}
             </a>
-            <a href="mailto:info@safegrip.nl" className="flex items-center gap-2 hover:text-primary transition-colors">
+            <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-2 hover:text-primary transition-colors">
               <Mail className="h-4 w-4" />
-              info@safegrip.nl
+              {CONTACT_INFO.email}
             </a>
           </div>
         </div>

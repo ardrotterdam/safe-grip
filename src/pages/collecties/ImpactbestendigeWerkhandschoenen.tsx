@@ -72,6 +72,8 @@ export default function ImpactbestendigeWerkhandschoenen() {
           kenmerken={product.kenmerken}
           bundel={product.bundel}
           afbeelding={gloveImpact}
+          sku={product.sku}
+          prijs={product.prijs ? parseFloat(product.prijs) : undefined}
         />
       ))}
     </CollectionLayout>

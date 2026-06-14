@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,7 +28,13 @@ const onderwerpen = [
   "Overig",
 ];
 
+interface ContactCheckoutState {
+  onderwerp?: string;
+  bericht?: string;
+}
+
 export default function Contact() {
+  const location = useLocation();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -40,6 +46,19 @@ export default function Contact() {
     onderwerp: "",
     bericht: "",
   });
+
+  useEffect(() => {
+    const checkoutState = location.state as ContactCheckoutState | null;
+    if (!checkoutState?.onderwerp && !checkoutState?.bericht) {
+      return;
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      onderwerp: checkoutState.onderwerp || prev.onderwerp,
+      bericht: checkoutState.bericht || prev.bericht,
+    }));
+  }, [location.state]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

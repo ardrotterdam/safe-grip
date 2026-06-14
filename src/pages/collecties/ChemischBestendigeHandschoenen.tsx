@@ -72,6 +72,8 @@ export default function ChemischBestendigeHandschoenen() {
           kenmerken={product.kenmerken}
           bundel={product.bundel}
           afbeelding={gloveChemical}
+          sku={product.sku}
+          prijs={product.prijs ? parseFloat(product.prijs) : undefined}
         />
       ))}
     </CollectionLayout>

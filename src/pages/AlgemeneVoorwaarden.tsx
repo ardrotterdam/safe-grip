@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { FileText, Mail, Phone } from "lucide-react";
 import { SITE_URL } from "@/config/site";
+import { CONTACT_INFO } from "@/config/contact";
 
 const AlgemeneVoorwaarden = () => {
   const termsSchema = {
@@ -234,13 +235,13 @@ const AlgemeneVoorwaarden = () => {
                 Heeft u vragen over deze algemene voorwaarden of wilt u een overeenkomst bespreken? Neem gerust contact met ons op:
               </p>
               <div className="flex flex-col gap-3">
-                <a href="mailto:info@safegrip.nl" className="inline-flex items-center gap-2 text-primary hover:underline">
+                <a href={`mailto:${CONTACT_INFO.email}`} className="inline-flex items-center gap-2 text-primary hover:underline">
                   <Mail className="h-4 w-4" />
-                  info@safegrip.nl
+                  {CONTACT_INFO.email}
                 </a>
-                <a href="tel:+31201234567" className="inline-flex items-center gap-2 text-primary hover:underline">
+                <a href={`tel:${CONTACT_INFO.phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-2 text-primary hover:underline">
                   <Phone className="h-4 w-4" />
-                  +31 (0)20 123 4567
+                  {CONTACT_INFO.phoneDisplay}
                 </a>
               </div>
             </div>

@@ -72,6 +72,8 @@ export default function WinterWerkhandschoenen() {
           kenmerken={product.kenmerken}
           bundel={product.bundel}
           afbeelding={gloveWinter}
+          sku={product.sku}
+          prijs={product.prijs ? parseFloat(product.prijs) : undefined}
         />
       ))}
     </CollectionLayout>

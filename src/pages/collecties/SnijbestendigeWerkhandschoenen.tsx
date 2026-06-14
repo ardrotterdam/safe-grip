@@ -72,6 +72,8 @@ export default function SnijbestendigeWerkhandschoenen() {
           kenmerken={product.kenmerken}
           bundel={product.bundel}
           afbeelding={gloveCut}
+          sku={product.sku}
+          prijs={product.prijs ? parseFloat(product.prijs) : undefined}
         />
       ))}
     </CollectionLayout>

@@ -1,11 +1,27 @@
-import { ShoppingBag, X, Plus, Minus, Trash2 } from "lucide-react";
+import { ShoppingBag, Plus, Minus, Trash2 } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { Link } from "react-router-dom";
 
+function buildCheckoutMessage(
+  items: { id: string; name: string; quantity: number; price: number }[],
+  total: number
+) {
+  const lines = items.map(
+    (item) =>
+      `- ${item.name}${item.id !== item.name ? ` (${item.id})` : ""}: ${item.quantity}x €${item.price.toFixed(2)} = €${(item.quantity * item.price).toFixed(2)}`
+  );
+
+  return `Offerte / bestelling aanvraag:\n\n${lines.join("\n")}\n\nSubtotaal: €${total.toFixed(2)}`;
+}
+
 export function CartDrawer() {
   const { items, itemCount, total, isOpen, setIsOpen, updateQuantity, removeItem, clearCart } = useCart();
+  const checkoutState = {
+    onderwerp: "Vraag over bestelling",
+    bericht: buildCheckoutMessage(items, total),
+  };
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -135,7 +151,9 @@ export function CartDrawer() {
             {/* Actions */}
             <div className="space-y-2">
               <Button asChild variant="shop" className="w-full" onClick={() => setIsOpen(false)}>
-                <Link to="/shop">Afrekenen</Link>
+                <Link to="/contact" state={checkoutState}>
+                  Offerte aanvragen
+                </Link>
               </Button>
               <Button
                 variant="outline"

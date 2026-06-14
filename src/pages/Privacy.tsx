@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Shield, Mail, Phone } from "lucide-react";
 import { SITE_URL } from "@/config/site";
+import { CONTACT_INFO } from "@/config/contact";
 
 const Privacy = () => {
   const privacySchema = {
@@ -62,8 +63,8 @@ const Privacy = () => {
               <ul className="text-muted-foreground space-y-2">
                 <li><strong className="text-foreground">Bedrijfsnaam:</strong> SafeGrip B.V.</li>
                 <li><strong className="text-foreground">Vestigingsland:</strong> Nederland</li>
-                <li><strong className="text-foreground">E-mail:</strong> privacy@safegrip.nl</li>
-                <li><strong className="text-foreground">Telefoon:</strong> +31 (0)20 123 4567</li>
+                <li><strong className="text-foreground">E-mail:</strong> {CONTACT_INFO.email}</li>
+                <li><strong className="text-foreground">Telefoon:</strong> {CONTACT_INFO.phoneDisplay}</li>
               </ul>
             </div>
 
@@ -168,7 +169,7 @@ const Privacy = () => {
                 <li><strong className="text-foreground">Recht om toestemming in te trekken:</strong> Zonder opgaaf van redenen</li>
               </ul>
               <p className="text-muted-foreground mt-4">
-                Om uw rechten uit te oefenen, neem contact op via privacy@safegrip.nl. Wij reageren binnen 30 dagen op uw verzoek.
+                Om uw rechten uit te oefenen, neem contact op via {CONTACT_INFO.email}. Wij reageren binnen 30 dagen op uw verzoek.
               </p>
             </div>
 
@@ -219,13 +220,13 @@ const Privacy = () => {
                 Heeft u vragen over deze privacyverklaring of over de verwerking van uw persoonsgegevens? Neem gerust contact met ons op:
               </p>
               <div className="flex flex-col gap-3">
-                <a href="mailto:privacy@safegrip.nl" className="inline-flex items-center gap-2 text-primary hover:underline">
+                <a href={`mailto:${CONTACT_INFO.email}`} className="inline-flex items-center gap-2 text-primary hover:underline">
                   <Mail className="h-4 w-4" />
-                  privacy@safegrip.nl
+                  {CONTACT_INFO.email}
                 </a>
-                <a href="tel:+31201234567" className="inline-flex items-center gap-2 text-primary hover:underline">
+                <a href={`tel:${CONTACT_INFO.phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-2 text-primary hover:underline">
                   <Phone className="h-4 w-4" />
-                  +31 (0)20 123 4567
+                  {CONTACT_INFO.phoneDisplay}
                 </a>
               </div>
             </div>
