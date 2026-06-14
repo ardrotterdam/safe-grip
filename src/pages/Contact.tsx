@@ -14,10 +14,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { Mail, MapPin, Clock } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Mail, MapPin, Clock, AlertCircle } from "lucide-react";
 import { CONTACT_INFO, SERVICE_REGIONS } from "@/config/contact";
 import { SITE_URL } from "@/config/site";
+
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
 const onderwerpen = [
   "Vraag over bestelling",
@@ -38,6 +40,7 @@ export default function Contact() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     naam: "",
     email: "",
@@ -60,21 +63,61 @@ export default function Contact() {
     }));
   }, [location.state]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    setSubmitError(null);
+
+    if (!WEB3FORMS_ACCESS_KEY) {
+      const message =
+        "Het contactformulier is tijdelijk niet beschikbaar. Probeer het later opnieuw.";
+      setSubmitError(message);
+      toast({
+        title: "Er ging iets mis",
+        description: message,
+        variant: "destructive",
+      });
+      setLoading(false);
+      return;
+    }
+
+    const form = e.currentTarget;
+    const botcheck = (form.elements.namedItem("botcheck") as HTMLInputElement)?.checked;
+
+    if (botcheck) {
+      setLoading(false);
+      return;
+    }
 
     try {
-      const { error } = await supabase.from("contact_submissions").insert({
-        naam: formData.naam,
-        email: formData.email,
-        telefoon: formData.telefoon || null,
-        bedrijfsnaam: formData.bedrijfsnaam || null,
-        onderwerp: formData.onderwerp,
-        bericht: formData.bericht,
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.naam,
+          email: formData.email,
+          phone: formData.telefoon || undefined,
+          company: formData.bedrijfsnaam || undefined,
+          subject: formData.onderwerp,
+          message: formData.bericht,
+          source: "Safe-Grip website",
+          botcheck: false,
+        }),
       });
 
-      if (error) throw error;
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        const message =
+          result.message ||
+          result.body?.message ||
+          "Verzenden mislukt. Probeer het later opnieuw.";
+        throw new Error(message);
+      }
 
       setSubmitted(true);
       toast({
@@ -82,9 +125,14 @@ export default function Contact() {
         description: "We nemen zo snel mogelijk contact met u op.",
       });
     } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Probeer het later opnieuw of neem contact op via het formulier.";
+      setSubmitError(message);
       toast({
         title: "Er ging iets mis",
-        description: "Probeer het later opnieuw of neem contact op via het formulier.",
+        description: message,
         variant: "destructive",
       });
     } finally {
@@ -286,6 +334,24 @@ export default function Contact() {
                     placeholder="Beschrijf uw vraag of aanvraag..."
                   />
                 </div>
+
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  className="hidden"
+                  style={{ display: "none" }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+
+                {submitError && (
+                  <Alert variant="destructive">
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertTitle>Verzenden mislukt</AlertTitle>
+                    <AlertDescription>{submitError}</AlertDescription>
+                  </Alert>
+                )}
 
                 <Button type="submit" size="lg" disabled={loading} className="glow-yellow">
                   {loading ? "Verzenden..." : "Verstuur Bericht"}
