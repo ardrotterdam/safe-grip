@@ -8,6 +8,7 @@ import { FAQSection } from "@/components/home/FAQSection";
 import { CTASection } from "@/components/home/CTASection";
 import heroImage from "@/assets/hero-offshore-workers.jpg";
 import { SITE_URL } from "@/config/site";
+import { CONTACT_INFO } from "@/config/contact";
 
 // Organization Schema for SEO
 const organizationSchema = {
@@ -32,6 +33,8 @@ const organizationSchema = {
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "sales",
+    "email": CONTACT_INFO.email,
+    "url": `${SITE_URL}/contact`,
     "availableLanguage": ["Dutch", "English"]
   }
 };
@@ -57,8 +60,7 @@ const localBusinessSchema = {
   "@id": SITE_URL,
   "url": SITE_URL,
   "description": "Officieel Granberg distributeur - B2B werkhandschoenen groothandel",
-  "telephone": "+31108005912",
-  "email": "info@safe-grip.nl",
+  "email": CONTACT_INFO.email,
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Westplein 12",

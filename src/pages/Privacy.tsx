@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
-import { Shield, Mail, Phone } from "lucide-react";
+import { Shield, Mail } from "lucide-react";
 import { SITE_URL } from "@/config/site";
 import { CONTACT_INFO } from "@/config/contact";
 
@@ -64,7 +65,6 @@ const Privacy = () => {
                 <li><strong className="text-foreground">Bedrijfsnaam:</strong> SafeGrip B.V.</li>
                 <li><strong className="text-foreground">Vestigingsland:</strong> Nederland</li>
                 <li><strong className="text-foreground">E-mail:</strong> {CONTACT_INFO.email}</li>
-                <li><strong className="text-foreground">Telefoon:</strong> {CONTACT_INFO.phoneDisplay}</li>
               </ul>
             </div>
 
@@ -220,14 +220,10 @@ const Privacy = () => {
                 Heeft u vragen over deze privacyverklaring of over de verwerking van uw persoonsgegevens? Neem gerust contact met ons op:
               </p>
               <div className="flex flex-col gap-3">
-                <a href={`mailto:${CONTACT_INFO.email}`} className="inline-flex items-center gap-2 text-primary hover:underline">
+                <Link to="/contact" className="inline-flex items-center gap-2 text-primary hover:underline">
                   <Mail className="h-4 w-4" />
-                  {CONTACT_INFO.email}
-                </a>
-                <a href={`tel:${CONTACT_INFO.phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-2 text-primary hover:underline">
-                  <Phone className="h-4 w-4" />
-                  {CONTACT_INFO.phoneDisplay}
-                </a>
+                  Neem contact op via het formulier
+                </Link>
               </div>
             </div>
 

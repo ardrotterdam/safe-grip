@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 import { CONTACT_INFO, SERVICE_REGIONS } from "@/config/contact";
 import { SITE_URL } from "@/config/site";
 
@@ -84,7 +84,7 @@ export default function Contact() {
     } catch (error) {
       toast({
         title: "Er ging iets mis",
-        description: "Probeer het later opnieuw of neem telefonisch contact op.",
+        description: "Probeer het later opnieuw of neem contact op via het formulier.",
         variant: "destructive",
       });
     } finally {
@@ -128,8 +128,8 @@ export default function Contact() {
     "mainEntity": {
       "@type": "Organization",
       "name": CONTACT_INFO.company.name,
-      "telephone": CONTACT_INFO.phone.replace(/\s/g, ''),
       "email": CONTACT_INFO.email,
+      "url": `${SITE_URL}/contact`,
       "address": {
         "@type": "PostalAddress",
         "streetAddress": CONTACT_INFO.address.street,
@@ -302,20 +302,10 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <Mail className="h-5 w-5 text-primary mt-0.5" />
                     <div>
-                      <p className="text-sm font-medium text-foreground">E-mail</p>
-                      <a href={`mailto:${CONTACT_INFO.email}`} className="text-sm text-muted-foreground hover:text-primary">
-                        {CONTACT_INFO.email}
-                      </a>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <Phone className="h-5 w-5 text-primary mt-0.5" />
-                    <div>
-                      <p className="text-sm font-medium text-foreground">Telefoon</p>
-                      <a href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`} className="text-sm text-muted-foreground hover:text-primary">
-                        {CONTACT_INFO.phoneDisplay}
-                      </a>
+                      <p className="text-sm font-medium text-foreground">Contact</p>
+                      <p className="text-sm text-muted-foreground">
+                        Gebruik het formulier links. Wij reageren {CONTACT_INFO.support.responseTime.toLowerCase()} op werkdagen.
+                      </p>
                     </div>
                   </div>
                   

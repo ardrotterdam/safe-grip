@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, ShoppingBag } from "lucide-react";
-import { CONTACT_INFO } from "@/config/contact";
+import { MessageCircle, ShoppingBag } from "lucide-react";
 
 export function CTASection() {
   return (
@@ -28,21 +27,10 @@ export function CTASection() {
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link to="/contact" className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
+                <MessageCircle className="h-4 w-4" />
                 Vragen? Neem Contact Op
               </Link>
             </Button>
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8 text-sm text-muted-foreground">
-            <a href={`tel:${CONTACT_INFO.phone.replace(/\s/g, "")}`} className="flex items-center gap-2 hover:text-primary transition-colors">
-              <Phone className="h-4 w-4" />
-              {CONTACT_INFO.phoneDisplay}
-            </a>
-            <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-2 hover:text-primary transition-colors">
-              <Mail className="h-4 w-4" />
-              {CONTACT_INFO.email}
-            </a>
           </div>
         </div>
       </div>

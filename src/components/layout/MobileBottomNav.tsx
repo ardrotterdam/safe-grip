@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import { Home, ShoppingBag, MessageCircle, Phone } from "lucide-react";
+import { Home, ShoppingBag, MessageCircle } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useCart } from "@/contexts/CartContext";
-import { CONTACT_INFO } from "@/config/contact";
 
 const navItems = [
   { to: "/", icon: Home, label: "Home" },
   { to: "/shop", icon: ShoppingBag, label: "Shop", isCart: true },
   { to: "/contact", icon: MessageCircle, label: "Contact" },
-  { to: `tel:${CONTACT_INFO.phone.replace(/\s/g, "")}`, icon: Phone, label: "Bellen", external: true },
 ];
 
 export function MobileBottomNav() {

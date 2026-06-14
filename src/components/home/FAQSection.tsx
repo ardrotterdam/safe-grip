@@ -30,7 +30,7 @@ const faqItems = [
   },
   {
     vraag: "Kan ik monsters aanvragen voordat ik een grote bestelling plaats?",
-    antwoord: "Absoluut. Wij bieden de mogelijkheid om monsters aan te vragen zodat u de kwaliteit en pasvorm kunt beoordelen voordat u een grotere bestelling plaatst. Neem contact op via het contactformulier of bel ons direct voor een monsteraanvraag.",
+    antwoord: "Absoluut. Wij bieden de mogelijkheid om monsters aan te vragen zodat u de kwaliteit en pasvorm kunt beoordelen voordat u een grotere bestelling plaatst. Neem contact op via het contactformulier voor een monsteraanvraag.",
   },
   {
     vraag: "Hoe kies ik de juiste handschoen voor mijn toepassing?",
