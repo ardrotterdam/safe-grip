@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { CartProvider } from "@/contexts/CartContext";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
@@ -33,6 +34,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <GoogleAnalytics />
             <CartDrawer />
             <Routes>
               <Route path="/" element={<Index />} />

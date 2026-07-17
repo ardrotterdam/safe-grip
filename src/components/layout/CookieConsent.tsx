@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Cookie, X } from "lucide-react";
+import { Cookie } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const COOKIE_CONSENT_KEY = "safegrip-cookie-consent";
-
-type ConsentStatus = "accepted" | "declined" | null;
+import {
+  COOKIE_CONSENT_KEY,
+  dispatchConsentUpdated,
+  type ConsentStatus,
+} from "@/lib/cookie-consent";
 
 export function CookieConsent() {
   const [consentStatus, setConsentStatus] = useState<ConsentStatus>(null);
@@ -26,12 +27,14 @@ export function CookieConsent() {
     localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
     setConsentStatus("accepted");
     setIsVisible(false);
+    dispatchConsentUpdated("accepted");
   };
 
   const handleDecline = () => {
     localStorage.setItem(COOKIE_CONSENT_KEY, "declined");
     setConsentStatus("declined");
     setIsVisible(false);
+    dispatchConsentUpdated("declined");
   };
 
   // Don't render if consent was already given
